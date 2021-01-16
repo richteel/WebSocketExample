@@ -1,2 +1,2 @@
 # WebSocketExample
-WebSocket example with PHP backend (Ratchet) and C# frontend (Winforms)
+WebSocket example with PHP (Ratchet) backend and C# (Winforms) frontend
