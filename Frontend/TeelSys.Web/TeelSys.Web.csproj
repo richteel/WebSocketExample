@@ -54,7 +54,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WsClient.de-DE.resx">
+    <EmbeddedResource Include="WsClient.de.resx">
       <DependentUpon>WsClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WsClient.en-US.resx">
