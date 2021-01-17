@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDD54C53-2644-4422-AF64-43B2C4571426}</ProjectGuid>
+    <ProjectGuid>{D8168AA8-303B-4AF2-9DF6-EE2275D19D56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeelSys.Web</RootNamespace>
-    <AssemblyName>TeelSys.Web</AssemblyName>
+    <RootNamespace>TeelSys.Settings</RootNamespace>
+    <AssemblyName>TeelSys.Settings</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,6 +33,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,38 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionStateChangedEventArgs.cs" />
-    <Compile Include="ErrorEventArgs.cs" />
-    <Compile Include="MessageReceivedEventArgs.cs" />
-    <Compile Include="WebContent.cs" />
-    <Compile Include="WebHelper.cs" />
-    <Compile Include="WsClient.cs" />
+    <Compile Include="AssemblyDetails.cs" />
+    <Compile Include="AssemblyInformation.cs" />
+    <Compile Include="SettingFileTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TeelSys.Globalization\TeelSys.Globalization.csproj">
-      <Project>{8d2fba03-1124-47fd-b975-f01c2303372c}</Project>
-      <Name>TeelSys.Globalization</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="WsClient.de.resx">
-      <DependentUpon>WsClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WsClient.en-US.resx">
-      <DependentUpon>WsClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WsClient.es.resx">
-      <DependentUpon>WsClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WsClient.lo.resx">
-      <DependentUpon>WsClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WsClient.resx">
-      <DependentUpon>WsClient.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>WsClient.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Compile Include="SettingsEventActions.cs" />
+    <Compile Include="SettingsEventArgs.cs" />
+    <Compile Include="SettingsHandler.cs" />
+    <Compile Include="WindowSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

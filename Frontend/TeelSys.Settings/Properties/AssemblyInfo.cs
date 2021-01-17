@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebSocketExample")]
+[assembly: AssemblyTitle("TeelSys.Settings")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TeelSys")]
-[assembly: AssemblyProduct("WebSocketExample")]
+[assembly: AssemblyProduct("TeelSys.Settings")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8fee6da8-2755-4d5a-83ba-c748cac72941")]
+[assembly: Guid("d8168aa8-303b-4af2-9df6-ee2275d19d56")]
 
 // Version information for an assembly consists of the following four values:
 //

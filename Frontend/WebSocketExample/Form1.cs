@@ -6,6 +6,7 @@ using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 using TeelSys.Globalization;
+using TeelSys.Settings;
 using TeelSys.Web;
 
 namespace WebSocketExample
@@ -17,6 +18,8 @@ namespace WebSocketExample
         private bool _connected = false;
         private WsClient _client;
         private readonly ResourceManager rm;
+        private SettingsHandler settingHandler;
+        private UserSettings userSettings;
         #endregion
 
         /*** Properties ***/
@@ -29,17 +32,10 @@ namespace WebSocketExample
         {
             InitializeComponent();
 
-            CultureInfo ci = Thread.CurrentThread.CurrentCulture;
-            Console.WriteLine("CULTURE\tISO\tISO\tWIN\tDISPLAYNAME\tENGLISHNAME");
-            Console.Write("{0}", ci.Name);
-            Console.Write("\t{0}", ci.TwoLetterISOLanguageName);
-            Console.Write("\t{0}", ci.ThreeLetterISOLanguageName);
-            Console.Write("\t{0}", ci.ThreeLetterWindowsLanguageName);
-            Console.Write("\t{0}", ci.DisplayName);
-            Console.WriteLine("\t{0}", ci.EnglishName);
-
             rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
             LocalizeFormText();
+
+            LoadSettings();
         }
 
         public Form1(CultureInfo culture)
@@ -51,9 +47,11 @@ namespace WebSocketExample
 
             rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
             LocalizeFormText();
+
+            LoadSettings();
         }
 
-        public void LocalizeFormText()
+        private void LocalizeFormText()
         {
             if(rm == null)
                 return;
@@ -71,6 +69,15 @@ namespace WebSocketExample
             LocalizedResourceHelper.LocalizeControlText(rm, lblPort);
             LocalizedResourceHelper.LocalizeControlText(rm, lblSend);
             LocalizedResourceHelper.LocalizeControlText(rm, lblServer);
+        }
+
+        private void LoadSettings()
+        {
+            settingHandler = new SettingsHandler(SettingFileTypes.User);
+            userSettings = (UserSettings)settingHandler.LoadSettings(typeof(UserSettings));
+
+            if (userSettings == null)
+                userSettings = new UserSettings();
         }
         #endregion
 
@@ -209,10 +216,29 @@ namespace WebSocketExample
             Application.Exit();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            userSettings.MainFormProperties.Location = Location;
+            userSettings.MainFormProperties.Width = Width;
+            userSettings.MainFormProperties.Height = Height;
+            userSettings.Server = txtServer.Text;
+            if(int.TryParse(txtPort.Text, out int port))
+                userSettings.ServerPort = port;
+
+            settingHandler.SaveSettings(userSettings);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Form1_Resize(sender, e);
             UpdateButtons();
+
+            // Set to values from User Settings
+            Location = userSettings.MainFormProperties.Location;
+            Width = userSettings.MainFormProperties.Width;
+            Height = userSettings.MainFormProperties.Height;
+            txtPort.Text = userSettings.ServerPort.ToString();
+            txtServer.Text = userSettings.Server;
         }
 
         private void Form1_Resize(object sender, EventArgs e)

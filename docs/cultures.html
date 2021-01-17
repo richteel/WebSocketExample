@@ -8,20 +8,20 @@
 		<p>The table below was created from the following C# code.</p>
 		<pre>using System.Globalization;
 
-        static void PrintCultures()
-        {
-            // Displays several properties of the neutral cultures.
-            Console.WriteLine("CULTURE\tISO\tISO\tWIN\tDISPLAYNAME\tENGLISHNAME");
-            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
-            {
-                Console.Write("{0}", ci.Name);
-                Console.Write("\t{0}", ci.TwoLetterISOLanguageName);
-                Console.Write("\t{0}", ci.ThreeLetterISOLanguageName);
-                Console.Write("\t{0}", ci.ThreeLetterWindowsLanguageName);
-                Console.Write("\t{0}", ci.DisplayName);
-                Console.WriteLine("\t{0}", ci.EnglishName);
-            }
-        }</pre>
+static void PrintCultures()
+{
+	// Displays several properties of the neutral cultures.
+	Console.WriteLine("CULTURE\tISO\tISO\tWIN\tDISPLAYNAME\tENGLISHNAME");
+	foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
+	{
+		Console.Write("{0}", ci.Name);
+		Console.Write("\t{0}", ci.TwoLetterISOLanguageName);
+		Console.Write("\t{0}", ci.ThreeLetterISOLanguageName);
+		Console.Write("\t{0}", ci.ThreeLetterWindowsLanguageName);
+		Console.Write("\t{0}", ci.DisplayName);
+		Console.WriteLine("\t{0}", ci.EnglishName);
+	}
+}</pre>
 		<p>The tab delimited values generated from the code was translated into the following table.</p>
 		<table>
 			<tr><td>CULTURE</td><td>ISO</td><td>ISO</td><td>WIN</td><td>DISPLAYNAME</td><td>ENGLISHNAME</td></tr>
