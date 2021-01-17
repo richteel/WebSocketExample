@@ -29,8 +29,6 @@ namespace WebSocketExample
         {
             InitializeComponent();
 
-            string t = this.GetType().FullName;
-
             rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
             LocalizeFormText();
         }
@@ -94,7 +92,7 @@ namespace WebSocketExample
                 if (txtLog.Text.Length > 0)
                     txtLog.AppendText("\r\n");
                 else
-                    txtLog.AppendText(LocalizedResourceHelper.GetLocalizedText(rm, "MessageLogHeaders") + "\r\n");
+                    txtLog.AppendText(LocalizedResourceHelper.GetLocalizedText(rm, "MessageLogHeaders", "Date/Time	Direction	Message") + "\r\n");
 
                 txtLog.Select(txtLog.TextLength, 0);
                 if (connectionStatus)
@@ -104,7 +102,7 @@ namespace WebSocketExample
                 else
                     txtLog.SelectionColor = Color.Green;
 
-                txtLog.AppendText(string.Format("{0}\t{1}\t{2}", DateTime.Now, connectionStatus ? "" : sending ? LocalizedResourceHelper.GetLocalizedText(rm, "Sent") : LocalizedResourceHelper.GetLocalizedText(rm, "Received"), Message));
+                txtLog.AppendText(string.Format("{0}\t{1}\t{2}", DateTime.Now, connectionStatus ? "" : sending ? LocalizedResourceHelper.GetLocalizedText(rm, "Sent", "Sent") : LocalizedResourceHelper.GetLocalizedText(rm, "Received", "Received"), Message));
             }
         }
 
@@ -117,8 +115,8 @@ namespace WebSocketExample
             }
             catch (UriFormatException e)
             {
-                MessageBox.Show(this, string.Format("{0}\r\n{1}", LocalizedResourceHelper.GetLocalizedText(rm, "InvalidServerOrPort"), e.Message),
-                    LocalizedResourceHelper.GetLocalizedText(rm, "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format("{0}\r\n{1}", LocalizedResourceHelper.GetLocalizedText(rm, "InvalidServerOrPort", "Invalid Server or Port"), e.Message),
+                    LocalizedResourceHelper.GetLocalizedText(rm, "Error", "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -128,7 +126,7 @@ namespace WebSocketExample
             cmdDisconnect.Enabled = _connected;
             cmdConnect.Enabled = !cmdDisconnect.Enabled;
 
-            lblConnectedStatus.Text = _connected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected");
+            lblConnectedStatus.Text = _connected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected", "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected", "Not Connected");
         }
         #endregion
 
@@ -180,7 +178,7 @@ namespace WebSocketExample
                 }
                 else
                 {
-                    MessageBox.Show(this, LocalizedResourceHelper.GetLocalizedText(rm, "PortMustBeAnInteger"), LocalizedResourceHelper.GetLocalizedText(rm, "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, LocalizedResourceHelper.GetLocalizedText(rm, "PortMustBeAnInteger", "Port must be an Integer"), LocalizedResourceHelper.GetLocalizedText(rm, "Error", "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             UpdateButtons();
@@ -227,7 +225,7 @@ namespace WebSocketExample
         {
             if (!int.TryParse(txtPort.Text, out _))
             {
-                MessageBox.Show(this, LocalizedResourceHelper.GetLocalizedText(rm, "PortMustBeAnInteger"), LocalizedResourceHelper.GetLocalizedText(rm, "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, LocalizedResourceHelper.GetLocalizedText(rm, "PortMustBeAnInteger", "Port must be an Integer"), LocalizedResourceHelper.GetLocalizedText(rm, "Error", "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
             }
         }

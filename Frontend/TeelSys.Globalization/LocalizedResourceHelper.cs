@@ -5,7 +5,7 @@ namespace TeelSys.Globalization
 {
     public static class LocalizedResourceHelper
     {
-        public static string GetLocalizedText(ResourceManager resourceManager, string resourceName, string defaultValue = "", bool skipChecks = false)
+        public static string GetLocalizedText(ResourceManager resourceManager, string resourceName, string defaultValue, bool skipChecks = false)
         {
             if (!skipChecks)
             {

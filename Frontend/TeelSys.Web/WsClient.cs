@@ -37,8 +37,6 @@ namespace TeelSys.Web
             client = new ClientWebSocket();
             cts = new CancellationTokenSource();
 
-            string t = this.GetType().FullName;
-
             rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
 
             ConnectToServerAsync();
