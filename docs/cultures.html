@@ -1,0 +1,889 @@
+<html lang="en" data-color-mode="light">
+	<head>
+		<meta charset="utf-8" />
+		<title>WebSocket Example</title>
+	</head>
+	<body>
+		<h1>Culture Information</h1>
+		<p>The table below was created from the following C# code.</p>
+		<pre>using System.Globalization;
+
+        static void PrintCultures()
+        {
+            // Displays several properties of the neutral cultures.
+            Console.WriteLine("CULTURE\tISO\tISO\tWIN\tDISPLAYNAME\tENGLISHNAME");
+            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
+            {
+                Console.Write("{0}", ci.Name);
+                Console.Write("\t{0}", ci.TwoLetterISOLanguageName);
+                Console.Write("\t{0}", ci.ThreeLetterISOLanguageName);
+                Console.Write("\t{0}", ci.ThreeLetterWindowsLanguageName);
+                Console.Write("\t{0}", ci.DisplayName);
+                Console.WriteLine("\t{0}", ci.EnglishName);
+            }
+        }</pre>
+		<p>The tab delimited values generated from the code was translated into the following table.</p>
+		<table>
+			<tr><td>CULTURE</td><td>ISO</td><td>ISO</td><td>WIN</td><td>DISPLAYNAME</td><td>ENGLISHNAME</td></tr>
+			<tr><td></td><td>iv</td><td>ivl</td><td>IVL</td><td>Invariant Language (Invariant Country)</td><td>Invariant Language (Invariant Country)</td></tr>
+			<tr><td>aa</td><td>aa</td><td>aar</td><td>ZZZ</td><td>Afar</td><td>Afar</td></tr>
+			<tr><td>aa-DJ</td><td>aa</td><td>aar</td><td>ZZZ</td><td>Afar (Djibouti)</td><td>Afar (Djibouti)</td></tr>
+			<tr><td>aa-ER</td><td>aa</td><td>aar</td><td>ZZZ</td><td>Afar (Eritrea)</td><td>Afar (Eritrea)</td></tr>
+			<tr><td>aa-ET</td><td>aa</td><td>aar</td><td>ZZZ</td><td>Afar (Ethiopia)</td><td>Afar (Ethiopia)</td></tr>
+			<tr><td>af</td><td>af</td><td>afr</td><td>AFK</td><td>Afrikaans</td><td>Afrikaans</td></tr>
+			<tr><td>af-NA</td><td>af</td><td>afr</td><td>ZZZ</td><td>Afrikaans (Namibia)</td><td>Afrikaans (Namibia)</td></tr>
+			<tr><td>af-ZA</td><td>af</td><td>afr</td><td>AFK</td><td>Afrikaans (South Africa)</td><td>Afrikaans (South Africa)</td></tr>
+			<tr><td>agq</td><td>agq</td><td>agq</td><td>ZZZ</td><td>Aghem</td><td>Aghem</td></tr>
+			<tr><td>agq-CM</td><td>agq</td><td>agq</td><td>ZZZ</td><td>Aghem (Cameroon)</td><td>Aghem (Cameroon)</td></tr>
+			<tr><td>ak</td><td>ak</td><td>aka</td><td>ZZZ</td><td>Akan</td><td>Akan</td></tr>
+			<tr><td>ak-GH</td><td>ak</td><td>aka</td><td>ZZZ</td><td>Akan (Ghana)</td><td>Akan (Ghana)</td></tr>
+			<tr><td>am</td><td>am</td><td>amh</td><td>AMH</td><td>Amharic</td><td>Amharic</td></tr>
+			<tr><td>am-ET</td><td>am</td><td>amh</td><td>AMH</td><td>Amharic (Ethiopia)</td><td>Amharic (Ethiopia)</td></tr>
+			<tr><td>ar</td><td>ar</td><td>ara</td><td>ARA</td><td>Arabic</td><td>Arabic</td></tr>
+			<tr><td>ar-001</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (World)</td><td>Arabic (World)</td></tr>
+			<tr><td>ar-AE</td><td>ar</td><td>ara</td><td>ARU</td><td>Arabic (U.A.E.)</td><td>Arabic (United Arab Emirates)</td></tr>
+			<tr><td>ar-BH</td><td>ar</td><td>ara</td><td>ARH</td><td>Arabic (Bahrain)</td><td>Arabic (Bahrain)</td></tr>
+			<tr><td>ar-DJ</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Djibouti)</td><td>Arabic (Djibouti)</td></tr>
+			<tr><td>ar-DZ</td><td>ar</td><td>ara</td><td>ARG</td><td>Arabic (Algeria)</td><td>Arabic (Algeria)</td></tr>
+			<tr><td>ar-EG</td><td>ar</td><td>ara</td><td>ARE</td><td>Arabic (Egypt)</td><td>Arabic (Egypt)</td></tr>
+			<tr><td>ar-ER</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Eritrea)</td><td>Arabic (Eritrea)</td></tr>
+			<tr><td>ar-IL</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Israel)</td><td>Arabic (Israel)</td></tr>
+			<tr><td>ar-IQ</td><td>ar</td><td>ara</td><td>ARI</td><td>Arabic (Iraq)</td><td>Arabic (Iraq)</td></tr>
+			<tr><td>ar-JO</td><td>ar</td><td>ara</td><td>ARJ</td><td>Arabic (Jordan)</td><td>Arabic (Jordan)</td></tr>
+			<tr><td>ar-KM</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Comoros)</td><td>Arabic (Comoros)</td></tr>
+			<tr><td>ar-KW</td><td>ar</td><td>ara</td><td>ARK</td><td>Arabic (Kuwait)</td><td>Arabic (Kuwait)</td></tr>
+			<tr><td>ar-LB</td><td>ar</td><td>ara</td><td>ARB</td><td>Arabic (Lebanon)</td><td>Arabic (Lebanon)</td></tr>
+			<tr><td>ar-LY</td><td>ar</td><td>ara</td><td>ARL</td><td>Arabic (Libya)</td><td>Arabic (Libya)</td></tr>
+			<tr><td>ar-MA</td><td>ar</td><td>ara</td><td>ARM</td><td>Arabic (Morocco)</td><td>Arabic (Morocco)</td></tr>
+			<tr><td>ar-MR</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Mauritania)</td><td>Arabic (Mauritania)</td></tr>
+			<tr><td>ar-OM</td><td>ar</td><td>ara</td><td>ARO</td><td>Arabic (Oman)</td><td>Arabic (Oman)</td></tr>
+			<tr><td>ar-PS</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Palestinian Authority)</td><td>Arabic (Palestinian Authority)</td></tr>
+			<tr><td>ar-QA</td><td>ar</td><td>ara</td><td>ARQ</td><td>Arabic (Qatar)</td><td>Arabic (Qatar)</td></tr>
+			<tr><td>ar-SA</td><td>ar</td><td>ara</td><td>ARA</td><td>Arabic (Saudi Arabia)</td><td>Arabic (Saudi Arabia)</td></tr>
+			<tr><td>ar-SD</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Sudan)</td><td>Arabic (Sudan)</td></tr>
+			<tr><td>ar-SO</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Somalia)</td><td>Arabic (Somalia)</td></tr>
+			<tr><td>ar-SS</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (South Sudan)</td><td>Arabic (South Sudan)</td></tr>
+			<tr><td>ar-SY</td><td>ar</td><td>ara</td><td>ARS</td><td>Arabic (Syria)</td><td>Arabic (Syria)</td></tr>
+			<tr><td>ar-TD</td><td>ar</td><td>ara</td><td>ZZZ</td><td>Arabic (Chad)</td><td>Arabic (Chad)</td></tr>
+			<tr><td>ar-TN</td><td>ar</td><td>ara</td><td>ART</td><td>Arabic (Tunisia)</td><td>Arabic (Tunisia)</td></tr>
+			<tr><td>ar-YE</td><td>ar</td><td>ara</td><td>ARY</td><td>Arabic (Yemen)</td><td>Arabic (Yemen)</td></tr>
+			<tr><td>arn</td><td>arn</td><td>arn</td><td>MPD</td><td>Mapudungun</td><td>Mapuche</td></tr>
+			<tr><td>arn-CL</td><td>arn</td><td>arn</td><td>MPD</td><td>Mapudungun (Chile)</td><td>Mapuche (Chile)</td></tr>
+			<tr><td>as</td><td>as</td><td>asm</td><td>ASM</td><td>Assamese</td><td>Assamese</td></tr>
+			<tr><td>as-IN</td><td>as</td><td>asm</td><td>ASM</td><td>Assamese (India)</td><td>Assamese (India)</td></tr>
+			<tr><td>asa</td><td>asa</td><td>asa</td><td>ZZZ</td><td>Asu</td><td>Asu</td></tr>
+			<tr><td>asa-TZ</td><td>asa</td><td>asa</td><td>ZZZ</td><td>Asu (Tanzania)</td><td>Asu (Tanzania)</td></tr>
+			<tr><td>ast</td><td>ast</td><td>ast</td><td>ZZZ</td><td>Asturian</td><td>Asturian</td></tr>
+			<tr><td>ast-ES</td><td>ast</td><td>ast</td><td>ZZZ</td><td>Asturian (Spain)</td><td>Asturian (Spain)</td></tr>
+			<tr><td>az</td><td>az</td><td>aze</td><td>AZE</td><td>Azerbaijani</td><td>Azerbaijani</td></tr>
+			<tr><td>az-Cyrl</td><td>az</td><td>aze</td><td>AZC</td><td>Azerbaijani (Cyrillic)</td><td>Azerbaijani (Cyrillic)</td></tr>
+			<tr><td>az-Cyrl-AZ</td><td>az</td><td>aze</td><td>AZC</td><td>Azerbaijani (Cyrillic, Azerbaijan)</td><td>Azerbaijani (Cyrillic, Azerbaijan)</td></tr>
+			<tr><td>az-Latn</td><td>az</td><td>aze</td><td>AZE</td><td>Azerbaijani (Latin)</td><td>Azerbaijani (Latin)</td></tr>
+			<tr><td>az-Latn-AZ</td><td>az</td><td>aze</td><td>AZE</td><td>Azerbaijani (Latin, Azerbaijan)</td><td>Azerbaijani (Latin, Azerbaijan)</td></tr>
+			<tr><td>ba</td><td>ba</td><td>bak</td><td>BAS</td><td>Bashkir</td><td>Bashkir</td></tr>
+			<tr><td>ba-RU</td><td>ba</td><td>bak</td><td>BAS</td><td>Bashkir (Russia)</td><td>Bashkir (Russia)</td></tr>
+			<tr><td>bas</td><td>bas</td><td>bas</td><td>ZZZ</td><td>Basaa</td><td>Basaa</td></tr>
+			<tr><td>bas-CM</td><td>bas</td><td>bas</td><td>ZZZ</td><td>Basaa (Cameroon)</td><td>Basaa (Cameroon)</td></tr>
+			<tr><td>be</td><td>be</td><td>bel</td><td>BEL</td><td>Belarusian</td><td>Belarusian</td></tr>
+			<tr><td>be-BY</td><td>be</td><td>bel</td><td>BEL</td><td>Belarusian (Belarus)</td><td>Belarusian (Belarus)</td></tr>
+			<tr><td>bem</td><td>bem</td><td>bem</td><td>ZZZ</td><td>Bemba</td><td>Bemba</td></tr>
+			<tr><td>bem-ZM</td><td>bem</td><td>bem</td><td>ZZZ</td><td>Bemba (Zambia)</td><td>Bemba (Zambia)</td></tr>
+			<tr><td>bez</td><td>bez</td><td>bez</td><td>ZZZ</td><td>Bena</td><td>Bena</td></tr>
+			<tr><td>bez-TZ</td><td>bez</td><td>bez</td><td>ZZZ</td><td>Bena (Tanzania)</td><td>Bena (Tanzania)</td></tr>
+			<tr><td>bg</td><td>bg</td><td>bul</td><td>BGR</td><td>Bulgarian</td><td>Bulgarian</td></tr>
+			<tr><td>bg-BG</td><td>bg</td><td>bul</td><td>BGR</td><td>Bulgarian (Bulgaria)</td><td>Bulgarian (Bulgaria)</td></tr>
+			<tr><td>bin</td><td>bin</td><td>bin</td><td>ZZZ</td><td>Edo</td><td>Edo</td></tr>
+			<tr><td>bin-NG</td><td>bin</td><td>bin</td><td>ZZZ</td><td>Edo (Nigeria)</td><td>Edo (Nigeria)</td></tr>
+			<tr><td>bm</td><td>bm</td><td>bam</td><td>ZZZ</td><td>Bambara</td><td>Bamanankan</td></tr>
+			<tr><td>bm-Latn</td><td>bm</td><td>bam</td><td>ZZZ</td><td>Bambara (Latin)</td><td>Bamanankan (Latin)</td></tr>
+			<tr><td>bm-Latn-ML</td><td>bm</td><td>bam</td><td>ZZZ</td><td>Bambara (Latin, Mali)</td><td>Bamanankan (Latin, Mali)</td></tr>
+			<tr><td>bn</td><td>bn</td><td>ben</td><td>BNB</td><td>Bangla</td><td>Bangla</td></tr>
+			<tr><td>bn-BD</td><td>bn</td><td>ben</td><td>BNB</td><td>Bangla (Bangladesh)</td><td>Bangla (Bangladesh)</td></tr>
+			<tr><td>bn-IN</td><td>bn</td><td>ben</td><td>BNG</td><td>Bangla (India)</td><td>Bengali (India)</td></tr>
+			<tr><td>bo</td><td>bo</td><td>bod</td><td>BOB</td><td>Tibetan</td><td>Tibetan</td></tr>
+			<tr><td>bo-CN</td><td>bo</td><td>bod</td><td>BOB</td><td>Tibetan (PRC)</td><td>Tibetan (China)</td></tr>
+			<tr><td>bo-IN</td><td>bo</td><td>bod</td><td>ZZZ</td><td>Tibetan (India)</td><td>Tibetan (India)</td></tr>
+			<tr><td>br</td><td>br</td><td>bre</td><td>BRE</td><td>Breton</td><td>Breton</td></tr>
+			<tr><td>br-FR</td><td>br</td><td>bre</td><td>BRE</td><td>Breton (France)</td><td>Breton (France)</td></tr>
+			<tr><td>brx</td><td>brx</td><td>brx</td><td>ZZZ</td><td>Bodo</td><td>Bodo</td></tr>
+			<tr><td>brx-IN</td><td>brx</td><td>brx</td><td>ZZZ</td><td>Bodo (India)</td><td>Bodo (India)</td></tr>
+			<tr><td>bs</td><td>bs</td><td>bos</td><td>BSB</td><td>Bosnian</td><td>Bosnian</td></tr>
+			<tr><td>bs-Cyrl</td><td>bs</td><td>bos</td><td>BSC</td><td>Bosnian (Cyrillic)</td><td>Bosnian (Cyrillic)</td></tr>
+			<tr><td>bs-Cyrl-BA</td><td>bs</td><td>bos</td><td>BSC</td><td>Bosnian (Cyrillic, Bosnia and Herzegovina)</td><td>Bosnian (Cyrillic, Bosnia and Herzegovina)</td></tr>
+			<tr><td>bs-Latn</td><td>bs</td><td>bos</td><td>BSB</td><td>Bosnian (Latin)</td><td>Bosnian (Latin)</td></tr>
+			<tr><td>bs-Latn-BA</td><td>bs</td><td>bos</td><td>BSB</td><td>Bosnian (Latin, Bosnia and Herzegovina)</td><td>Bosnian (Latin, Bosnia & Herzegovina)</td></tr>
+			<tr><td>byn</td><td>byn</td><td>byn</td><td>ZZZ</td><td>Blin</td><td>Blin</td></tr>
+			<tr><td>byn-ER</td><td>byn</td><td>byn</td><td>ZZZ</td><td>Blin (Eritrea)</td><td>Blin (Eritrea)</td></tr>
+			<tr><td>ca</td><td>ca</td><td>cat</td><td>CAT</td><td>Catalan</td><td>Catalan</td></tr>
+			<tr><td>ca-AD</td><td>ca</td><td>cat</td><td>ZZZ</td><td>Catalan (Andorra)</td><td>Catalan (Andorra)</td></tr>
+			<tr><td>ca-ES</td><td>ca</td><td>cat</td><td>CAT</td><td>Catalan (Catalan)</td><td>Catalan (Catalan)</td></tr>
+			<tr><td>ca-ES-valencia</td><td>ca</td><td>cat</td><td>VAL</td><td>Valencian (Spain)</td><td>Valencian (Spain)</td></tr>
+			<tr><td>ca-FR</td><td>ca</td><td>cat</td><td>ZZZ</td><td>Catalan (France)</td><td>Catalan (France)</td></tr>
+			<tr><td>ca-IT</td><td>ca</td><td>cat</td><td>ZZZ</td><td>Catalan (Italy)</td><td>Catalan (Italy)</td></tr>
+			<tr><td>ccp</td><td>ccp</td><td>ccp</td><td>ZZZ</td><td>Chakma</td><td>Chakma</td></tr>
+			<tr><td>ccp-Cakm</td><td>ccp</td><td>ccp</td><td>ZZZ</td><td>Chakma (Chakma)</td><td>Chakma (Chakma)</td></tr>
+			<tr><td>ccp-Cakm-BD</td><td>ccp</td><td>ccp</td><td>ZZZ</td><td>Chakma (Chakma, Bangladesh)</td><td>Chakma (Chakma, Bangladesh)</td></tr>
+			<tr><td>ccp-Cakm-IN</td><td>ccp</td><td>ccp</td><td>ZZZ</td><td>Chakma (Chakma, India)</td><td>Chakma (Chakma, India)</td></tr>
+			<tr><td>ce</td><td>ce</td><td>che</td><td>ZZZ</td><td>Chechen</td><td>Chechen</td></tr>
+			<tr><td>ce-RU</td><td>ce</td><td>che</td><td>ZZZ</td><td>Chechen (Russia)</td><td>Chechen (Russia)</td></tr>
+			<tr><td>ceb</td><td>ceb</td><td>ceb</td><td>ZZZ</td><td>Cebuano</td><td>Cebuano</td></tr>
+			<tr><td>ceb-Latn</td><td>ceb</td><td>ceb</td><td>ZZZ</td><td>Cebuano (Latin)</td><td>Cebuano (Latin)</td></tr>
+			<tr><td>ceb-Latn-PH</td><td>ceb</td><td>ceb</td><td>ZZZ</td><td>Cebuano (Latin, Philippines)</td><td>Cebuano (Latin, Philippines)</td></tr>
+			<tr><td>cgg</td><td>cgg</td><td>cgg</td><td>ZZZ</td><td>Chiga</td><td>Chiga</td></tr>
+			<tr><td>cgg-UG</td><td>cgg</td><td>cgg</td><td>ZZZ</td><td>Chiga (Uganda)</td><td>Chiga (Uganda)</td></tr>
+			<tr><td>chr</td><td>chr</td><td>chr</td><td>CRE</td><td>Cherokee</td><td>Cherokee</td></tr>
+			<tr><td>chr-Cher</td><td>chr</td><td>chr</td><td>CRE</td><td>Cherokee (Cherokee)</td><td>Cherokee</td></tr>
+			<tr><td>chr-Cher-US</td><td>chr</td><td>chr</td><td>CRE</td><td>Cherokee (Cherokee)</td><td>Cherokee (Cherokee, United States)</td></tr>
+			<tr><td>co</td><td>co</td><td>cos</td><td>COS</td><td>Corsican</td><td>Corsican</td></tr>
+			<tr><td>co-FR</td><td>co</td><td>cos</td><td>COS</td><td>Corsican (France)</td><td>Corsican (France)</td></tr>
+			<tr><td>cs</td><td>cs</td><td>ces</td><td>CSY</td><td>Czech</td><td>Czech</td></tr>
+			<tr><td>cs-CZ</td><td>cs</td><td>ces</td><td>CSY</td><td>Czech (Czech Republic)</td><td>Czech (Czechia)</td></tr>
+			<tr><td>cu</td><td>cu</td><td>chu</td><td>ZZZ</td><td>Church Slavic</td><td>Church Slavic</td></tr>
+			<tr><td>cu-RU</td><td>cu</td><td>chu</td><td>ZZZ</td><td>Church Slavic (Russia)</td><td>Church Slavic (Russia)</td></tr>
+			<tr><td>cy</td><td>cy</td><td>cym</td><td>CYM</td><td>Welsh</td><td>Welsh</td></tr>
+			<tr><td>cy-GB</td><td>cy</td><td>cym</td><td>CYM</td><td>Welsh (United Kingdom)</td><td>Welsh (United Kingdom)</td></tr>
+			<tr><td>da</td><td>da</td><td>dan</td><td>DAN</td><td>Danish</td><td>Danish</td></tr>
+			<tr><td>da-DK</td><td>da</td><td>dan</td><td>DAN</td><td>Danish (Denmark)</td><td>Danish (Denmark)</td></tr>
+			<tr><td>da-GL</td><td>da</td><td>dan</td><td>ZZZ</td><td>Danish (Greenland)</td><td>Danish (Greenland)</td></tr>
+			<tr><td>dav</td><td>dav</td><td>dav</td><td>ZZZ</td><td>Taita</td><td>Taita</td></tr>
+			<tr><td>dav-KE</td><td>dav</td><td>dav</td><td>ZZZ</td><td>Taita (Kenya)</td><td>Taita (Kenya)</td></tr>
+			<tr><td>de</td><td>de</td><td>deu</td><td>DEU</td><td>German</td><td>German</td></tr>
+			<tr><td>de-AT</td><td>de</td><td>deu</td><td>DEA</td><td>German (Austria)</td><td>German (Austria)</td></tr>
+			<tr><td>de-BE</td><td>de</td><td>deu</td><td>ZZZ</td><td>German (Belgium)</td><td>German (Belgium)</td></tr>
+			<tr><td>de-CH</td><td>de</td><td>deu</td><td>DES</td><td>German (Switzerland)</td><td>German (Switzerland)</td></tr>
+			<tr><td>de-DE</td><td>de</td><td>deu</td><td>DEU</td><td>German (Germany)</td><td>German (Germany)</td></tr>
+			<tr><td>de-IT</td><td>de</td><td>deu</td><td>ZZZ</td><td>German (Italy)</td><td>German (Italy)</td></tr>
+			<tr><td>de-LI</td><td>de</td><td>deu</td><td>DEC</td><td>German (Liechtenstein)</td><td>German (Liechtenstein)</td></tr>
+			<tr><td>de-LU</td><td>de</td><td>deu</td><td>DEL</td><td>German (Luxembourg)</td><td>German (Luxembourg)</td></tr>
+			<tr><td>dje</td><td>dje</td><td>dje</td><td>ZZZ</td><td>Zarma</td><td>Zarma</td></tr>
+			<tr><td>dje-NE</td><td>dje</td><td>dje</td><td>ZZZ</td><td>Zarma (Niger)</td><td>Zarma (Niger)</td></tr>
+			<tr><td>dsb</td><td>dsb</td><td>dsb</td><td>DSB</td><td>Lower Sorbian</td><td>Lower Sorbian</td></tr>
+			<tr><td>dsb-DE</td><td>dsb</td><td>dsb</td><td>DSB</td><td>Lower Sorbian (Germany)</td><td>Lower Sorbian (Germany)</td></tr>
+			<tr><td>dua</td><td>dua</td><td>dua</td><td>ZZZ</td><td>Duala</td><td>Duala</td></tr>
+			<tr><td>dua-CM</td><td>dua</td><td>dua</td><td>ZZZ</td><td>Duala (Cameroon)</td><td>Duala (Cameroon)</td></tr>
+			<tr><td>dv</td><td>dv</td><td>div</td><td>DIV</td><td>Divehi</td><td>Divehi</td></tr>
+			<tr><td>dv-MV</td><td>dv</td><td>div</td><td>DIV</td><td>Divehi (Maldives)</td><td>Divehi (Maldives)</td></tr>
+			<tr><td>dyo</td><td>dyo</td><td>dyo</td><td>ZZZ</td><td>Jola-Fonyi</td><td>Jola-Fonyi</td></tr>
+			<tr><td>dyo-SN</td><td>dyo</td><td>dyo</td><td>ZZZ</td><td>Jola-Fonyi (Senegal)</td><td>Jola-Fonyi (Senegal)</td></tr>
+			<tr><td>dz</td><td>dz</td><td>dzo</td><td>ZZZ</td><td>Dzongkha</td><td>Dzongkha</td></tr>
+			<tr><td>dz-BT</td><td>dz</td><td>dzo</td><td>ZZZ</td><td>Dzongkha (Bhutan)</td><td>Dzongkha (Bhutan)</td></tr>
+			<tr><td>ebu</td><td>ebu</td><td>ebu</td><td>ZZZ</td><td>Embu</td><td>Embu</td></tr>
+			<tr><td>ebu-KE</td><td>ebu</td><td>ebu</td><td>ZZZ</td><td>Embu (Kenya)</td><td>Embu (Kenya)</td></tr>
+			<tr><td>ee</td><td>ee</td><td>ewe</td><td>ZZZ</td><td>Ewe</td><td>Ewe</td></tr>
+			<tr><td>ee-GH</td><td>ee</td><td>ewe</td><td>ZZZ</td><td>Ewe (Ghana)</td><td>Ewe (Ghana)</td></tr>
+			<tr><td>ee-TG</td><td>ee</td><td>ewe</td><td>ZZZ</td><td>Ewe (Togo)</td><td>Ewe (Togo)</td></tr>
+			<tr><td>el</td><td>el</td><td>ell</td><td>ELL</td><td>Greek</td><td>Greek</td></tr>
+			<tr><td>el-CY</td><td>el</td><td>ell</td><td>ZZZ</td><td>Greek (Cyprus)</td><td>Greek (Cyprus)</td></tr>
+			<tr><td>el-GR</td><td>el</td><td>ell</td><td>ELL</td><td>Greek (Greece)</td><td>Greek (Greece)</td></tr>
+			<tr><td>en</td><td>en</td><td>eng</td><td>ENU</td><td>English</td><td>English</td></tr>
+			<tr><td>en-001</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (World)</td><td>English (World)</td></tr>
+			<tr><td>en-029</td><td>en</td><td>eng</td><td>ENB</td><td>English (Caribbean)</td><td>English (Caribbean)</td></tr>
+			<tr><td>en-150</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Europe)</td><td>English (Europe)</td></tr>
+			<tr><td>en-AE</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (United Arab Emirates)</td><td>English (United Arab Emirates)</td></tr>
+			<tr><td>en-AG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Antigua and Barbuda)</td><td>English (Antigua & Barbuda)</td></tr>
+			<tr><td>en-AI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Anguilla)</td><td>English (Anguilla)</td></tr>
+			<tr><td>en-AS</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (American Samoa)</td><td>English (American Samoa)</td></tr>
+			<tr><td>en-AT</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Austria)</td><td>English (Austria)</td></tr>
+			<tr><td>en-AU</td><td>en</td><td>eng</td><td>ENA</td><td>English (Australia)</td><td>English (Australia)</td></tr>
+			<tr><td>en-BB</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Barbados)</td><td>English (Barbados)</td></tr>
+			<tr><td>en-BE</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Belgium)</td><td>English (Belgium)</td></tr>
+			<tr><td>en-BI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Burundi)</td><td>English (Burundi)</td></tr>
+			<tr><td>en-BM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Bermuda)</td><td>English (Bermuda)</td></tr>
+			<tr><td>en-BS</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Bahamas)</td><td>English (Bahamas)</td></tr>
+			<tr><td>en-BW</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Botswana)</td><td>English (Botswana)</td></tr>
+			<tr><td>en-BZ</td><td>en</td><td>eng</td><td>ENL</td><td>English (Belize)</td><td>English (Belize)</td></tr>
+			<tr><td>en-CA</td><td>en</td><td>eng</td><td>ENC</td><td>English (Canada)</td><td>English (Canada)</td></tr>
+			<tr><td>en-CC</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Cocos [Keeling] Islands)</td><td>English (Cocos (Keeling) Islands)</td></tr>
+			<tr><td>en-CH</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Switzerland)</td><td>English (Switzerland)</td></tr>
+			<tr><td>en-CK</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Cook Islands)</td><td>English (Cook Islands)</td></tr>
+			<tr><td>en-CM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Cameroon)</td><td>English (Cameroon)</td></tr>
+			<tr><td>en-CX</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Christmas Island)</td><td>English (Christmas Island)</td></tr>
+			<tr><td>en-CY</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Cyprus)</td><td>English (Cyprus)</td></tr>
+			<tr><td>en-DE</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Germany)</td><td>English (Germany)</td></tr>
+			<tr><td>en-DK</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Denmark)</td><td>English (Denmark)</td></tr>
+			<tr><td>en-DM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Dominica)</td><td>English (Dominica)</td></tr>
+			<tr><td>en-ER</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Eritrea)</td><td>English (Eritrea)</td></tr>
+			<tr><td>en-FI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Finland)</td><td>English (Finland)</td></tr>
+			<tr><td>en-FJ</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Fiji)</td><td>English (Fiji)</td></tr>
+			<tr><td>en-FK</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Falkland Islands)</td><td>English (Falkland Islands)</td></tr>
+			<tr><td>en-FM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Micronesia)</td><td>English (Micronesia)</td></tr>
+			<tr><td>en-GB</td><td>en</td><td>eng</td><td>ENG</td><td>English (United Kingdom)</td><td>English (United Kingdom)</td></tr>
+			<tr><td>en-GD</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Grenada)</td><td>English (Grenada)</td></tr>
+			<tr><td>en-GG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Guernsey)</td><td>English (Guernsey)</td></tr>
+			<tr><td>en-GH</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Ghana)</td><td>English (Ghana)</td></tr>
+			<tr><td>en-GI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Gibraltar)</td><td>English (Gibraltar)</td></tr>
+			<tr><td>en-GM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Gambia)</td><td>English (Gambia)</td></tr>
+			<tr><td>en-GU</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Guam)</td><td>English (Guam)</td></tr>
+			<tr><td>en-GY</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Guyana)</td><td>English (Guyana)</td></tr>
+			<tr><td>en-HK</td><td>en</td><td>eng</td><td>ENH</td><td>English (Hong Kong SAR)</td><td>English (Hong Kong SAR)</td></tr>
+			<tr><td>en-ID</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Indonesia)</td><td>English (Indonesia)</td></tr>
+			<tr><td>en-IE</td><td>en</td><td>eng</td><td>ENI</td><td>English (Ireland)</td><td>English (Ireland)</td></tr>
+			<tr><td>en-IL</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Israel)</td><td>English (Israel)</td></tr>
+			<tr><td>en-IM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Isle of Man)</td><td>English (Isle of Man)</td></tr>
+			<tr><td>en-IN</td><td>en</td><td>eng</td><td>ENN</td><td>English (India)</td><td>English (India)</td></tr>
+			<tr><td>en-IO</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (British Indian Ocean Territory)</td><td>English (British Indian Ocean Territory)</td></tr>
+			<tr><td>en-JE</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Jersey)</td><td>English (Jersey)</td></tr>
+			<tr><td>en-JM</td><td>en</td><td>eng</td><td>ENJ</td><td>English (Jamaica)</td><td>English (Jamaica)</td></tr>
+			<tr><td>en-KE</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Kenya)</td><td>English (Kenya)</td></tr>
+			<tr><td>en-KI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Kiribati)</td><td>English (Kiribati)</td></tr>
+			<tr><td>en-KN</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Saint Kitts and Nevis)</td><td>English (St. Kitts & Nevis)</td></tr>
+			<tr><td>en-KY</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Cayman Islands)</td><td>English (Cayman Islands)</td></tr>
+			<tr><td>en-LC</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Saint Lucia)</td><td>English (St. Lucia)</td></tr>
+			<tr><td>en-LR</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Liberia)</td><td>English (Liberia)</td></tr>
+			<tr><td>en-LS</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Lesotho)</td><td>English (Lesotho)</td></tr>
+			<tr><td>en-MG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Madagascar)</td><td>English (Madagascar)</td></tr>
+			<tr><td>en-MH</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Marshall Islands)</td><td>English (Marshall Islands)</td></tr>
+			<tr><td>en-MO</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Macao SAR)</td><td>English (Macao SAR)</td></tr>
+			<tr><td>en-MP</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Northern Mariana Islands)</td><td>English (Northern Mariana Islands)</td></tr>
+			<tr><td>en-MS</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Montserrat)</td><td>English (Montserrat)</td></tr>
+			<tr><td>en-MT</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Malta)</td><td>English (Malta)</td></tr>
+			<tr><td>en-MU</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Mauritius)</td><td>English (Mauritius)</td></tr>
+			<tr><td>en-MW</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Malawi)</td><td>English (Malawi)</td></tr>
+			<tr><td>en-MY</td><td>en</td><td>eng</td><td>ENM</td><td>English (Malaysia)</td><td>English (Malaysia)</td></tr>
+			<tr><td>en-NA</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Namibia)</td><td>English (Namibia)</td></tr>
+			<tr><td>en-NF</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Norfolk Island)</td><td>English (Norfolk Island)</td></tr>
+			<tr><td>en-NG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Nigeria)</td><td>English (Nigeria)</td></tr>
+			<tr><td>en-NL</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Netherlands)</td><td>English (Netherlands)</td></tr>
+			<tr><td>en-NR</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Nauru)</td><td>English (Nauru)</td></tr>
+			<tr><td>en-NU</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Niue)</td><td>English (Niue)</td></tr>
+			<tr><td>en-NZ</td><td>en</td><td>eng</td><td>ENZ</td><td>English (New Zealand)</td><td>English (New Zealand)</td></tr>
+			<tr><td>en-PG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Papua New Guinea)</td><td>English (Papua New Guinea)</td></tr>
+			<tr><td>en-PH</td><td>en</td><td>eng</td><td>ENP</td><td>English (Republic of the Philippines)</td><td>English (Philippines)</td></tr>
+			<tr><td>en-PK</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Pakistan)</td><td>English (Pakistan)</td></tr>
+			<tr><td>en-PN</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Pitcairn Islands)</td><td>English (Pitcairn Islands)</td></tr>
+			<tr><td>en-PR</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Puerto Rico)</td><td>English (Puerto Rico)</td></tr>
+			<tr><td>en-PW</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Palau)</td><td>English (Palau)</td></tr>
+			<tr><td>en-RW</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Rwanda)</td><td>English (Rwanda)</td></tr>
+			<tr><td>en-SB</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Solomon Islands)</td><td>English (Solomon Islands)</td></tr>
+			<tr><td>en-SC</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Seychelles)</td><td>English (Seychelles)</td></tr>
+			<tr><td>en-SD</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Sudan)</td><td>English (Sudan)</td></tr>
+			<tr><td>en-SE</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Sweden)</td><td>English (Sweden)</td></tr>
+			<tr><td>en-SG</td><td>en</td><td>eng</td><td>ENE</td><td>English (Singapore)</td><td>English (Singapore)</td></tr>
+			<tr><td>en-SH</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (St Helena, Ascension, Tristan da Cunha)</td><td>English (St Helena, Ascension, Tristan da Cunha)</td></tr>
+			<tr><td>en-SI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Slovenia)</td><td>English (Slovenia)</td></tr>
+			<tr><td>en-SL</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Sierra Leone)</td><td>English (Sierra Leone)</td></tr>
+			<tr><td>en-SS</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (South Sudan)</td><td>English (South Sudan)</td></tr>
+			<tr><td>en-SX</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Sint Maarten)</td><td>English (Sint Maarten)</td></tr>
+			<tr><td>en-SZ</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Swaziland)</td><td>English (Eswatini)</td></tr>
+			<tr><td>en-TC</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Turks and Caicos Islands)</td><td>English (Turks & Caicos Islands)</td></tr>
+			<tr><td>en-TK</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Tokelau)</td><td>English (Tokelau)</td></tr>
+			<tr><td>en-TO</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Tonga)</td><td>English (Tonga)</td></tr>
+			<tr><td>en-TT</td><td>en</td><td>eng</td><td>ENT</td><td>English (Trinidad and Tobago)</td><td>English (Trinidad & Tobago)</td></tr>
+			<tr><td>en-TV</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Tuvalu)</td><td>English (Tuvalu)</td></tr>
+			<tr><td>en-TZ</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Tanzania)</td><td>English (Tanzania)</td></tr>
+			<tr><td>en-UG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Uganda)</td><td>English (Uganda)</td></tr>
+			<tr><td>en-UM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (US Minor Outlying Islands)</td><td>English (U.S. Outlying Islands)</td></tr>
+			<tr><td>en-US</td><td>en</td><td>eng</td><td>ENU</td><td>English (United States)</td><td>English (United States)</td></tr>
+			<tr><td>en-VC</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Saint Vincent and the Grenadines)</td><td>English (St. Vincent & Grenadines)</td></tr>
+			<tr><td>en-VG</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (British Virgin Islands)</td><td>English (British Virgin Islands)</td></tr>
+			<tr><td>en-VI</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (US Virgin Islands)</td><td>English (U.S. Virgin Islands)</td></tr>
+			<tr><td>en-VU</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Vanuatu)</td><td>English (Vanuatu)</td></tr>
+			<tr><td>en-WS</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Samoa)</td><td>English (Samoa)</td></tr>
+			<tr><td>en-ZA</td><td>en</td><td>eng</td><td>ENS</td><td>English (South Africa)</td><td>English (South Africa)</td></tr>
+			<tr><td>en-ZM</td><td>en</td><td>eng</td><td>ZZZ</td><td>English (Zambia)</td><td>English (Zambia)</td></tr>
+			<tr><td>en-ZW</td><td>en</td><td>eng</td><td>ENW</td><td>English (Zimbabwe)</td><td>English (Zimbabwe)</td></tr>
+			<tr><td>eo</td><td>eo</td><td>epo</td><td>ZZZ</td><td>Esperanto</td><td>Esperanto</td></tr>
+			<tr><td>eo-001</td><td>eo</td><td>epo</td><td>ZZZ</td><td>Esperanto (World)</td><td>Esperanto (World)</td></tr>
+			<tr><td>es</td><td>es</td><td>spa</td><td>ESP</td><td>Spanish</td><td>Spanish</td></tr>
+			<tr><td>es-419</td><td>es</td><td>spa</td><td>ESJ</td><td>Spanish (Latin America)</td><td>Spanish (Latin America)</td></tr>
+			<tr><td>es-AR</td><td>es</td><td>spa</td><td>ESS</td><td>Spanish (Argentina)</td><td>Spanish (Argentina)</td></tr>
+			<tr><td>es-BO</td><td>es</td><td>spa</td><td>ESB</td><td>Spanish (Bolivia)</td><td>Spanish (Bolivia)</td></tr>
+			<tr><td>es-BR</td><td>es</td><td>spa</td><td>ZZZ</td><td>Spanish (Brazil)</td><td>Spanish (Brazil)</td></tr>
+			<tr><td>es-BZ</td><td>es</td><td>spa</td><td>ZZZ</td><td>Spanish (Belize)</td><td>Spanish (Belize)</td></tr>
+			<tr><td>es-CL</td><td>es</td><td>spa</td><td>ESL</td><td>Spanish (Chile)</td><td>Spanish (Chile)</td></tr>
+			<tr><td>es-CO</td><td>es</td><td>spa</td><td>ESO</td><td>Spanish (Colombia)</td><td>Spanish (Colombia)</td></tr>
+			<tr><td>es-CR</td><td>es</td><td>spa</td><td>ESC</td><td>Spanish (Costa Rica)</td><td>Spanish (Costa Rica)</td></tr>
+			<tr><td>es-CU</td><td>es</td><td>spa</td><td>ESK</td><td>Spanish (Cuba)</td><td>Spanish (Cuba)</td></tr>
+			<tr><td>es-DO</td><td>es</td><td>spa</td><td>ESD</td><td>Spanish (Dominican Republic)</td><td>Spanish (Dominican Republic)</td></tr>
+			<tr><td>es-EC</td><td>es</td><td>spa</td><td>ESF</td><td>Spanish (Ecuador)</td><td>Spanish (Ecuador)</td></tr>
+			<tr><td>es-ES</td><td>es</td><td>spa</td><td>ESN</td><td>Spanish (Spain)</td><td>Spanish (Spain, International Sort)</td></tr>
+			<tr><td>es-GQ</td><td>es</td><td>spa</td><td>ZZZ</td><td>Spanish (Equatorial Guinea)</td><td>Spanish (Equatorial Guinea)</td></tr>
+			<tr><td>es-GT</td><td>es</td><td>spa</td><td>ESG</td><td>Spanish (Guatemala)</td><td>Spanish (Guatemala)</td></tr>
+			<tr><td>es-HN</td><td>es</td><td>spa</td><td>ESH</td><td>Spanish (Honduras)</td><td>Spanish (Honduras)</td></tr>
+			<tr><td>es-MX</td><td>es</td><td>spa</td><td>ESM</td><td>Spanish (Mexico)</td><td>Spanish (Mexico)</td></tr>
+			<tr><td>es-NI</td><td>es</td><td>spa</td><td>ESI</td><td>Spanish (Nicaragua)</td><td>Spanish (Nicaragua)</td></tr>
+			<tr><td>es-PA</td><td>es</td><td>spa</td><td>ESA</td><td>Spanish (Panama)</td><td>Spanish (Panama)</td></tr>
+			<tr><td>es-PE</td><td>es</td><td>spa</td><td>ESR</td><td>Spanish (Peru)</td><td>Spanish (Peru)</td></tr>
+			<tr><td>es-PH</td><td>es</td><td>spa</td><td>ZZZ</td><td>Spanish (Philippines)</td><td>Spanish (Philippines)</td></tr>
+			<tr><td>es-PR</td><td>es</td><td>spa</td><td>ESU</td><td>Spanish (Puerto Rico)</td><td>Spanish (Puerto Rico)</td></tr>
+			<tr><td>es-PY</td><td>es</td><td>spa</td><td>ESZ</td><td>Spanish (Paraguay)</td><td>Spanish (Paraguay)</td></tr>
+			<tr><td>es-SV</td><td>es</td><td>spa</td><td>ESE</td><td>Spanish (El Salvador)</td><td>Spanish (El Salvador)</td></tr>
+			<tr><td>es-US</td><td>es</td><td>spa</td><td>EST</td><td>Spanish (United States)</td><td>Spanish (United States)</td></tr>
+			<tr><td>es-UY</td><td>es</td><td>spa</td><td>ESY</td><td>Spanish (Uruguay)</td><td>Spanish (Uruguay)</td></tr>
+			<tr><td>es-VE</td><td>es</td><td>spa</td><td>ESV</td><td>Spanish (Bolivarian Republic of Venezuela)</td><td>Spanish (Venezuela)</td></tr>
+			<tr><td>et</td><td>et</td><td>est</td><td>ETI</td><td>Estonian</td><td>Estonian</td></tr>
+			<tr><td>et-EE</td><td>et</td><td>est</td><td>ETI</td><td>Estonian (Estonia)</td><td>Estonian (Estonia)</td></tr>
+			<tr><td>eu</td><td>eu</td><td>eus</td><td>EUQ</td><td>Basque</td><td>Basque</td></tr>
+			<tr><td>eu-ES</td><td>eu</td><td>eus</td><td>EUQ</td><td>Basque (Basque)</td><td>Basque (Basque)</td></tr>
+			<tr><td>ewo</td><td>ewo</td><td>ewo</td><td>ZZZ</td><td>Ewondo</td><td>Ewondo</td></tr>
+			<tr><td>ewo-CM</td><td>ewo</td><td>ewo</td><td>ZZZ</td><td>Ewondo (Cameroon)</td><td>Ewondo (Cameroon)</td></tr>
+			<tr><td>fa</td><td>fa</td><td>fas</td><td>FAR</td><td>Persian</td><td>Persian</td></tr>
+			<tr><td>fa-IR</td><td>fa</td><td>fas</td><td>FAR</td><td>Persian (Iran)</td><td>Persian (Iran)</td></tr>
+			<tr><td>ff</td><td>ff</td><td>ful</td><td>FUL</td><td>Fulah</td><td>Fulah (Latin)</td></tr>
+			<tr><td>ff-Latn</td><td>ff</td><td>ful</td><td>FUL</td><td>Fulah (Latin)</td><td>Fulah (Latin)</td></tr>
+			<tr><td>ff-Latn-BF</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Burkina Faso)</td><td>Fulah (Latin, Burkina Faso)</td></tr>
+			<tr><td>ff-Latn-CM</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Cameroon)</td><td>Fulah (Latin, Cameroon)</td></tr>
+			<tr><td>ff-Latn-GH</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Ghana)</td><td>Fulah (Latin, Ghana)</td></tr>
+			<tr><td>ff-Latn-GM</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Gambia)</td><td>Fulah (Latin, Gambia)</td></tr>
+			<tr><td>ff-Latn-GN</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Guinea)</td><td>Fulah (Latin, Guinea)</td></tr>
+			<tr><td>ff-Latn-GW</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Guinea-Bissau)</td><td>Fulah (Latin, Guinea-Bissau)</td></tr>
+			<tr><td>ff-Latn-LR</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Liberia)</td><td>Fulah (Latin, Liberia)</td></tr>
+			<tr><td>ff-Latn-MR</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Mauritania)</td><td>Fulah (Latin, Mauritania)</td></tr>
+			<tr><td>ff-Latn-NE</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Niger)</td><td>Fulah (Latin, Niger)</td></tr>
+			<tr><td>ff-Latn-NG</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Nigeria)</td><td>Fulah (Latin, Nigeria)</td></tr>
+			<tr><td>ff-Latn-SL</td><td>ff</td><td>ful</td><td>ZZZ</td><td>Fulah (Latin, Sierra Leone)</td><td>Fulah (Latin, Sierra Leone)</td></tr>
+			<tr><td>ff-Latn-SN</td><td>ff</td><td>ful</td><td>FUL</td><td>Fulah (Latin, Senegal)</td><td>Fulah (Latin, Senegal)</td></tr>
+			<tr><td>fi</td><td>fi</td><td>fin</td><td>FIN</td><td>Finnish</td><td>Finnish</td></tr>
+			<tr><td>fi-FI</td><td>fi</td><td>fin</td><td>FIN</td><td>Finnish (Finland)</td><td>Finnish (Finland)</td></tr>
+			<tr><td>fil</td><td>fil</td><td>fil</td><td>FPO</td><td>Filipino</td><td>Filipino</td></tr>
+			<tr><td>fil-PH</td><td>fil</td><td>fil</td><td>FPO</td><td>Filipino (Philippines)</td><td>Filipino (Philippines)</td></tr>
+			<tr><td>fo</td><td>fo</td><td>fao</td><td>FOS</td><td>Faroese</td><td>Faroese</td></tr>
+			<tr><td>fo-DK</td><td>fo</td><td>fao</td><td>ZZZ</td><td>Faroese (Denmark)</td><td>Faroese (Denmark)</td></tr>
+			<tr><td>fo-FO</td><td>fo</td><td>fao</td><td>FOS</td><td>Faroese (Faroe Islands)</td><td>Faroese (Faroe Islands)</td></tr>
+			<tr><td>fr</td><td>fr</td><td>fra</td><td>FRA</td><td>French</td><td>French</td></tr>
+			<tr><td>fr-029</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Caribbean)</td><td>French (Caribbean)</td></tr>
+			<tr><td>fr-BE</td><td>fr</td><td>fra</td><td>FRB</td><td>French (Belgium)</td><td>French (Belgium)</td></tr>
+			<tr><td>fr-BF</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Burkina Faso)</td><td>French (Burkina Faso)</td></tr>
+			<tr><td>fr-BI</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Burundi)</td><td>French (Burundi)</td></tr>
+			<tr><td>fr-BJ</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Benin)</td><td>French (Benin)</td></tr>
+			<tr><td>fr-BL</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Saint Barthélemy)</td><td>French (St. Barthélemy)</td></tr>
+			<tr><td>fr-CA</td><td>fr</td><td>fra</td><td>FRC</td><td>French (Canada)</td><td>French (Canada)</td></tr>
+			<tr><td>fr-CD</td><td>fr</td><td>fra</td><td>FRD</td><td>French (Congo DRC)</td><td>French Congo (DRC)</td></tr>
+			<tr><td>fr-CF</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Central African Republic)</td><td>French (Central African Republic)</td></tr>
+			<tr><td>fr-CG</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Congo)</td><td>French (Congo)</td></tr>
+			<tr><td>fr-CH</td><td>fr</td><td>fra</td><td>FRS</td><td>French (Switzerland)</td><td>French (Switzerland)</td></tr>
+			<tr><td>fr-CI</td><td>fr</td><td>fra</td><td>FRI</td><td>French (Côte d’Ivoire)</td><td>French (Côte d’Ivoire)</td></tr>
+			<tr><td>fr-CM</td><td>fr</td><td>fra</td><td>FRE</td><td>French (Cameroon)</td><td>French (Cameroon)</td></tr>
+			<tr><td>fr-DJ</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Djibouti)</td><td>French (Djibouti)</td></tr>
+			<tr><td>fr-DZ</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Algeria)</td><td>French (Algeria)</td></tr>
+			<tr><td>fr-FR</td><td>fr</td><td>fra</td><td>FRA</td><td>French (France)</td><td>French (France)</td></tr>
+			<tr><td>fr-GA</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Gabon)</td><td>French (Gabon)</td></tr>
+			<tr><td>fr-GF</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (French Guiana)</td><td>French (French Guiana)</td></tr>
+			<tr><td>fr-GN</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Guinea)</td><td>French (Guinea)</td></tr>
+			<tr><td>fr-GP</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Guadeloupe)</td><td>French (Guadeloupe)</td></tr>
+			<tr><td>fr-GQ</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Equatorial Guinea)</td><td>French (Equatorial Guinea)</td></tr>
+			<tr><td>fr-HT</td><td>fr</td><td>fra</td><td>FRH</td><td>French (Haiti)</td><td>French (Haiti)</td></tr>
+			<tr><td>fr-KM</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Comoros)</td><td>French (Comoros)</td></tr>
+			<tr><td>fr-LU</td><td>fr</td><td>fra</td><td>FRL</td><td>French (Luxembourg)</td><td>French (Luxembourg)</td></tr>
+			<tr><td>fr-MA</td><td>fr</td><td>fra</td><td>FRO</td><td>French (Morocco)</td><td>French (Morocco)</td></tr>
+			<tr><td>fr-MC</td><td>fr</td><td>fra</td><td>FRM</td><td>French (Monaco)</td><td>French (Monaco)</td></tr>
+			<tr><td>fr-MF</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Saint Martin)</td><td>French (St. Martin)</td></tr>
+			<tr><td>fr-MG</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Madagascar)</td><td>French (Madagascar)</td></tr>
+			<tr><td>fr-ML</td><td>fr</td><td>fra</td><td>FRF</td><td>French (Mali)</td><td>French (Mali)</td></tr>
+			<tr><td>fr-MQ</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Martinique)</td><td>French (Martinique)</td></tr>
+			<tr><td>fr-MR</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Mauritania)</td><td>French (Mauritania)</td></tr>
+			<tr><td>fr-MU</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Mauritius)</td><td>French (Mauritius)</td></tr>
+			<tr><td>fr-NC</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (New Caledonia)</td><td>French (New Caledonia)</td></tr>
+			<tr><td>fr-NE</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Niger)</td><td>French (Niger)</td></tr>
+			<tr><td>fr-PF</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (French Polynesia)</td><td>French (French Polynesia)</td></tr>
+			<tr><td>fr-PM</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Saint Pierre and Miquelon)</td><td>French (St. Pierre & Miquelon)</td></tr>
+			<tr><td>fr-RE</td><td>fr</td><td>fra</td><td>FRR</td><td>French (Reunion)</td><td>French (Réunion)</td></tr>
+			<tr><td>fr-RW</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Rwanda)</td><td>French (Rwanda)</td></tr>
+			<tr><td>fr-SC</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Seychelles)</td><td>French (Seychelles)</td></tr>
+			<tr><td>fr-SN</td><td>fr</td><td>fra</td><td>FRN</td><td>French (Senegal)</td><td>French (Senegal)</td></tr>
+			<tr><td>fr-SY</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Syria)</td><td>French (Syria)</td></tr>
+			<tr><td>fr-TD</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Chad)</td><td>French (Chad)</td></tr>
+			<tr><td>fr-TG</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Togo)</td><td>French (Togo)</td></tr>
+			<tr><td>fr-TN</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Tunisia)</td><td>French (Tunisia)</td></tr>
+			<tr><td>fr-VU</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Vanuatu)</td><td>French (Vanuatu)</td></tr>
+			<tr><td>fr-WF</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Wallis and Futuna)</td><td>French (Wallis & Futuna)</td></tr>
+			<tr><td>fr-YT</td><td>fr</td><td>fra</td><td>ZZZ</td><td>French (Mayotte)</td><td>French (Mayotte)</td></tr>
+			<tr><td>fur</td><td>fur</td><td>fur</td><td>ZZZ</td><td>Friulian</td><td>Friulian</td></tr>
+			<tr><td>fur-IT</td><td>fur</td><td>fur</td><td>ZZZ</td><td>Friulian (Italy)</td><td>Friulian (Italy)</td></tr>
+			<tr><td>fy</td><td>fy</td><td>fry</td><td>FYN</td><td>Frisian</td><td>Western Frisian</td></tr>
+			<tr><td>fy-NL</td><td>fy</td><td>fry</td><td>FYN</td><td>Frisian (Netherlands)</td><td>Western Frisian (Netherlands)</td></tr>
+			<tr><td>ga</td><td>ga</td><td>gle</td><td>IRE</td><td>Irish</td><td>Irish</td></tr>
+			<tr><td>ga-IE</td><td>ga</td><td>gle</td><td>IRE</td><td>Irish (Ireland)</td><td>Irish (Ireland)</td></tr>
+			<tr><td>gd</td><td>gd</td><td>gla</td><td>GLA</td><td>Scottish Gaelic</td><td>Scottish Gaelic</td></tr>
+			<tr><td>gd-GB</td><td>gd</td><td>gla</td><td>GLA</td><td>Scottish Gaelic (United Kingdom)</td><td>Scottish Gaelic (United Kingdom)</td></tr>
+			<tr><td>gl</td><td>gl</td><td>glg</td><td>GLC</td><td>Galician</td><td>Galician</td></tr>
+			<tr><td>gl-ES</td><td>gl</td><td>glg</td><td>GLC</td><td>Galician (Galician)</td><td>Galician (Galician)</td></tr>
+			<tr><td>gn</td><td>gn</td><td>grn</td><td>GRN</td><td>Guarani</td><td>Guarani</td></tr>
+			<tr><td>gn-PY</td><td>gn</td><td>grn</td><td>GRN</td><td>Guarani (Paraguay)</td><td>Guarani (Paraguay)</td></tr>
+			<tr><td>gsw</td><td>gsw</td><td>gsw</td><td>ZZZ</td><td>Alsatian</td><td>Swiss German</td></tr>
+			<tr><td>gsw-CH</td><td>gsw</td><td>gsw</td><td>ZZZ</td><td>Alsatian (Switzerland)</td><td>Swiss German (Switzerland)</td></tr>
+			<tr><td>gsw-FR</td><td>gsw</td><td>gsw</td><td>GSW</td><td>Alsatian (France)</td><td>Alsatian (France)</td></tr>
+			<tr><td>gsw-LI</td><td>gsw</td><td>gsw</td><td>ZZZ</td><td>Alsatian (Liechtenstein)</td><td>Swiss German (Liechtenstein)</td></tr>
+			<tr><td>gu</td><td>gu</td><td>guj</td><td>GUJ</td><td>Gujarati</td><td>Gujarati</td></tr>
+			<tr><td>gu-IN</td><td>gu</td><td>guj</td><td>GUJ</td><td>Gujarati (India)</td><td>Gujarati (India)</td></tr>
+			<tr><td>guz</td><td>guz</td><td>guz</td><td>ZZZ</td><td>Gusii</td><td>Gusii</td></tr>
+			<tr><td>guz-KE</td><td>guz</td><td>guz</td><td>ZZZ</td><td>Gusii (Kenya)</td><td>Gusii (Kenya)</td></tr>
+			<tr><td>gv</td><td>gv</td><td>glv</td><td>ZZZ</td><td>Manx</td><td>Manx</td></tr>
+			<tr><td>gv-IM</td><td>gv</td><td>glv</td><td>ZZZ</td><td>Manx (Isle of Man)</td><td>Manx (Isle of Man)</td></tr>
+			<tr><td>ha</td><td>ha</td><td>hau</td><td>HAU</td><td>Hausa</td><td>Hausa</td></tr>
+			<tr><td>ha-Latn</td><td>ha</td><td>hau</td><td>HAU</td><td>Hausa (Latin)</td><td>Hausa (Latin)</td></tr>
+			<tr><td>ha-Latn-GH</td><td>ha</td><td>hau</td><td>ZZZ</td><td>Hausa (Latin, Ghana)</td><td>Hausa (Latin, Ghana)</td></tr>
+			<tr><td>ha-Latn-NE</td><td>ha</td><td>hau</td><td>ZZZ</td><td>Hausa (Latin, Niger)</td><td>Hausa (Latin, Niger)</td></tr>
+			<tr><td>ha-Latn-NG</td><td>ha</td><td>hau</td><td>HAU</td><td>Hausa (Latin, Nigeria)</td><td>Hausa (Latin, Nigeria)</td></tr>
+			<tr><td>haw</td><td>haw</td><td>haw</td><td>HAW</td><td>Hawaiian</td><td>Hawaiian</td></tr>
+			<tr><td>haw-US</td><td>haw</td><td>haw</td><td>HAW</td><td>Hawaiian (United States)</td><td>Hawaiian (United States)</td></tr>
+			<tr><td>he</td><td>he</td><td>heb</td><td>HEB</td><td>Hebrew</td><td>Hebrew</td></tr>
+			<tr><td>he-IL</td><td>he</td><td>heb</td><td>HEB</td><td>Hebrew (Israel)</td><td>Hebrew (Israel)</td></tr>
+			<tr><td>hi</td><td>hi</td><td>hin</td><td>HIN</td><td>Hindi</td><td>Hindi</td></tr>
+			<tr><td>hi-IN</td><td>hi</td><td>hin</td><td>HIN</td><td>Hindi (India)</td><td>Hindi (India)</td></tr>
+			<tr><td>hr</td><td>hr</td><td>hrv</td><td>HRV</td><td>Croatian</td><td>Croatian</td></tr>
+			<tr><td>hr-BA</td><td>hr</td><td>hrv</td><td>HRB</td><td>Croatian (Latin, Bosnia and Herzegovina)</td><td>Croatian (Bosnia & Herzegovina)</td></tr>
+			<tr><td>hr-HR</td><td>hr</td><td>hrv</td><td>HRV</td><td>Croatian (Croatia)</td><td>Croatian (Croatia)</td></tr>
+			<tr><td>hsb</td><td>hsb</td><td>hsb</td><td>HSB</td><td>Upper Sorbian</td><td>Upper Sorbian</td></tr>
+			<tr><td>hsb-DE</td><td>hsb</td><td>hsb</td><td>HSB</td><td>Upper Sorbian (Germany)</td><td>Upper Sorbian (Germany)</td></tr>
+			<tr><td>hu</td><td>hu</td><td>hun</td><td>HUN</td><td>Hungarian</td><td>Hungarian</td></tr>
+			<tr><td>hu-HU</td><td>hu</td><td>hun</td><td>HUN</td><td>Hungarian (Hungary)</td><td>Hungarian (Hungary)</td></tr>
+			<tr><td>hy</td><td>hy</td><td>hye</td><td>HYE</td><td>Armenian</td><td>Armenian</td></tr>
+			<tr><td>hy-AM</td><td>hy</td><td>hye</td><td>HYE</td><td>Armenian (Armenia)</td><td>Armenian (Armenia)</td></tr>
+			<tr><td>ia</td><td>ia</td><td>ina</td><td>ZZZ</td><td>Interlingua</td><td>Interlingua</td></tr>
+			<tr><td>ia-001</td><td>ia</td><td>ina</td><td>ZZZ</td><td>Interlingua (World)</td><td>Interlingua (World)</td></tr>
+			<tr><td>ibb</td><td>ibb</td><td>ibb</td><td>ZZZ</td><td>Ibibio</td><td>Ibibio</td></tr>
+			<tr><td>ibb-NG</td><td>ibb</td><td>ibb</td><td>ZZZ</td><td>Ibibio (Nigeria)</td><td>Ibibio (Nigeria)</td></tr>
+			<tr><td>id</td><td>id</td><td>ind</td><td>IND</td><td>Indonesian</td><td>Indonesian</td></tr>
+			<tr><td>id-ID</td><td>id</td><td>ind</td><td>IND</td><td>Indonesian (Indonesia)</td><td>Indonesian (Indonesia)</td></tr>
+			<tr><td>ig</td><td>ig</td><td>ibo</td><td>IBO</td><td>Igbo</td><td>Igbo</td></tr>
+			<tr><td>ig-NG</td><td>ig</td><td>ibo</td><td>IBO</td><td>Igbo (Nigeria)</td><td>Igbo (Nigeria)</td></tr>
+			<tr><td>ii</td><td>ii</td><td>iii</td><td>III</td><td>Yi</td><td>Yi</td></tr>
+			<tr><td>ii-CN</td><td>ii</td><td>iii</td><td>III</td><td>Yi (PRC)</td><td>Yi (China)</td></tr>
+			<tr><td>is</td><td>is</td><td>isl</td><td>ISL</td><td>Icelandic</td><td>Icelandic</td></tr>
+			<tr><td>is-IS</td><td>is</td><td>isl</td><td>ISL</td><td>Icelandic (Iceland)</td><td>Icelandic (Iceland)</td></tr>
+			<tr><td>it</td><td>it</td><td>ita</td><td>ITA</td><td>Italian</td><td>Italian</td></tr>
+			<tr><td>it-CH</td><td>it</td><td>ita</td><td>ITS</td><td>Italian (Switzerland)</td><td>Italian (Switzerland)</td></tr>
+			<tr><td>it-IT</td><td>it</td><td>ita</td><td>ITA</td><td>Italian (Italy)</td><td>Italian (Italy)</td></tr>
+			<tr><td>it-SM</td><td>it</td><td>ita</td><td>ZZZ</td><td>Italian (San Marino)</td><td>Italian (San Marino)</td></tr>
+			<tr><td>it-VA</td><td>it</td><td>ita</td><td>ZZZ</td><td>Italian (Vatican City)</td><td>Italian (Vatican City)</td></tr>
+			<tr><td>iu</td><td>iu</td><td>iku</td><td>IUK</td><td>Inuktitut</td><td>Inuktitut</td></tr>
+			<tr><td>iu-Cans</td><td>iu</td><td>iku</td><td>IUS</td><td>Inuktitut (Syllabics)</td><td>Inuktitut (Syllabics)</td></tr>
+			<tr><td>iu-Cans-CA</td><td>iu</td><td>iku</td><td>IUS</td><td>Inuktitut (Syllabics, Canada)</td><td>Inuktitut (Syllabics, Canada)</td></tr>
+			<tr><td>iu-Latn</td><td>iu</td><td>iku</td><td>IUK</td><td>Inuktitut (Latin)</td><td>Inuktitut (Latin)</td></tr>
+			<tr><td>iu-Latn-CA</td><td>iu</td><td>iku</td><td>IUK</td><td>Inuktitut (Latin, Canada)</td><td>Inuktitut (Latin, Canada)</td></tr>
+			<tr><td>ja</td><td>ja</td><td>jpn</td><td>JPN</td><td>Japanese</td><td>Japanese</td></tr>
+			<tr><td>ja-JP</td><td>ja</td><td>jpn</td><td>JPN</td><td>Japanese (Japan)</td><td>Japanese (Japan)</td></tr>
+			<tr><td>jgo</td><td>jgo</td><td>jgo</td><td>ZZZ</td><td>Ngomba</td><td>Ngomba</td></tr>
+			<tr><td>jgo-CM</td><td>jgo</td><td>jgo</td><td>ZZZ</td><td>Ngomba (Cameroon)</td><td>Ngomba (Cameroon)</td></tr>
+			<tr><td>jmc</td><td>jmc</td><td>jmc</td><td>ZZZ</td><td>Machame</td><td>Machame</td></tr>
+			<tr><td>jmc-TZ</td><td>jmc</td><td>jmc</td><td>ZZZ</td><td>Machame (Tanzania)</td><td>Machame (Tanzania)</td></tr>
+			<tr><td>jv</td><td>jv</td><td>jav</td><td>JAV</td><td>Javanese</td><td>Javanese</td></tr>
+			<tr><td>jv-Java</td><td>jv</td><td>jav</td><td>ZZZ</td><td>Javanese (Javanese)</td><td>Javanese (Javanese)</td></tr>
+			<tr><td>jv-Java-ID</td><td>jv</td><td>jav</td><td>ZZZ</td><td>Javanese (Javanese, Indonesia)</td><td>Javanese (Javanese, Indonesia)</td></tr>
+			<tr><td>jv-Latn</td><td>jv</td><td>jav</td><td>JAV</td><td>Javanese</td><td>Javanese</td></tr>
+			<tr><td>jv-Latn-ID</td><td>jv</td><td>jav</td><td>JAV</td><td>Javanese (Indonesia)</td><td>Javanese (Indonesia)</td></tr>
+			<tr><td>ka</td><td>ka</td><td>kat</td><td>KAT</td><td>Georgian</td><td>Georgian</td></tr>
+			<tr><td>ka-GE</td><td>ka</td><td>kat</td><td>KAT</td><td>Georgian (Georgia)</td><td>Georgian (Georgia)</td></tr>
+			<tr><td>kab</td><td>kab</td><td>kab</td><td>ZZZ</td><td>Kabyle</td><td>Kabyle</td></tr>
+			<tr><td>kab-DZ</td><td>kab</td><td>kab</td><td>ZZZ</td><td>Kabyle (Algeria)</td><td>Kabyle (Algeria)</td></tr>
+			<tr><td>kam</td><td>kam</td><td>kam</td><td>ZZZ</td><td>Kamba</td><td>Kamba</td></tr>
+			<tr><td>kam-KE</td><td>kam</td><td>kam</td><td>ZZZ</td><td>Kamba (Kenya)</td><td>Kamba (Kenya)</td></tr>
+			<tr><td>kde</td><td>kde</td><td>kde</td><td>ZZZ</td><td>Makonde</td><td>Makonde</td></tr>
+			<tr><td>kde-TZ</td><td>kde</td><td>kde</td><td>ZZZ</td><td>Makonde (Tanzania)</td><td>Makonde (Tanzania)</td></tr>
+			<tr><td>kea</td><td>kea</td><td>kea</td><td>ZZZ</td><td>Kabuverdianu</td><td>Kabuverdianu</td></tr>
+			<tr><td>kea-CV</td><td>kea</td><td>kea</td><td>ZZZ</td><td>Kabuverdianu (Cabo Verde)</td><td>Kabuverdianu (Cabo Verde)</td></tr>
+			<tr><td>khq</td><td>khq</td><td>khq</td><td>ZZZ</td><td>Koyra Chiini</td><td>Koyra Chiini</td></tr>
+			<tr><td>khq-ML</td><td>khq</td><td>khq</td><td>ZZZ</td><td>Koyra Chiini (Mali)</td><td>Koyra Chiini (Mali)</td></tr>
+			<tr><td>ki</td><td>ki</td><td>kik</td><td>ZZZ</td><td>Kikuyu</td><td>Kikuyu</td></tr>
+			<tr><td>ki-KE</td><td>ki</td><td>kik</td><td>ZZZ</td><td>Kikuyu (Kenya)</td><td>Kikuyu (Kenya)</td></tr>
+			<tr><td>kk</td><td>kk</td><td>kaz</td><td>KKZ</td><td>Kazakh</td><td>Kazakh</td></tr>
+			<tr><td>kk-KZ</td><td>kk</td><td>kaz</td><td>KKZ</td><td>Kazakh (Kazakhstan)</td><td>Kazakh (Kazakhstan)</td></tr>
+			<tr><td>kkj</td><td>kkj</td><td>kkj</td><td>ZZZ</td><td>Kako</td><td>Kako</td></tr>
+			<tr><td>kkj-CM</td><td>kkj</td><td>kkj</td><td>ZZZ</td><td>Kako (Cameroon)</td><td>Kako (Cameroon)</td></tr>
+			<tr><td>kl</td><td>kl</td><td>kal</td><td>KAL</td><td>Greenlandic</td><td>Kalaallisut</td></tr>
+			<tr><td>kl-GL</td><td>kl</td><td>kal</td><td>KAL</td><td>Greenlandic (Greenland)</td><td>Kalaallisut (Greenland)</td></tr>
+			<tr><td>kln</td><td>kln</td><td>kln</td><td>ZZZ</td><td>Kalenjin</td><td>Kalenjin</td></tr>
+			<tr><td>kln-KE</td><td>kln</td><td>kln</td><td>ZZZ</td><td>Kalenjin (Kenya)</td><td>Kalenjin (Kenya)</td></tr>
+			<tr><td>km</td><td>km</td><td>khm</td><td>KHM</td><td>Khmer</td><td>Khmer</td></tr>
+			<tr><td>km-KH</td><td>km</td><td>khm</td><td>KHM</td><td>Khmer (Cambodia)</td><td>Khmer (Cambodia)</td></tr>
+			<tr><td>kn</td><td>kn</td><td>kan</td><td>KDI</td><td>Kannada</td><td>Kannada</td></tr>
+			<tr><td>kn-IN</td><td>kn</td><td>kan</td><td>KDI</td><td>Kannada (India)</td><td>Kannada (India)</td></tr>
+			<tr><td>ko</td><td>ko</td><td>kor</td><td>KOR</td><td>Korean</td><td>Korean</td></tr>
+			<tr><td>ko-KP</td><td>ko</td><td>kor</td><td>ZZZ</td><td>Korean (North Korea)</td><td>Korean (North Korea)</td></tr>
+			<tr><td>ko-KR</td><td>ko</td><td>kor</td><td>KOR</td><td>Korean (Korea)</td><td>Korean (Korea)</td></tr>
+			<tr><td>kok</td><td>kok</td><td>kok</td><td>KNK</td><td>Konkani</td><td>Konkani</td></tr>
+			<tr><td>kok-IN</td><td>kok</td><td>kok</td><td>KNK</td><td>Konkani (India)</td><td>Konkani (India)</td></tr>
+			<tr><td>kr</td><td>kr</td><td>kau</td><td>ZZZ</td><td>Kanuri</td><td>Kanuri</td></tr>
+			<tr><td>kr-Latn</td><td>kr</td><td>kau</td><td>ZZZ</td><td>Kanuri</td><td>Kanuri</td></tr>
+			<tr><td>kr-Latn-NG</td><td>kr</td><td>kau</td><td>ZZZ</td><td>Kanuri (Nigeria)</td><td>Kanuri (Nigeria)</td></tr>
+			<tr><td>ks</td><td>ks</td><td>kas</td><td>ZZZ</td><td>Kashmiri</td><td>Kashmiri</td></tr>
+			<tr><td>ks-Arab</td><td>ks</td><td>kas</td><td>ZZZ</td><td>Kashmiri (Perso-Arabic)</td><td>Kashmiri (Perso-Arabic)</td></tr>
+			<tr><td>ks-Arab-IN</td><td>ks</td><td>kas</td><td>ZZZ</td><td>Kashmiri (Perso-Arabic)</td><td>Kashmiri (Perso-Arabic)</td></tr>
+			<tr><td>ks-Deva</td><td>ks</td><td>kas</td><td>ZZZ</td><td>Kashmiri (Devanagari)</td><td>Kashmiri (Devanagari)</td></tr>
+			<tr><td>ks-Deva-IN</td><td>ks</td><td>kas</td><td>ZZZ</td><td>Kashmiri (Devanagari, India)</td><td>Kashmiri (Devanagari)</td></tr>
+			<tr><td>ksb</td><td>ksb</td><td>ksb</td><td>ZZZ</td><td>Shambala</td><td>Shambala</td></tr>
+			<tr><td>ksb-TZ</td><td>ksb</td><td>ksb</td><td>ZZZ</td><td>Shambala (Tanzania)</td><td>Shambala (Tanzania)</td></tr>
+			<tr><td>ksf</td><td>ksf</td><td>ksf</td><td>ZZZ</td><td>Bafia</td><td>Bafia</td></tr>
+			<tr><td>ksf-CM</td><td>ksf</td><td>ksf</td><td>ZZZ</td><td>Bafia (Cameroon)</td><td>Bafia (Cameroon)</td></tr>
+			<tr><td>ksh</td><td>ksh</td><td>ksh</td><td>ZZZ</td><td>Colognian</td><td>Colognian</td></tr>
+			<tr><td>ksh-DE</td><td>ksh</td><td>ksh</td><td>ZZZ</td><td>Ripuarian (Germany)</td><td>Colognian (Germany)</td></tr>
+			<tr><td>ku</td><td>ku</td><td>kur</td><td>KUR</td><td>Central Kurdish</td><td>Central Kurdish</td></tr>
+			<tr><td>ku-Arab</td><td>ku</td><td>kur</td><td>KUR</td><td>Central Kurdish (Arabic)</td><td>Central Kurdish</td></tr>
+			<tr><td>ku-Arab-IQ</td><td>ku</td><td>kur</td><td>KUR</td><td>Central Kurdish (Iraq)</td><td>Central Kurdish (Iraq)</td></tr>
+			<tr><td>ku-Arab-IR</td><td>ku</td><td>kur</td><td>ZZZ</td><td>Kurdish (Perso-Arabic, Iran)</td><td>Kurdish (Perso-Arabic, Iran)</td></tr>
+			<tr><td>kw</td><td>kw</td><td>cor</td><td>ZZZ</td><td>Cornish</td><td>Cornish</td></tr>
+			<tr><td>kw-GB</td><td>kw</td><td>cor</td><td>ZZZ</td><td>Cornish (United Kingdom)</td><td>Cornish (United Kingdom)</td></tr>
+			<tr><td>ky</td><td>ky</td><td>kir</td><td>KYR</td><td>Kyrgyz</td><td>Kyrgyz</td></tr>
+			<tr><td>ky-KG</td><td>ky</td><td>kir</td><td>KYR</td><td>Kyrgyz (Kyrgyzstan)</td><td>Kyrgyz (Kyrgyzstan)</td></tr>
+			<tr><td>la</td><td>la</td><td>lat</td><td>ZZZ</td><td>Latin</td><td>Latin</td></tr>
+			<tr><td>la-001</td><td>la</td><td>lat</td><td>ZZZ</td><td>Latin (World)</td><td>Latin (World)</td></tr>
+			<tr><td>lag</td><td>lag</td><td>lag</td><td>ZZZ</td><td>Langi</td><td>Langi</td></tr>
+			<tr><td>lag-TZ</td><td>lag</td><td>lag</td><td>ZZZ</td><td>Langi (Tanzania)</td><td>Langi (Tanzania)</td></tr>
+			<tr><td>lb</td><td>lb</td><td>ltz</td><td>LBX</td><td>Luxembourgish</td><td>Luxembourgish</td></tr>
+			<tr><td>lb-LU</td><td>lb</td><td>ltz</td><td>LBX</td><td>Luxembourgish (Luxembourg)</td><td>Luxembourgish (Luxembourg)</td></tr>
+			<tr><td>lg</td><td>lg</td><td>lug</td><td>ZZZ</td><td>Ganda</td><td>Ganda</td></tr>
+			<tr><td>lg-UG</td><td>lg</td><td>lug</td><td>ZZZ</td><td>Ganda (Uganda)</td><td>Ganda (Uganda)</td></tr>
+			<tr><td>lkt</td><td>lkt</td><td>lkt</td><td>ZZZ</td><td>Lakota</td><td>Lakota</td></tr>
+			<tr><td>lkt-US</td><td>lkt</td><td>lkt</td><td>ZZZ</td><td>Lakota (United States)</td><td>Lakota (United States)</td></tr>
+			<tr><td>ln</td><td>ln</td><td>lin</td><td>ZZZ</td><td>Lingala</td><td>Lingala</td></tr>
+			<tr><td>ln-AO</td><td>ln</td><td>lin</td><td>ZZZ</td><td>Lingala (Angola)</td><td>Lingala (Angola)</td></tr>
+			<tr><td>ln-CD</td><td>ln</td><td>lin</td><td>ZZZ</td><td>Lingala (Congo DRC)</td><td>Lingala (Congo DRC)</td></tr>
+			<tr><td>ln-CF</td><td>ln</td><td>lin</td><td>ZZZ</td><td>Lingala (Central African Republic)</td><td>Lingala (Central African Republic)</td></tr>
+			<tr><td>ln-CG</td><td>ln</td><td>lin</td><td>ZZZ</td><td>Lingala (Congo)</td><td>Lingala (Congo)</td></tr>
+			<tr><td>lo</td><td>lo</td><td>lao</td><td>LAO</td><td>Lao</td><td>Lao</td></tr>
+			<tr><td>lo-LA</td><td>lo</td><td>lao</td><td>LAO</td><td>Lao (Lao P.D.R.)</td><td>Lao (Laos)</td></tr>
+			<tr><td>lrc</td><td>lrc</td><td>lrc</td><td>ZZZ</td><td>Northern Luri</td><td>Northern Luri</td></tr>
+			<tr><td>lrc-IQ</td><td>lrc</td><td>lrc</td><td>ZZZ</td><td>Northern Luri (Iraq)</td><td>Northern Luri (Iraq)</td></tr>
+			<tr><td>lrc-IR</td><td>lrc</td><td>lrc</td><td>ZZZ</td><td>Northern Luri (Iran)</td><td>Northern Luri (Iran)</td></tr>
+			<tr><td>lt</td><td>lt</td><td>lit</td><td>LTH</td><td>Lithuanian</td><td>Lithuanian</td></tr>
+			<tr><td>lt-LT</td><td>lt</td><td>lit</td><td>LTH</td><td>Lithuanian (Lithuania)</td><td>Lithuanian (Lithuania)</td></tr>
+			<tr><td>lu</td><td>lu</td><td>lub</td><td>ZZZ</td><td>Luba-Katanga</td><td>Luba-Katanga</td></tr>
+			<tr><td>lu-CD</td><td>lu</td><td>lub</td><td>ZZZ</td><td>Luba-Katanga (Congo DRC)</td><td>Luba-Katanga (Congo DRC)</td></tr>
+			<tr><td>luo</td><td>luo</td><td>luo</td><td>ZZZ</td><td>Luo</td><td>Luo</td></tr>
+			<tr><td>luo-KE</td><td>luo</td><td>luo</td><td>ZZZ</td><td>Luo (Kenya)</td><td>Luo (Kenya)</td></tr>
+			<tr><td>luy</td><td>luy</td><td>luy</td><td>ZZZ</td><td>Luyia</td><td>Luyia</td></tr>
+			<tr><td>luy-KE</td><td>luy</td><td>luy</td><td>ZZZ</td><td>Luyia (Kenya)</td><td>Luyia (Kenya)</td></tr>
+			<tr><td>lv</td><td>lv</td><td>lav</td><td>LVI</td><td>Latvian</td><td>Latvian</td></tr>
+			<tr><td>lv-LV</td><td>lv</td><td>lav</td><td>LVI</td><td>Latvian (Latvia)</td><td>Latvian (Latvia)</td></tr>
+			<tr><td>mas</td><td>mas</td><td>mas</td><td>ZZZ</td><td>Masai</td><td>Masai</td></tr>
+			<tr><td>mas-KE</td><td>mas</td><td>mas</td><td>ZZZ</td><td>Masai (Kenya)</td><td>Masai (Kenya)</td></tr>
+			<tr><td>mas-TZ</td><td>mas</td><td>mas</td><td>ZZZ</td><td>Masai (Tanzania)</td><td>Masai (Tanzania)</td></tr>
+			<tr><td>mer</td><td>mer</td><td>mer</td><td>ZZZ</td><td>Meru</td><td>Meru</td></tr>
+			<tr><td>mer-KE</td><td>mer</td><td>mer</td><td>ZZZ</td><td>Meru (Kenya)</td><td>Meru (Kenya)</td></tr>
+			<tr><td>mfe</td><td>mfe</td><td>mfe</td><td>ZZZ</td><td>Morisyen</td><td>Morisyen</td></tr>
+			<tr><td>mfe-MU</td><td>mfe</td><td>mfe</td><td>ZZZ</td><td>Morisyen (Mauritius)</td><td>Morisyen (Mauritius)</td></tr>
+			<tr><td>mg</td><td>mg</td><td>mlg</td><td>MLG</td><td>Malagasy</td><td>Malagasy</td></tr>
+			<tr><td>mg-MG</td><td>mg</td><td>mlg</td><td>MLG</td><td>Malagasy (Madagascar)</td><td>Malagasy (Madagascar)</td></tr>
+			<tr><td>mgh</td><td>mgh</td><td>mgh</td><td>ZZZ</td><td>Makhuwa-Meetto</td><td>Makhuwa-Meetto</td></tr>
+			<tr><td>mgh-MZ</td><td>mgh</td><td>mgh</td><td>ZZZ</td><td>Makhuwa-Meetto (Mozambique)</td><td>Makhuwa-Meetto (Mozambique)</td></tr>
+			<tr><td>mgo</td><td>mgo</td><td>mgo</td><td>ZZZ</td><td>Meta'</td><td>Meta'</td></tr>
+			<tr><td>mgo-CM</td><td>mgo</td><td>mgo</td><td>ZZZ</td><td>Meta' (Cameroon)</td><td>Meta' (Cameroon)</td></tr>
+			<tr><td>mi</td><td>mi</td><td>mri</td><td>MRI</td><td>Maori</td><td>Maori</td></tr>
+			<tr><td>mi-NZ</td><td>mi</td><td>mri</td><td>MRI</td><td>Maori (New Zealand)</td><td>Maori (New Zealand)</td></tr>
+			<tr><td>mk</td><td>mk</td><td>mkd</td><td>MKI</td><td>Macedonian</td><td>Macedonian</td></tr>
+			<tr><td>mk-MK</td><td>mk</td><td>mkd</td><td>MKI</td><td>Macedonian (North Macedonia)</td><td>Macedonian (North Macedonia)</td></tr>
+			<tr><td>ml</td><td>ml</td><td>mal</td><td>MYM</td><td>Malayalam</td><td>Malayalam</td></tr>
+			<tr><td>ml-IN</td><td>ml</td><td>mal</td><td>MYM</td><td>Malayalam (India)</td><td>Malayalam (India)</td></tr>
+			<tr><td>mn</td><td>mn</td><td>mon</td><td>MON</td><td>Mongolian</td><td>Mongolian</td></tr>
+			<tr><td>mn-Cyrl</td><td>mn</td><td>mon</td><td>MNN</td><td>Mongolian (Cyrillic)</td><td>Mongolian</td></tr>
+			<tr><td>mn-MN</td><td>mn</td><td>mon</td><td>MNN</td><td>Mongolian (Cyrillic, Mongolia)</td><td>Mongolian (Mongolia)</td></tr>
+			<tr><td>mn-Mong</td><td>mn</td><td>mon</td><td>MNG</td><td>Mongolian (Traditional Mongolian)</td><td>Mongolian (Traditional Mongolian)</td></tr>
+			<tr><td>mn-Mong-CN</td><td>mn</td><td>mon</td><td>MNG</td><td>Mongolian (Traditional Mongolian, PRC)</td><td>Mongolian (Traditional Mongolian, China)</td></tr>
+			<tr><td>mn-Mong-MN</td><td>mn</td><td>mon</td><td>MNM</td><td>Mongolian (Traditional Mongolian, Mongolia)</td><td>Mongolian (Traditional Mongolian, Mongolia)</td></tr>
+			<tr><td>mni</td><td>mni</td><td>mni</td><td>ZZZ</td><td>Manipuri</td><td>Manipuri</td></tr>
+			<tr><td>mni-IN</td><td>mni</td><td>mni</td><td>ZZZ</td><td>Manipuri (India)</td><td>Manipuri (India)</td></tr>
+			<tr><td>moh</td><td>moh</td><td>moh</td><td>MWK</td><td>Mohawk</td><td>Mohawk</td></tr>
+			<tr><td>moh-CA</td><td>moh</td><td>moh</td><td>MWK</td><td>Mohawk (Mohawk)</td><td>Mohawk (Mohawk)</td></tr>
+			<tr><td>mr</td><td>mr</td><td>mar</td><td>MAR</td><td>Marathi</td><td>Marathi</td></tr>
+			<tr><td>mr-IN</td><td>mr</td><td>mar</td><td>MAR</td><td>Marathi (India)</td><td>Marathi (India)</td></tr>
+			<tr><td>ms</td><td>ms</td><td>msa</td><td>MSL</td><td>Malay</td><td>Malay</td></tr>
+			<tr><td>ms-BN</td><td>ms</td><td>msa</td><td>MSB</td><td>Malay (Brunei Darussalam)</td><td>Malay (Brunei)</td></tr>
+			<tr><td>ms-MY</td><td>ms</td><td>msa</td><td>MSL</td><td>Malay (Malaysia)</td><td>Malay (Malaysia)</td></tr>
+			<tr><td>ms-SG</td><td>ms</td><td>msa</td><td>ZZZ</td><td>Malay (Latin, Singapore)</td><td>Malay (Singapore)</td></tr>
+			<tr><td>mt</td><td>mt</td><td>mlt</td><td>MLT</td><td>Maltese</td><td>Maltese</td></tr>
+			<tr><td>mt-MT</td><td>mt</td><td>mlt</td><td>MLT</td><td>Maltese (Malta)</td><td>Maltese (Malta)</td></tr>
+			<tr><td>mua</td><td>mua</td><td>mua</td><td>ZZZ</td><td>Mundang</td><td>Mundang</td></tr>
+			<tr><td>mua-CM</td><td>mua</td><td>mua</td><td>ZZZ</td><td>Mundang (Cameroon)</td><td>Mundang (Cameroon)</td></tr>
+			<tr><td>my</td><td>my</td><td>mya</td><td>MYA</td><td>Burmese</td><td>Burmese</td></tr>
+			<tr><td>my-MM</td><td>my</td><td>mya</td><td>MYA</td><td>Burmese (Myanmar)</td><td>Burmese (Myanmar)</td></tr>
+			<tr><td>mzn</td><td>mzn</td><td>mzn</td><td>ZZZ</td><td>Mazanderani</td><td>Mazanderani</td></tr>
+			<tr><td>mzn-IR</td><td>mzn</td><td>mzn</td><td>ZZZ</td><td>Mazanderani (Iran)</td><td>Mazanderani (Iran)</td></tr>
+			<tr><td>naq</td><td>naq</td><td>naq</td><td>ZZZ</td><td>Nama</td><td>Nama</td></tr>
+			<tr><td>naq-NA</td><td>naq</td><td>naq</td><td>ZZZ</td><td>Nama (Namibia)</td><td>Nama (Namibia)</td></tr>
+			<tr><td>nb</td><td>nb</td><td>nob</td><td>NOR</td><td>Norwegian (Bokmål)</td><td>Norwegian Bokmål</td></tr>
+			<tr><td>nb-NO</td><td>nb</td><td>nob</td><td>NOR</td><td>Norwegian, Bokmål (Norway)</td><td>Norwegian Bokmål (Norway)</td></tr>
+			<tr><td>nb-SJ</td><td>nb</td><td>nob</td><td>ZZZ</td><td>Norwegian, Bokmål (Svalbard and Jan Mayen)</td><td>Norwegian Bokmål (Svalbard & Jan Mayen)</td></tr>
+			<tr><td>nd</td><td>nd</td><td>nde</td><td>ZZZ</td><td>North Ndebele</td><td>North Ndebele</td></tr>
+			<tr><td>nd-ZW</td><td>nd</td><td>nde</td><td>ZZZ</td><td>North Ndebele (Zimbabwe)</td><td>North Ndebele (Zimbabwe)</td></tr>
+			<tr><td>nds</td><td>nds</td><td>nds</td><td>ZZZ</td><td>Low German</td><td>Low German</td></tr>
+			<tr><td>nds-DE</td><td>nds</td><td>nds</td><td>ZZZ</td><td>Low German (Germany)</td><td>Low German (Germany)</td></tr>
+			<tr><td>nds-NL</td><td>nds</td><td>nds</td><td>ZZZ</td><td>Low German (Netherlands)</td><td>Low German (Netherlands)</td></tr>
+			<tr><td>ne</td><td>ne</td><td>nep</td><td>NEP</td><td>Nepali</td><td>Nepali</td></tr>
+			<tr><td>ne-IN</td><td>ne</td><td>nep</td><td>NEI</td><td>Nepali (India)</td><td>Nepali (India)</td></tr>
+			<tr><td>ne-NP</td><td>ne</td><td>nep</td><td>NEP</td><td>Nepali (Nepal)</td><td>Nepali (Nepal)</td></tr>
+			<tr><td>nl</td><td>nl</td><td>nld</td><td>NLD</td><td>Dutch</td><td>Dutch</td></tr>
+			<tr><td>nl-AW</td><td>nl</td><td>nld</td><td>ZZZ</td><td>Dutch (Aruba)</td><td>Dutch (Aruba)</td></tr>
+			<tr><td>nl-BE</td><td>nl</td><td>nld</td><td>NLB</td><td>Dutch (Belgium)</td><td>Dutch (Belgium)</td></tr>
+			<tr><td>nl-BQ</td><td>nl</td><td>nld</td><td>ZZZ</td><td>Dutch (Bonaire, Sint Eustatius and Saba)</td><td>Dutch (Bonaire, Sint Eustatius and Saba)</td></tr>
+			<tr><td>nl-CW</td><td>nl</td><td>nld</td><td>ZZZ</td><td>Dutch (Curaçao)</td><td>Dutch (Curaçao)</td></tr>
+			<tr><td>nl-NL</td><td>nl</td><td>nld</td><td>NLD</td><td>Dutch (Netherlands)</td><td>Dutch (Netherlands)</td></tr>
+			<tr><td>nl-SR</td><td>nl</td><td>nld</td><td>ZZZ</td><td>Dutch (Suriname)</td><td>Dutch (Suriname)</td></tr>
+			<tr><td>nl-SX</td><td>nl</td><td>nld</td><td>ZZZ</td><td>Dutch (Sint Maarten)</td><td>Dutch (Sint Maarten)</td></tr>
+			<tr><td>nmg</td><td>nmg</td><td>nmg</td><td>ZZZ</td><td>Kwasio</td><td>Kwasio</td></tr>
+			<tr><td>nmg-CM</td><td>nmg</td><td>nmg</td><td>ZZZ</td><td>Kwasio (Cameroon)</td><td>Kwasio (Cameroon)</td></tr>
+			<tr><td>nn</td><td>nn</td><td>nno</td><td>NON</td><td>Norwegian (Nynorsk)</td><td>Norwegian Nynorsk</td></tr>
+			<tr><td>nn-NO</td><td>nn</td><td>nno</td><td>NON</td><td>Norwegian, Nynorsk (Norway)</td><td>Norwegian Nynorsk (Norway)</td></tr>
+			<tr><td>nnh</td><td>nnh</td><td>nnh</td><td>ZZZ</td><td>Ngiemboon</td><td>Ngiemboon</td></tr>
+			<tr><td>nnh-CM</td><td>nnh</td><td>nnh</td><td>ZZZ</td><td>Ngiemboon (Cameroon)</td><td>Ngiemboon (Cameroon)</td></tr>
+			<tr><td>no</td><td>nb</td><td>nob</td><td>NOR</td><td>Norwegian</td><td>Norwegian</td></tr>
+			<tr><td>nqo</td><td>nqo</td><td>nqo</td><td>NQO</td><td>N'ko</td><td>N'ko</td></tr>
+			<tr><td>nqo-GN</td><td>nqo</td><td>nqo</td><td>NQO</td><td>N'ko (Guinea)</td><td>N'ko (Guinea)</td></tr>
+			<tr><td>nr</td><td>nr</td><td>nbl</td><td>ZZZ</td><td>South Ndebele</td><td>South Ndebele</td></tr>
+			<tr><td>nr-ZA</td><td>nr</td><td>nbl</td><td>ZZZ</td><td>South Ndebele (South Africa)</td><td>South Ndebele (South Africa)</td></tr>
+			<tr><td>nso</td><td>nso</td><td>nso</td><td>NSO</td><td>Sesotho sa Leboa</td><td>Sesotho sa Leboa</td></tr>
+			<tr><td>nso-ZA</td><td>nso</td><td>nso</td><td>NSO</td><td>Sesotho sa Leboa (South Africa)</td><td>Sesotho sa Leboa (South Africa)</td></tr>
+			<tr><td>nus</td><td>nus</td><td>nus</td><td>ZZZ</td><td>Nuer</td><td>Nuer</td></tr>
+			<tr><td>nus-SS</td><td>nus</td><td>nus</td><td>ZZZ</td><td>Nuer (South Sudan)</td><td>Nuer (South Sudan)</td></tr>
+			<tr><td>nyn</td><td>nyn</td><td>nyn</td><td>ZZZ</td><td>Nyankole</td><td>Nyankole</td></tr>
+			<tr><td>nyn-UG</td><td>nyn</td><td>nyn</td><td>ZZZ</td><td>Nyankole (Uganda)</td><td>Nyankole (Uganda)</td></tr>
+			<tr><td>oc</td><td>oc</td><td>oci</td><td>OCI</td><td>Occitan</td><td>Occitan</td></tr>
+			<tr><td>oc-FR</td><td>oc</td><td>oci</td><td>OCI</td><td>Occitan (France)</td><td>Occitan (France)</td></tr>
+			<tr><td>om</td><td>om</td><td>orm</td><td>ORM</td><td>Oromo</td><td>Oromo</td></tr>
+			<tr><td>om-ET</td><td>om</td><td>orm</td><td>ORM</td><td>Oromo (Ethiopia)</td><td>Oromo (Ethiopia)</td></tr>
+			<tr><td>om-KE</td><td>om</td><td>orm</td><td>ZZZ</td><td>Oromo (Kenya)</td><td>Oromo (Kenya)</td></tr>
+			<tr><td>or</td><td>or</td><td>ori</td><td>ORI</td><td>Odia</td><td>Odia</td></tr>
+			<tr><td>or-IN</td><td>or</td><td>ori</td><td>ORI</td><td>Odia (India)</td><td>Odia (India)</td></tr>
+			<tr><td>os</td><td>os</td><td>oss</td><td>ZZZ</td><td>Ossetic</td><td>Ossetic</td></tr>
+			<tr><td>os-GE</td><td>os</td><td>oss</td><td>ZZZ</td><td>Ossetian (Cyrillic, Georgia)</td><td>Ossetic (Georgia)</td></tr>
+			<tr><td>os-RU</td><td>os</td><td>oss</td><td>ZZZ</td><td>Ossetian (Cyrillic, Russia)</td><td>Ossetic (Russia)</td></tr>
+			<tr><td>pa</td><td>pa</td><td>pan</td><td>PAN</td><td>Punjabi</td><td>Punjabi</td></tr>
+			<tr><td>pa-Arab</td><td>pa</td><td>pan</td><td>PAP</td><td>Punjabi (Arabic)</td><td>Punjabi</td></tr>
+			<tr><td>pa-Arab-PK</td><td>pa</td><td>pan</td><td>PAP</td><td>Punjabi (Islamic Republic of Pakistan)</td><td>Punjabi (Pakistan)</td></tr>
+			<tr><td>pa-Guru</td><td>pa</td><td>pan</td><td>PAN</td><td>Punjabi</td><td>Punjabi</td></tr>
+			<tr><td>pa-IN</td><td>pa</td><td>pan</td><td>PAN</td><td>Punjabi (India)</td><td>Punjabi (India)</td></tr>
+			<tr><td>pap</td><td>pap</td><td>pap</td><td>ZZZ</td><td>Papiamento</td><td>Papiamento</td></tr>
+			<tr><td>pap-029</td><td>pap</td><td>pap</td><td>ZZZ</td><td>Papiamento (Caribbean)</td><td>Papiamento (Caribbean)</td></tr>
+			<tr><td>pl</td><td>pl</td><td>pol</td><td>PLK</td><td>Polish</td><td>Polish</td></tr>
+			<tr><td>pl-PL</td><td>pl</td><td>pol</td><td>PLK</td><td>Polish (Poland)</td><td>Polish (Poland)</td></tr>
+			<tr><td>prg</td><td>prg</td><td>prg</td><td>ZZZ</td><td>Prussian</td><td>Prussian</td></tr>
+			<tr><td>prg-001</td><td>prg</td><td>prg</td><td>ZZZ</td><td>Prussian (World)</td><td>Prussian (World)</td></tr>
+			<tr><td>prs</td><td>prs</td><td>prs</td><td>PRS</td><td>Dari</td><td>Dari</td></tr>
+			<tr><td>prs-AF</td><td>prs</td><td>prs</td><td>PRS</td><td>Dari (Afghanistan)</td><td>Dari (Afghanistan)</td></tr>
+			<tr><td>ps</td><td>ps</td><td>pus</td><td>PAS</td><td>Pashto</td><td>Pashto</td></tr>
+			<tr><td>ps-AF</td><td>ps</td><td>pus</td><td>PAS</td><td>Pashto (Afghanistan)</td><td>Pashto (Afghanistan)</td></tr>
+			<tr><td>ps-PK</td><td>ps</td><td>pus</td><td>ZZZ</td><td>Pashto (Pakistan)</td><td>Pashto (Pakistan)</td></tr>
+			<tr><td>pt</td><td>pt</td><td>por</td><td>PTB</td><td>Portuguese</td><td>Portuguese</td></tr>
+			<tr><td>pt-AO</td><td>pt</td><td>por</td><td>PTA</td><td>Portuguese (Angola)</td><td>Portuguese (Angola)</td></tr>
+			<tr><td>pt-BR</td><td>pt</td><td>por</td><td>PTB</td><td>Portuguese (Brazil)</td><td>Portuguese (Brazil)</td></tr>
+			<tr><td>pt-CH</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Switzerland)</td><td>Portuguese (Switzerland)</td></tr>
+			<tr><td>pt-CV</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Cabo Verde)</td><td>Portuguese (Cabo Verde)</td></tr>
+			<tr><td>pt-GQ</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Equatorial Guinea)</td><td>Portuguese (Equatorial Guinea)</td></tr>
+			<tr><td>pt-GW</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Guinea-Bissau)</td><td>Portuguese (Guinea-Bissau)</td></tr>
+			<tr><td>pt-LU</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Luxembourg)</td><td>Portuguese (Luxembourg)</td></tr>
+			<tr><td>pt-MO</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Macao SAR)</td><td>Portuguese (Macao SAR)</td></tr>
+			<tr><td>pt-MZ</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Mozambique)</td><td>Portuguese (Mozambique)</td></tr>
+			<tr><td>pt-PT</td><td>pt</td><td>por</td><td>PTG</td><td>Portuguese (Portugal)</td><td>Portuguese (Portugal)</td></tr>
+			<tr><td>pt-ST</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (São Tomé and Príncipe)</td><td>Portuguese (São Tomé & Príncipe)</td></tr>
+			<tr><td>pt-TL</td><td>pt</td><td>por</td><td>ZZZ</td><td>Portuguese (Timor-Leste)</td><td>Portuguese (Timor-Leste)</td></tr>
+			<tr><td>quc</td><td>quc</td><td>quc</td><td>QUC</td><td>K'iche'</td><td>K'iche'</td></tr>
+			<tr><td>quc-Latn</td><td>quc</td><td>quc</td><td>QUC</td><td>K'iche'</td><td>K'iche'</td></tr>
+			<tr><td>quc-Latn-GT</td><td>quc</td><td>quc</td><td>QUC</td><td>K'iche' (Guatemala)</td><td>K'iche' (Guatemala)</td></tr>
+			<tr><td>quz</td><td>quz</td><td>qub</td><td>QUB</td><td>Quechua</td><td>Quechua</td></tr>
+			<tr><td>quz-BO</td><td>quz</td><td>qub</td><td>QUB</td><td>Quechua (Bolivia)</td><td>Quechua (Bolivia)</td></tr>
+			<tr><td>quz-EC</td><td>quz</td><td>que</td><td>QUE</td><td>Quechua (Ecuador)</td><td>Quechua (Ecuador)</td></tr>
+			<tr><td>quz-PE</td><td>quz</td><td>qup</td><td>QUP</td><td>Quechua (Peru)</td><td>Quechua (Peru)</td></tr>
+			<tr><td>rm</td><td>rm</td><td>roh</td><td>RMC</td><td>Romansh</td><td>Romansh</td></tr>
+			<tr><td>rm-CH</td><td>rm</td><td>roh</td><td>RMC</td><td>Romansh (Switzerland)</td><td>Romansh (Switzerland)</td></tr>
+			<tr><td>rn</td><td>rn</td><td>run</td><td>ZZZ</td><td>Rundi</td><td>Rundi</td></tr>
+			<tr><td>rn-BI</td><td>rn</td><td>run</td><td>ZZZ</td><td>Rundi (Burundi)</td><td>Rundi (Burundi)</td></tr>
+			<tr><td>ro</td><td>ro</td><td>ron</td><td>ROM</td><td>Romanian</td><td>Romanian</td></tr>
+			<tr><td>ro-MD</td><td>ro</td><td>ron</td><td>ROD</td><td>Romanian (Moldova)</td><td>Romanian (Moldova)</td></tr>
+			<tr><td>ro-RO</td><td>ro</td><td>ron</td><td>ROM</td><td>Romanian (Romania)</td><td>Romanian (Romania)</td></tr>
+			<tr><td>rof</td><td>rof</td><td>rof</td><td>ZZZ</td><td>Rombo</td><td>Rombo</td></tr>
+			<tr><td>rof-TZ</td><td>rof</td><td>rof</td><td>ZZZ</td><td>Rombo (Tanzania)</td><td>Rombo (Tanzania)</td></tr>
+			<tr><td>ru</td><td>ru</td><td>rus</td><td>RUS</td><td>Russian</td><td>Russian</td></tr>
+			<tr><td>ru-BY</td><td>ru</td><td>rus</td><td>ZZZ</td><td>Russian (Belarus)</td><td>Russian (Belarus)</td></tr>
+			<tr><td>ru-KG</td><td>ru</td><td>rus</td><td>ZZZ</td><td>Russian (Kyrgyzstan)</td><td>Russian (Kyrgyzstan)</td></tr>
+			<tr><td>ru-KZ</td><td>ru</td><td>rus</td><td>ZZZ</td><td>Russian (Kazakhstan)</td><td>Russian (Kazakhstan)</td></tr>
+			<tr><td>ru-MD</td><td>ru</td><td>rus</td><td>RUM</td><td>Russian (Moldova)</td><td>Russian (Moldova)</td></tr>
+			<tr><td>ru-RU</td><td>ru</td><td>rus</td><td>RUS</td><td>Russian (Russia)</td><td>Russian (Russia)</td></tr>
+			<tr><td>ru-UA</td><td>ru</td><td>rus</td><td>ZZZ</td><td>Russian (Ukraine)</td><td>Russian (Ukraine)</td></tr>
+			<tr><td>rw</td><td>rw</td><td>kin</td><td>KIN</td><td>Kinyarwanda</td><td>Kinyarwanda</td></tr>
+			<tr><td>rw-RW</td><td>rw</td><td>kin</td><td>KIN</td><td>Kinyarwanda (Rwanda)</td><td>Kinyarwanda (Rwanda)</td></tr>
+			<tr><td>rwk</td><td>rwk</td><td>rwk</td><td>ZZZ</td><td>Rwa</td><td>Rwa</td></tr>
+			<tr><td>rwk-TZ</td><td>rwk</td><td>rwk</td><td>ZZZ</td><td>Rwa (Tanzania)</td><td>Rwa (Tanzania)</td></tr>
+			<tr><td>sa</td><td>sa</td><td>san</td><td>SAN</td><td>Sanskrit</td><td>Sanskrit</td></tr>
+			<tr><td>sa-IN</td><td>sa</td><td>san</td><td>SAN</td><td>Sanskrit (India)</td><td>Sanskrit (India)</td></tr>
+			<tr><td>sah</td><td>sah</td><td>sah</td><td>SAH</td><td>Sakha</td><td>Sakha</td></tr>
+			<tr><td>sah-RU</td><td>sah</td><td>sah</td><td>SAH</td><td>Sakha (Russia)</td><td>Sakha (Russia)</td></tr>
+			<tr><td>saq</td><td>saq</td><td>saq</td><td>ZZZ</td><td>Samburu</td><td>Samburu</td></tr>
+			<tr><td>saq-KE</td><td>saq</td><td>saq</td><td>ZZZ</td><td>Samburu (Kenya)</td><td>Samburu (Kenya)</td></tr>
+			<tr><td>sbp</td><td>sbp</td><td>sbp</td><td>ZZZ</td><td>Sangu</td><td>Sangu</td></tr>
+			<tr><td>sbp-TZ</td><td>sbp</td><td>sbp</td><td>ZZZ</td><td>Sangu (Tanzania)</td><td>Sangu (Tanzania)</td></tr>
+			<tr><td>sd</td><td>sd</td><td>snd</td><td>SIP</td><td>Sindhi</td><td>Sindhi</td></tr>
+			<tr><td>sd-Arab</td><td>sd</td><td>snd</td><td>SIP</td><td>Sindhi (Arabic)</td><td>Sindhi</td></tr>
+			<tr><td>sd-Arab-PK</td><td>sd</td><td>snd</td><td>SIP</td><td>Sindhi (Islamic Republic of Pakistan)</td><td>Sindhi (Pakistan)</td></tr>
+			<tr><td>sd-Deva</td><td>sd</td><td>snd</td><td>ZZZ</td><td>Sindhi (Devanagari)</td><td>Sindhi (Devanagari)</td></tr>
+			<tr><td>sd-Deva-IN</td><td>sd</td><td>snd</td><td>ZZZ</td><td>Sindhi (Devanagari, India)</td><td>Sindhi (Devanagari, India)</td></tr>
+			<tr><td>se</td><td>se</td><td>sme</td><td>SME</td><td>Sami (Northern)</td><td>Northern Sami</td></tr>
+			<tr><td>se-FI</td><td>se</td><td>sme</td><td>SMG</td><td>Sami, Northern (Finland)</td><td>Sami, Northern (Finland)</td></tr>
+			<tr><td>se-NO</td><td>se</td><td>sme</td><td>SME</td><td>Sami, Northern (Norway)</td><td>Sami, Northern (Norway)</td></tr>
+			<tr><td>se-SE</td><td>se</td><td>sme</td><td>SMF</td><td>Sami, Northern (Sweden)</td><td>Sami, Northern (Sweden)</td></tr>
+			<tr><td>seh</td><td>seh</td><td>seh</td><td>ZZZ</td><td>Sena</td><td>Sena</td></tr>
+			<tr><td>seh-MZ</td><td>seh</td><td>seh</td><td>ZZZ</td><td>Sena (Mozambique)</td><td>Sena (Mozambique)</td></tr>
+			<tr><td>ses</td><td>ses</td><td>ses</td><td>ZZZ</td><td>Koyraboro Senni</td><td>Koyraboro Senni</td></tr>
+			<tr><td>ses-ML</td><td>ses</td><td>ses</td><td>ZZZ</td><td>Koyraboro Senni (Mali)</td><td>Koyraboro Senni (Mali)</td></tr>
+			<tr><td>sg</td><td>sg</td><td>sag</td><td>ZZZ</td><td>Sango</td><td>Sango</td></tr>
+			<tr><td>sg-CF</td><td>sg</td><td>sag</td><td>ZZZ</td><td>Sango (Central African Republic)</td><td>Sango (Central African Republic)</td></tr>
+			<tr><td>shi</td><td>shi</td><td>shi</td><td>ZZZ</td><td>Tachelhit</td><td>Tachelhit</td></tr>
+			<tr><td>shi-Latn</td><td>shi</td><td>shi</td><td>ZZZ</td><td>Tachelhit (Latin)</td><td>Tachelhit (Latin)</td></tr>
+			<tr><td>shi-Latn-MA</td><td>shi</td><td>shi</td><td>ZZZ</td><td>Tachelhit (Latin, Morocco)</td><td>Tachelhit (Latin, Morocco)</td></tr>
+			<tr><td>shi-Tfng</td><td>shi</td><td>shi</td><td>ZZZ</td><td>Tachelhit (Tifinagh)</td><td>Tachelhit (Tifinagh)</td></tr>
+			<tr><td>shi-Tfng-MA</td><td>shi</td><td>shi</td><td>ZZZ</td><td>Tachelhit (Tifinagh, Morocco)</td><td>Tachelhit (Tifinagh, Morocco)</td></tr>
+			<tr><td>si</td><td>si</td><td>sin</td><td>SIN</td><td>Sinhala</td><td>Sinhala</td></tr>
+			<tr><td>si-LK</td><td>si</td><td>sin</td><td>SIN</td><td>Sinhala (Sri Lanka)</td><td>Sinhala (Sri Lanka)</td></tr>
+			<tr><td>sk</td><td>sk</td><td>slk</td><td>SKY</td><td>Slovak</td><td>Slovak</td></tr>
+			<tr><td>sk-SK</td><td>sk</td><td>slk</td><td>SKY</td><td>Slovak (Slovakia)</td><td>Slovak (Slovakia)</td></tr>
+			<tr><td>sl</td><td>sl</td><td>slv</td><td>SLV</td><td>Slovenian</td><td>Slovenian</td></tr>
+			<tr><td>sl-SI</td><td>sl</td><td>slv</td><td>SLV</td><td>Slovenian (Slovenia)</td><td>Slovenian (Slovenia)</td></tr>
+			<tr><td>sma</td><td>sma</td><td>sma</td><td>SMB</td><td>Sami (Southern)</td><td>Sami (Southern)</td></tr>
+			<tr><td>sma-NO</td><td>sma</td><td>sma</td><td>SMA</td><td>Sami, Southern (Norway)</td><td>Sami, Southern (Norway)</td></tr>
+			<tr><td>sma-SE</td><td>sma</td><td>sma</td><td>SMB</td><td>Sami, Southern (Sweden)</td><td>Sami, Southern (Sweden)</td></tr>
+			<tr><td>smj</td><td>smj</td><td>smj</td><td>SMK</td><td>Sami (Lule)</td><td>Sami (Lule)</td></tr>
+			<tr><td>smj-NO</td><td>smj</td><td>smj</td><td>SMJ</td><td>Sami, Lule (Norway)</td><td>Sami, Lule (Norway)</td></tr>
+			<tr><td>smj-SE</td><td>smj</td><td>smj</td><td>SMK</td><td>Sami, Lule (Sweden)</td><td>Sami, Lule (Sweden)</td></tr>
+			<tr><td>smn</td><td>smn</td><td>smn</td><td>SMN</td><td>Sami (Inari)</td><td>Sami (Inari)</td></tr>
+			<tr><td>smn-FI</td><td>smn</td><td>smn</td><td>SMN</td><td>Sami, Inari (Finland)</td><td>Sami, Inari (Finland)</td></tr>
+			<tr><td>sms</td><td>sms</td><td>sms</td><td>SMS</td><td>Sami (Skolt)</td><td>Sami (Skolt)</td></tr>
+			<tr><td>sms-FI</td><td>sms</td><td>sms</td><td>SMS</td><td>Sami, Skolt (Finland)</td><td>Sami, Skolt (Finland)</td></tr>
+			<tr><td>sn</td><td>sn</td><td>sna</td><td>SNA</td><td>Shona</td><td>Shona</td></tr>
+			<tr><td>sn-Latn</td><td>sn</td><td>sna</td><td>SNA</td><td>Shona (Latin)</td><td>Shona (Latin)</td></tr>
+			<tr><td>sn-Latn-ZW</td><td>sn</td><td>sna</td><td>SNA</td><td>Shona (Latin, Zimbabwe)</td><td>Shona (Latin, Zimbabwe)</td></tr>
+			<tr><td>so</td><td>so</td><td>som</td><td>SOM</td><td>Somali</td><td>Somali</td></tr>
+			<tr><td>so-DJ</td><td>so</td><td>som</td><td>ZZZ</td><td>Somali (Djibouti)</td><td>Somali (Djibouti)</td></tr>
+			<tr><td>so-ET</td><td>so</td><td>som</td><td>ZZZ</td><td>Somali (Ethiopia)</td><td>Somali (Ethiopia)</td></tr>
+			<tr><td>so-KE</td><td>so</td><td>som</td><td>ZZZ</td><td>Somali (Kenya)</td><td>Somali (Kenya)</td></tr>
+			<tr><td>so-SO</td><td>so</td><td>som</td><td>SOM</td><td>Somali (Somalia)</td><td>Somali (Somalia)</td></tr>
+			<tr><td>sq</td><td>sq</td><td>sqi</td><td>SQI</td><td>Albanian</td><td>Albanian</td></tr>
+			<tr><td>sq-AL</td><td>sq</td><td>sqi</td><td>SQI</td><td>Albanian (Albania)</td><td>Albanian (Albania)</td></tr>
+			<tr><td>sq-MK</td><td>sq</td><td>sqi</td><td>ZZZ</td><td>Albanian (North Macedonia)</td><td>Albanian (North Macedonia)</td></tr>
+			<tr><td>sq-XK</td><td>sq</td><td>sqi</td><td>ZZZ</td><td>Albanian (Kosovo)</td><td>Albanian (Kosovo)</td></tr>
+			<tr><td>sr</td><td>sr</td><td>srp</td><td>SRB</td><td>Serbian</td><td>Serbian</td></tr>
+			<tr><td>sr-Cyrl</td><td>sr</td><td>srp</td><td>SRO</td><td>Serbian (Cyrillic)</td><td>Serbian (Cyrillic)</td></tr>
+			<tr><td>sr-Cyrl-BA</td><td>sr</td><td>srp</td><td>SRN</td><td>Serbian (Cyrillic, Bosnia and Herzegovina)</td><td>Serbian (Cyrillic, Bosnia and Herzegovina)</td></tr>
+			<tr><td>sr-Cyrl-ME</td><td>sr</td><td>srp</td><td>SRQ</td><td>Serbian (Cyrillic, Montenegro)</td><td>Serbian (Cyrillic, Montenegro)</td></tr>
+			<tr><td>sr-Cyrl-RS</td><td>sr</td><td>srp</td><td>SRO</td><td>Serbian (Cyrillic, Serbia)</td><td>Serbian (Cyrillic, Serbia)</td></tr>
+			<tr><td>sr-Cyrl-XK</td><td>sr</td><td>srp</td><td>ZZZ</td><td>Serbian (Cyrillic, Kosovo)</td><td>Serbian (Cyrillic, Kosovo)</td></tr>
+			<tr><td>sr-Latn</td><td>sr</td><td>srp</td><td>SRM</td><td>Serbian (Latin)</td><td>Serbian (Latin)</td></tr>
+			<tr><td>sr-Latn-BA</td><td>sr</td><td>srp</td><td>SRS</td><td>Serbian (Latin, Bosnia and Herzegovina)</td><td>Serbian (Latin, Bosnia & Herzegovina)</td></tr>
+			<tr><td>sr-Latn-ME</td><td>sr</td><td>srp</td><td>SRP</td><td>Serbian (Latin, Montenegro)</td><td>Serbian (Latin, Montenegro)</td></tr>
+			<tr><td>sr-Latn-RS</td><td>sr</td><td>srp</td><td>SRM</td><td>Serbian (Latin, Serbia)</td><td>Serbian (Latin, Serbia)</td></tr>
+			<tr><td>sr-Latn-XK</td><td>sr</td><td>srp</td><td>ZZZ</td><td>Serbian (Latin, Kosovo)</td><td>Serbian (Latin, Kosovo)</td></tr>
+			<tr><td>ss</td><td>ss</td><td>ssw</td><td>ZZZ</td><td>Swati</td><td>siSwati</td></tr>
+			<tr><td>ss-SZ</td><td>ss</td><td>ssw</td><td>ZZZ</td><td>Swati (Swaziland)</td><td>siSwati (Eswatini)</td></tr>
+			<tr><td>ss-ZA</td><td>ss</td><td>ssw</td><td>ZZZ</td><td>Swati (South Africa)</td><td>siSwati (South Africa)</td></tr>
+			<tr><td>ssy</td><td>ssy</td><td>ssy</td><td>ZZZ</td><td>Saho</td><td>Saho</td></tr>
+			<tr><td>ssy-ER</td><td>ssy</td><td>ssy</td><td>ZZZ</td><td>Saho (Eritrea)</td><td>Saho (Eritrea)</td></tr>
+			<tr><td>st</td><td>st</td><td>sot</td><td>SOT</td><td>Southern Sotho</td><td>Sesotho</td></tr>
+			<tr><td>st-LS</td><td>st</td><td>sot</td><td>ZZZ</td><td>Sesotho (Lesotho)</td><td>Sesotho (Lesotho)</td></tr>
+			<tr><td>st-ZA</td><td>st</td><td>sot</td><td>SOT</td><td>Southern Sotho (South Africa)</td><td>Sesotho (South Africa)</td></tr>
+			<tr><td>sv</td><td>sv</td><td>swe</td><td>SVE</td><td>Swedish</td><td>Swedish</td></tr>
+			<tr><td>sv-AX</td><td>sv</td><td>swe</td><td>ZZZ</td><td>Swedish (Åland Islands)</td><td>Swedish (Åland Islands)</td></tr>
+			<tr><td>sv-FI</td><td>sv</td><td>swe</td><td>SVF</td><td>Swedish (Finland)</td><td>Swedish (Finland)</td></tr>
+			<tr><td>sv-SE</td><td>sv</td><td>swe</td><td>SVE</td><td>Swedish (Sweden)</td><td>Swedish (Sweden)</td></tr>
+			<tr><td>sw</td><td>sw</td><td>swa</td><td>SWK</td><td>Kiswahili</td><td>Kiswahili</td></tr>
+			<tr><td>sw-CD</td><td>sw</td><td>swa</td><td>ZZZ</td><td>Kiswahili (Congo DRC)</td><td>Kiswahili (Congo DRC)</td></tr>
+			<tr><td>sw-KE</td><td>sw</td><td>swa</td><td>SWK</td><td>Kiswahili (Kenya)</td><td>Kiswahili (Kenya)</td></tr>
+			<tr><td>sw-TZ</td><td>sw</td><td>swa</td><td>ZZZ</td><td>Kiswahili (Tanzania)</td><td>Kiswahili (Tanzania)</td></tr>
+			<tr><td>sw-UG</td><td>sw</td><td>swa</td><td>ZZZ</td><td>Kiswahili (Uganda)</td><td>Kiswahili (Uganda)</td></tr>
+			<tr><td>syr</td><td>syr</td><td>syr</td><td>SYR</td><td>Syriac</td><td>Syriac</td></tr>
+			<tr><td>syr-SY</td><td>syr</td><td>syr</td><td>SYR</td><td>Syriac (Syria)</td><td>Syriac (Syria)</td></tr>
+			<tr><td>ta</td><td>ta</td><td>tam</td><td>TAI</td><td>Tamil</td><td>Tamil</td></tr>
+			<tr><td>ta-IN</td><td>ta</td><td>tam</td><td>TAI</td><td>Tamil (India)</td><td>Tamil (India)</td></tr>
+			<tr><td>ta-LK</td><td>ta</td><td>tam</td><td>TAM</td><td>Tamil (Sri Lanka)</td><td>Tamil (Sri Lanka)</td></tr>
+			<tr><td>ta-MY</td><td>ta</td><td>tam</td><td>ZZZ</td><td>Tamil (Malaysia)</td><td>Tamil (Malaysia)</td></tr>
+			<tr><td>ta-SG</td><td>ta</td><td>tam</td><td>ZZZ</td><td>Tamil (Singapore)</td><td>Tamil (Singapore)</td></tr>
+			<tr><td>te</td><td>te</td><td>tel</td><td>TEL</td><td>Telugu</td><td>Telugu</td></tr>
+			<tr><td>te-IN</td><td>te</td><td>tel</td><td>TEL</td><td>Telugu (India)</td><td>Telugu (India)</td></tr>
+			<tr><td>teo</td><td>teo</td><td>teo</td><td>ZZZ</td><td>Teso</td><td>Teso</td></tr>
+			<tr><td>teo-KE</td><td>teo</td><td>teo</td><td>ZZZ</td><td>Teso (Kenya)</td><td>Teso (Kenya)</td></tr>
+			<tr><td>teo-UG</td><td>teo</td><td>teo</td><td>ZZZ</td><td>Teso (Uganda)</td><td>Teso (Uganda)</td></tr>
+			<tr><td>tg</td><td>tg</td><td>tgk</td><td>TAJ</td><td>Tajik</td><td>Tajik</td></tr>
+			<tr><td>tg-Cyrl</td><td>tg</td><td>tgk</td><td>TAJ</td><td>Tajik (Cyrillic)</td><td>Tajik (Cyrillic)</td></tr>
+			<tr><td>tg-Cyrl-TJ</td><td>tg</td><td>tgk</td><td>TAJ</td><td>Tajik (Cyrillic, Tajikistan)</td><td>Tajik (Cyrillic, Tajikistan)</td></tr>
+			<tr><td>th</td><td>th</td><td>tha</td><td>THA</td><td>Thai</td><td>Thai</td></tr>
+			<tr><td>th-TH</td><td>th</td><td>tha</td><td>THA</td><td>Thai (Thailand)</td><td>Thai (Thailand)</td></tr>
+			<tr><td>ti</td><td>ti</td><td>tir</td><td>TIR</td><td>Tigrinya</td><td>Tigrinya</td></tr>
+			<tr><td>ti-ER</td><td>ti</td><td>tir</td><td>TIR</td><td>Tigrinya (Eritrea)</td><td>Tigrinya (Eritrea)</td></tr>
+			<tr><td>ti-ET</td><td>ti</td><td>tir</td><td>TIE</td><td>Tigrinya (Ethiopia)</td><td>Tigrinya (Ethiopia)</td></tr>
+			<tr><td>tig</td><td>tig</td><td>tig</td><td>ZZZ</td><td>Tigre</td><td>Tigre</td></tr>
+			<tr><td>tig-ER</td><td>tig</td><td>tig</td><td>ZZZ</td><td>Tigre (Eritrea)</td><td>Tigre (Eritrea)</td></tr>
+			<tr><td>tk</td><td>tk</td><td>tuk</td><td>TUK</td><td>Turkmen</td><td>Turkmen</td></tr>
+			<tr><td>tk-TM</td><td>tk</td><td>tuk</td><td>TUK</td><td>Turkmen (Turkmenistan)</td><td>Turkmen (Turkmenistan)</td></tr>
+			<tr><td>tn</td><td>tn</td><td>tsn</td><td>TSN</td><td>Setswana</td><td>Setswana</td></tr>
+			<tr><td>tn-BW</td><td>tn</td><td>tsn</td><td>TSB</td><td>Setswana (Botswana)</td><td>Setswana (Botswana)</td></tr>
+			<tr><td>tn-ZA</td><td>tn</td><td>tsn</td><td>TSN</td><td>Setswana (South Africa)</td><td>Setswana (South Africa)</td></tr>
+			<tr><td>to</td><td>to</td><td>ton</td><td>ZZZ</td><td>Tongan</td><td>Tongan</td></tr>
+			<tr><td>to-TO</td><td>to</td><td>ton</td><td>ZZZ</td><td>Tongan (Tonga)</td><td>Tongan (Tonga)</td></tr>
+			<tr><td>tr</td><td>tr</td><td>tur</td><td>TRK</td><td>Turkish</td><td>Turkish</td></tr>
+			<tr><td>tr-CY</td><td>tr</td><td>tur</td><td>ZZZ</td><td>Turkish (Cyprus)</td><td>Turkish (Cyprus)</td></tr>
+			<tr><td>tr-TR</td><td>tr</td><td>tur</td><td>TRK</td><td>Turkish (Turkey)</td><td>Turkish (Turkey)</td></tr>
+			<tr><td>ts</td><td>ts</td><td>tso</td><td>TSO</td><td>Tsonga</td><td>Xitsonga</td></tr>
+			<tr><td>ts-ZA</td><td>ts</td><td>tso</td><td>TSO</td><td>Tsonga (South Africa)</td><td>Xitsonga (South Africa)</td></tr>
+			<tr><td>tt</td><td>tt</td><td>tat</td><td>TTT</td><td>Tatar</td><td>Tatar</td></tr>
+			<tr><td>tt-RU</td><td>tt</td><td>tat</td><td>TTT</td><td>Tatar (Russia)</td><td>Tatar (Russia)</td></tr>
+			<tr><td>twq</td><td>twq</td><td>twq</td><td>ZZZ</td><td>Tasawaq</td><td>Tasawaq</td></tr>
+			<tr><td>twq-NE</td><td>twq</td><td>twq</td><td>ZZZ</td><td>Tasawaq (Niger)</td><td>Tasawaq (Niger)</td></tr>
+			<tr><td>tzm</td><td>tzm</td><td>tzm</td><td>TZA</td><td>Tamazight</td><td>Central Atlas Tamazight</td></tr>
+			<tr><td>tzm-Arab</td><td>tzm</td><td>tzm</td><td>ZZZ</td><td>Central Atlas Tamazight (Arabic)</td><td>Central Atlas Tamazight (Arabic)</td></tr>
+			<tr><td>tzm-Arab-MA</td><td>tzm</td><td>tzm</td><td>ZZZ</td><td>Central Atlas Tamazight (Arabic, Morocco)</td><td>Central Atlas Tamazight (Arabic, Morocco)</td></tr>
+			<tr><td>tzm-Latn</td><td>tzm</td><td>tzm</td><td>TZA</td><td>Tamazight (Latin)</td><td>Central Atlas Tamazight (Latin)</td></tr>
+			<tr><td>tzm-Latn-DZ</td><td>tzm</td><td>tzm</td><td>TZA</td><td>Tamazight (Latin, Algeria)</td><td>Central Atlas Tamazight (Latin, Algeria)</td></tr>
+			<tr><td>tzm-Latn-MA</td><td>tzm</td><td>tzm</td><td>ZZZ</td><td>Central Atlas Tamazight (Latin, Morocco)</td><td>Central Atlas Tamazight (Latin, Morocco)</td></tr>
+			<tr><td>tzm-Tfng</td><td>tzm</td><td>tzm</td><td>TZM</td><td>Tamazight (Tifinagh)</td><td>Central Atlas Tamazight (Tifinagh)</td></tr>
+			<tr><td>tzm-Tfng-MA</td><td>tzm</td><td>tzm</td><td>TZM</td><td>Central Atlas Tamazight (Tifinagh, Morocco)</td><td>Central Atlas Tamazight (Tifinagh, Morocco)</td></tr>
+			<tr><td>ug</td><td>ug</td><td>uig</td><td>UIG</td><td>Uyghur</td><td>Uyghur</td></tr>
+			<tr><td>ug-CN</td><td>ug</td><td>uig</td><td>UIG</td><td>Uyghur (PRC)</td><td>Uyghur (China)</td></tr>
+			<tr><td>uk</td><td>uk</td><td>ukr</td><td>UKR</td><td>Ukrainian</td><td>Ukrainian</td></tr>
+			<tr><td>uk-UA</td><td>uk</td><td>ukr</td><td>UKR</td><td>Ukrainian (Ukraine)</td><td>Ukrainian (Ukraine)</td></tr>
+			<tr><td>ur</td><td>ur</td><td>urd</td><td>URD</td><td>Urdu</td><td>Urdu</td></tr>
+			<tr><td>ur-IN</td><td>ur</td><td>urd</td><td>URI</td><td>Urdu (India)</td><td>Urdu (India)</td></tr>
+			<tr><td>ur-PK</td><td>ur</td><td>urd</td><td>URD</td><td>Urdu (Islamic Republic of Pakistan)</td><td>Urdu (Pakistan)</td></tr>
+			<tr><td>uz</td><td>uz</td><td>uzb</td><td>UZB</td><td>Uzbek</td><td>Uzbek</td></tr>
+			<tr><td>uz-Arab</td><td>uz</td><td>uzb</td><td>ZZZ</td><td>Uzbek (Perso-Arabic)</td><td>Uzbek (Perso-Arabic)</td></tr>
+			<tr><td>uz-Arab-AF</td><td>uz</td><td>uzb</td><td>ZZZ</td><td>Uzbek (Perso-Arabic, Afghanistan)</td><td>Uzbek (Perso-Arabic, Afghanistan)</td></tr>
+			<tr><td>uz-Cyrl</td><td>uz</td><td>uzb</td><td>UZC</td><td>Uzbek (Cyrillic)</td><td>Uzbek (Cyrillic)</td></tr>
+			<tr><td>uz-Cyrl-UZ</td><td>uz</td><td>uzb</td><td>UZC</td><td>Uzbek (Cyrillic, Uzbekistan)</td><td>Uzbek (Cyrillic, Uzbekistan)</td></tr>
+			<tr><td>uz-Latn</td><td>uz</td><td>uzb</td><td>UZB</td><td>Uzbek (Latin)</td><td>Uzbek (Latin)</td></tr>
+			<tr><td>uz-Latn-UZ</td><td>uz</td><td>uzb</td><td>UZB</td><td>Uzbek (Latin, Uzbekistan)</td><td>Uzbek (Latin, Uzbekistan)</td></tr>
+			<tr><td>vai</td><td>vai</td><td>vai</td><td>ZZZ</td><td>Vai</td><td>Vai</td></tr>
+			<tr><td>vai-Latn</td><td>vai</td><td>vai</td><td>ZZZ</td><td>Vai (Latin)</td><td>Vai (Latin)</td></tr>
+			<tr><td>vai-Latn-LR</td><td>vai</td><td>vai</td><td>ZZZ</td><td>Vai (Latin, Liberia)</td><td>Vai (Latin, Liberia)</td></tr>
+			<tr><td>vai-Vaii</td><td>vai</td><td>vai</td><td>ZZZ</td><td>Vai (Vai)</td><td>Vai (Vai)</td></tr>
+			<tr><td>vai-Vaii-LR</td><td>vai</td><td>vai</td><td>ZZZ</td><td>Vai (Vai, Liberia)</td><td>Vai (Vai, Liberia)</td></tr>
+			<tr><td>ve</td><td>ve</td><td>ven</td><td>ZZZ</td><td>Venda</td><td>Venda</td></tr>
+			<tr><td>ve-ZA</td><td>ve</td><td>ven</td><td>ZZZ</td><td>Venda (South Africa)</td><td>Venda (South Africa)</td></tr>
+			<tr><td>vi</td><td>vi</td><td>vie</td><td>VIT</td><td>Vietnamese</td><td>Vietnamese</td></tr>
+			<tr><td>vi-VN</td><td>vi</td><td>vie</td><td>VIT</td><td>Vietnamese (Vietnam)</td><td>Vietnamese (Vietnam)</td></tr>
+			<tr><td>vo</td><td>vo</td><td>vol</td><td>ZZZ</td><td>Volapük</td><td>Volapük</td></tr>
+			<tr><td>vo-001</td><td>vo</td><td>vol</td><td>ZZZ</td><td>Volapük (World)</td><td>Volapük (World)</td></tr>
+			<tr><td>vun</td><td>vun</td><td>vun</td><td>ZZZ</td><td>Vunjo</td><td>Vunjo</td></tr>
+			<tr><td>vun-TZ</td><td>vun</td><td>vun</td><td>ZZZ</td><td>Vunjo (Tanzania)</td><td>Vunjo (Tanzania)</td></tr>
+			<tr><td>wae</td><td>wae</td><td>wae</td><td>ZZZ</td><td>Walser</td><td>Walser</td></tr>
+			<tr><td>wae-CH</td><td>wae</td><td>wae</td><td>ZZZ</td><td>Walser (Switzerland)</td><td>Walser (Switzerland)</td></tr>
+			<tr><td>wal</td><td>wal</td><td>wal</td><td>ZZZ</td><td>Wolaytta</td><td>Wolaytta</td></tr>
+			<tr><td>wal-ET</td><td>wal</td><td>wal</td><td>ZZZ</td><td>Wolaytta (Ethiopia)</td><td>Wolaytta (Ethiopia)</td></tr>
+			<tr><td>wo</td><td>wo</td><td>wol</td><td>WOL</td><td>Wolof</td><td>Wolof</td></tr>
+			<tr><td>wo-SN</td><td>wo</td><td>wol</td><td>WOL</td><td>Wolof (Senegal)</td><td>Wolof (Senegal)</td></tr>
+			<tr><td>xh</td><td>xh</td><td>xho</td><td>XHO</td><td>isiXhosa</td><td>isiXhosa</td></tr>
+			<tr><td>xh-ZA</td><td>xh</td><td>xho</td><td>XHO</td><td>isiXhosa (South Africa)</td><td>isiXhosa (South Africa)</td></tr>
+			<tr><td>xog</td><td>xog</td><td>xog</td><td>ZZZ</td><td>Soga</td><td>Soga</td></tr>
+			<tr><td>xog-UG</td><td>xog</td><td>xog</td><td>ZZZ</td><td>Soga (Uganda)</td><td>Soga (Uganda)</td></tr>
+			<tr><td>yav</td><td>yav</td><td>yav</td><td>ZZZ</td><td>Yangben</td><td>Yangben</td></tr>
+			<tr><td>yav-CM</td><td>yav</td><td>yav</td><td>ZZZ</td><td>Yangben (Cameroon)</td><td>Yangben (Cameroon)</td></tr>
+			<tr><td>yi</td><td>yi</td><td>yid</td><td>ZZZ</td><td>Yiddish</td><td>Yiddish</td></tr>
+			<tr><td>yi-001</td><td>yi</td><td>yid</td><td>ZZZ</td><td>Yiddish (World)</td><td>Yiddish (World)</td></tr>
+			<tr><td>yo</td><td>yo</td><td>yor</td><td>YOR</td><td>Yoruba</td><td>Yoruba</td></tr>
+			<tr><td>yo-BJ</td><td>yo</td><td>yor</td><td>ZZZ</td><td>Yoruba (Benin)</td><td>Yoruba (Benin)</td></tr>
+			<tr><td>yo-NG</td><td>yo</td><td>yor</td><td>YOR</td><td>Yoruba (Nigeria)</td><td>Yoruba (Nigeria)</td></tr>
+			<tr><td>zgh</td><td>zgh</td><td>zgh</td><td>ZHG</td><td>Standard Moroccan Tamazight</td><td>Standard Moroccan Tamazight</td></tr>
+			<tr><td>zgh-Tfng</td><td>zgh</td><td>zgh</td><td>ZHG</td><td>Standard Moroccan Tamazight (Tifinagh)</td><td>Standard Moroccan Tamazight (Tifinagh)</td></tr>
+			<tr><td>zgh-Tfng-MA</td><td>zgh</td><td>zgh</td><td>ZHG</td><td>Standard Moroccan Tamazight (Tifinagh, Morocco)</td><td>Standard Moroccan Tamazight (Tifinagh, Morocco)</td></tr>
+			<tr><td>zh</td><td>zh</td><td>zho</td><td>CHS</td><td>Chinese</td><td>Chinese</td></tr>
+			<tr><td>zh-CN</td><td>zh</td><td>zho</td><td>CHS</td><td>Chinese (Simplified, PRC)</td><td>Chinese (Simplified, China)</td></tr>
+			<tr><td>zh-Hans</td><td>zh</td><td>zho</td><td>CHS</td><td>Chinese (Simplified)</td><td>Chinese (Simplified)</td></tr>
+			<tr><td>zh-Hans-HK</td><td>zh</td><td>zho</td><td>ZZZ</td><td>Chinese (Simplified Han, Hong Kong SAR)</td><td>Chinese (Simplified Han, Hong Kong SAR)</td></tr>
+			<tr><td>zh-Hans-MO</td><td>zh</td><td>zho</td><td>ZZZ</td><td>Chinese (Simplified Han, Macao SAR)</td><td>Chinese (Simplified Han, Macao SAR)</td></tr>
+			<tr><td>zh-Hant</td><td>zh</td><td>zho</td><td>CHT</td><td>Chinese (Traditional)</td><td>Chinese (Traditional)</td></tr>
+			<tr><td>zh-HK</td><td>zh</td><td>zho</td><td>ZHH</td><td>Chinese (Traditional, Hong Kong S.A.R.)</td><td>Chinese (Traditional, Hong Kong SAR)</td></tr>
+			<tr><td>zh-MO</td><td>zh</td><td>zho</td><td>ZHM</td><td>Chinese (Traditional, Macao S.A.R.)</td><td>Chinese (Traditional, Macao SAR)</td></tr>
+			<tr><td>zh-SG</td><td>zh</td><td>zho</td><td>ZHI</td><td>Chinese (Simplified, Singapore)</td><td>Chinese (Simplified, Singapore)</td></tr>
+			<tr><td>zh-TW</td><td>zh</td><td>zho</td><td>CHT</td><td>Chinese (Traditional, Taiwan)</td><td>Chinese (Traditional, Taiwan)</td></tr>
+			<tr><td>zu</td><td>zu</td><td>zul</td><td>ZUL</td><td>isiZulu</td><td>isiZulu</td></tr>
+			<tr><td>zu-ZA</td><td>zu</td><td>zul</td><td>ZUL</td><td>isiZulu (South Africa)</td><td>isiZulu (South Africa)</td></tr>
+			<tr><td>zh-CHS</td><td>zh</td><td>zho</td><td>CHS</td><td>Chinese (Simplified) Legacy</td><td>Chinese (Simplified) Legacy</td></tr>
+			<tr><td>zh-CHT</td><td>zh</td><td>zho</td><td>CHT</td><td>Chinese (Traditional) Legacy</td><td>Chinese (Traditional) Legacy</td></tr>
+		</table>
+	</body>
+</table>
