@@ -5371,7 +5371,7 @@
   <data name="lblSend.Text" xml:space="preserve">
     <value>Senden</value>
   </data>
-  <data name="lblUrl.Text" xml:space="preserve">
+  <data name="lblServer.Text" xml:space="preserve">
     <value>Server</value>
   </data>
   <data name="Connected" xml:space="preserve">

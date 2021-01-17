@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>Ejemplo de WebSocket</value>
+    <value>ຕົວຢ່າງ WebSocket</value>
   </data>
   <data name="cmdConnect.Text" xml:space="preserve">
-    <value>Conectar</value>
+    <value>ເຊື່ອມຕໍ່</value>
   </data>
   <data name="cmdDisconnect.Text" xml:space="preserve">
-    <value>Desconectar</value>
+    <value>ຕັດຂາດ</value>
   </data>
   <data name="cmdSend.Text" xml:space="preserve">
-    <value>Enviar</value>
+    <value>ສົ່ງ</value>
   </data>
   <data name="Connected" xml:space="preserve">
-    <value>Conectada</value>
+    <value>ເຊື່ອມຕໍ່ແລ້ວ</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>ຂໍ້ຜິດພາດ</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Salida</value>
+    <value>&amp;ອອກໄປ</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Archivo</value>
+    <value>&amp;ແຟ້ມ</value>
   </data>
   <data name="githubProjectToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;GitHub Proyecto</value>
+    <value>&amp;ໂຄງການ GitHub</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Ayuda</value>
+    <value>&amp;ຊ່ວຍເຫຼືອ</value>
   </data>
   <data name="InvalidServerOrPort" xml:space="preserve">
-    <value>Servidor o puerto no válido</value>
+    <value>Server ຫຼື Port ບໍ່ຖືກຕ້ອງ</value>
   </data>
   <data name="lblConnection.Text" xml:space="preserve">
-    <value>Conexión</value>
+    <value>ການເຊື່ອມຕໍ່</value>
   </data>
   <data name="lblMessageLog.Text" xml:space="preserve">
-    <value>Registro de mensajes</value>
+    <value>ບັນທຶກຂໍ້ຄວາມ</value>
   </data>
   <data name="lblPort.Text" xml:space="preserve">
-    <value>Puerto</value>
+    <value>ທ່າເຮືອ</value>
   </data>
   <data name="lblSend.Text" xml:space="preserve">
-    <value>Enviar</value>
+    <value>ສົ່ງ</value>
   </data>
   <data name="lblServer.Text" xml:space="preserve">
-    <value>Servidora</value>
+    <value>ເຊີບເວີ</value>
   </data>
   <data name="MessageLogHeaders" xml:space="preserve">
-    <value>Fecha y hora	Dirección	Mensaje</value>
+    <value>ວັນທີແລະເວລາ	ທິດທາງ	ຂໍ້ຄວາມ</value>
   </data>
   <data name="NotConnected" xml:space="preserve">
-    <value>No conectada</value>
+    <value>ບໍ່ເຊື່ອມຕໍ່</value>
   </data>
   <data name="PortMustBeAnInteger" xml:space="preserve">
-    <value>El puerto debe ser un número entero</value>
+    <value>Port ຕ້ອງເປັນ Integer</value>
   </data>
   <data name="Received" xml:space="preserve">
-    <value>Recibida</value>
+    <value>ໄດ້ຮັບ</value>
   </data>
   <data name="Sent" xml:space="preserve">
-    <value>Expedida</value>
+    <value>ສົ່ງແລ້ວ</value>
   </data>
 </root>

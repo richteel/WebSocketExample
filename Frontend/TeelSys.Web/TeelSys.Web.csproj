@@ -63,6 +63,9 @@
     <EmbeddedResource Include="WsClient.es.resx">
       <DependentUpon>WsClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WsClient.lo.resx">
+      <DependentUpon>WsClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WsClient.resx">
       <DependentUpon>WsClient.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>

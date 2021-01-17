@@ -52,18 +52,18 @@ namespace WebSocketExample
                 return;
 
             LocalizedResourceHelper.LocalizeControlText(rm, this, "$this.Text");
-            LocalizedResourceHelper.LocalizeControlText(rm, fileToolStripMenuItem);
-            LocalizedResourceHelper.LocalizeControlText(rm, exitToolStripMenuItem);
-            LocalizedResourceHelper.LocalizeControlText(rm, githubProjectToolStripMenuItem);
-            LocalizedResourceHelper.LocalizeControlText(rm, lblConnection);
-            LocalizedResourceHelper.LocalizeControlText(rm, lblServer);
-            LocalizedResourceHelper.LocalizeControlText(rm, lblPort);
-            LocalizedResourceHelper.LocalizeControlText(rm, lblPort);
             LocalizedResourceHelper.LocalizeControlText(rm, cmdConnect);
             LocalizedResourceHelper.LocalizeControlText(rm, cmdDisconnect);
-            LocalizedResourceHelper.LocalizeControlText(rm, lblSend);
             LocalizedResourceHelper.LocalizeControlText(rm, cmdSend);
+            LocalizedResourceHelper.LocalizeControlText(rm, exitToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, fileToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, githubProjectToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, helpToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblConnection);
             LocalizedResourceHelper.LocalizeControlText(rm, lblMessageLog);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblPort);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblSend);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblServer);
         }
         #endregion
 
