@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Threading;
 using System.Globalization;
 using System.Resources;
+using System.Threading;
+using System.Windows.Forms;
 using TeelSys.Globalization;
 using TeelSys.Web;
 
@@ -28,6 +28,15 @@ namespace WebSocketExample
         public Form1()
         {
             InitializeComponent();
+
+            CultureInfo ci = Thread.CurrentThread.CurrentCulture;
+            Console.WriteLine("CULTURE\tISO\tISO\tWIN\tDISPLAYNAME\tENGLISHNAME");
+            Console.Write("{0}", ci.Name);
+            Console.Write("\t{0}", ci.TwoLetterISOLanguageName);
+            Console.Write("\t{0}", ci.ThreeLetterISOLanguageName);
+            Console.Write("\t{0}", ci.ThreeLetterWindowsLanguageName);
+            Console.Write("\t{0}", ci.DisplayName);
+            Console.WriteLine("\t{0}", ci.EnglishName);
 
             rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
             LocalizeFormText();
