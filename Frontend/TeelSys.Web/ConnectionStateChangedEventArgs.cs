@@ -1,22 +1,20 @@
-﻿using System;
-
-namespace WebSocketExample
+﻿namespace TeelSys.Web
 {
-    public class MessageReceivedEventArgs
+    public class ConnectionStateChangedEventArgs
     {
         /*** Properties ***/
         #region
         public string Message { get; }
 
-        public DateTime Received { get; }
+        public bool IsConnected { get; }
         #endregion
 
         /*** Constructor & Initialization ***/
         #region
-        public MessageReceivedEventArgs(string Message)
+        public ConnectionStateChangedEventArgs(bool IsConnected, string Message)
         {
             this.Message = Message;
-            Received = DateTime.Now;
+            this.IsConnected = IsConnected;
         }
         #endregion
     }

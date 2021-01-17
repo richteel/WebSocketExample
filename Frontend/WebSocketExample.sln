@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketExample", "WebSocketExample\WebSocketExample.csproj", "{8FEE6DA8-2755-4D5A-83BA-C748CAC72941}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeelSys.Web", "TeelSys.Web\TeelSys.Web.csproj", "{CDD54C53-2644-4422-AF64-43B2C4571426}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeelSys.Globalization", "TeelSys.Globalization\TeelSys.Globalization.csproj", "{8D2FBA03-1124-47FD-B975-F01C2303372C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8FEE6DA8-2755-4D5A-83BA-C748CAC72941}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FEE6DA8-2755-4D5A-83BA-C748CAC72941}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FEE6DA8-2755-4D5A-83BA-C748CAC72941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD54C53-2644-4422-AF64-43B2C4571426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD54C53-2644-4422-AF64-43B2C4571426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD54C53-2644-4422-AF64-43B2C4571426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD54C53-2644-4422-AF64-43B2C4571426}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D2FBA03-1124-47FD-B975-F01C2303372C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D2FBA03-1124-47FD-B975-F01C2303372C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D2FBA03-1124-47FD-B975-F01C2303372C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D2FBA03-1124-47FD-B975-F01C2303372C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

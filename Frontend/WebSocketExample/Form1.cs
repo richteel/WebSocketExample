@@ -2,6 +2,11 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
+using System.Globalization;
+using System.Resources;
+using TeelSys.Globalization;
+using TeelSys.Web;
 
 namespace WebSocketExample
 {
@@ -11,6 +16,7 @@ namespace WebSocketExample
         #region
         private bool _connected = false;
         private WsClient _client;
+        private readonly ResourceManager rm;
         #endregion
 
         /*** Properties ***/
@@ -22,6 +28,42 @@ namespace WebSocketExample
         public Form1()
         {
             InitializeComponent();
+
+            string t = this.GetType().FullName;
+
+            rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
+            LocalizeFormText();
+        }
+
+        public Form1(CultureInfo culture)
+        {
+            InitializeComponent();
+
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+
+            rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
+            LocalizeFormText();
+        }
+
+        public void LocalizeFormText()
+        {
+            if(rm == null)
+                return;
+
+            LocalizedResourceHelper.LocalizeControlText(rm, this, "$this.Text");
+            LocalizedResourceHelper.LocalizeControlText(rm, fileToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, exitToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, githubProjectToolStripMenuItem);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblConnection);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblServer);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblPort);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblPort);
+            LocalizedResourceHelper.LocalizeControlText(rm, cmdConnect);
+            LocalizedResourceHelper.LocalizeControlText(rm, cmdDisconnect);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblSend);
+            LocalizedResourceHelper.LocalizeControlText(rm, cmdSend);
+            LocalizedResourceHelper.LocalizeControlText(rm, lblMessageLog);
         }
         #endregion
 
@@ -52,7 +94,7 @@ namespace WebSocketExample
                 if (txtLog.Text.Length > 0)
                     txtLog.AppendText("\r\n");
                 else
-                    txtLog.AppendText("Sate/Time\tDIR\tMessage\r\n");
+                    txtLog.AppendText(LocalizedResourceHelper.GetLocalizedText(rm, "MessageLogHeaders") + "\r\n");
 
                 txtLog.Select(txtLog.TextLength, 0);
                 if (connectionStatus)
@@ -62,7 +104,7 @@ namespace WebSocketExample
                 else
                     txtLog.SelectionColor = Color.Green;
 
-                txtLog.AppendText(string.Format("{0}\t{1}\t{2}", DateTime.Now, connectionStatus ? "" : sending ? "SEND" : "RECV", Message));
+                txtLog.AppendText(string.Format("{0}\t{1}\t{2}", DateTime.Now, connectionStatus ? "" : sending ? LocalizedResourceHelper.GetLocalizedText(rm, "Sent") : LocalizedResourceHelper.GetLocalizedText(rm, "Received"), Message));
             }
         }
 
@@ -75,8 +117,8 @@ namespace WebSocketExample
             }
             catch (UriFormatException e)
             {
-                MessageBox.Show(this, string.Format("{0}\r\n{1}", Properties.Resources.InvalidServerOrPort, e.Message), 
-                    Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format("{0}\r\n{1}", LocalizedResourceHelper.GetLocalizedText(rm, "InvalidServerOrPort"), e.Message),
+                    LocalizedResourceHelper.GetLocalizedText(rm, "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -86,7 +128,7 @@ namespace WebSocketExample
             cmdDisconnect.Enabled = _connected;
             cmdConnect.Enabled = !cmdDisconnect.Enabled;
 
-            lblConnectedStatus.Text = _connected ? Properties.Resources.Connected : Properties.Resources.NotConnected;
+            lblConnectedStatus.Text = _connected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected");
         }
         #endregion
 
@@ -138,7 +180,7 @@ namespace WebSocketExample
                 }
                 else
                 {
-                    MessageBox.Show(this, Properties.Resources.PortMustBeAnInteger, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, LocalizedResourceHelper.GetLocalizedText(rm, "PortMustBeAnInteger"), LocalizedResourceHelper.GetLocalizedText(rm, "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             UpdateButtons();
@@ -162,19 +204,6 @@ namespace WebSocketExample
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            fileToolStripMenuItem.Text = Properties.Resources.File;
-            exitToolStripMenuItem.Text = Properties.Resources.Exit;
-            helpToolStripMenuItem.Text = Properties.Resources.Help;
-            githubProjectToolStripMenuItem.Text = Properties.Resources.GitHubProject;
-            lblConnection.Text = Properties.Resources.Connection;
-            lblUrl.Text = Properties.Resources.Server;
-            lblPort.Text = Properties.Resources.Port;
-            cmdConnect.Text = Properties.Resources.Connect;
-            cmdDisconnect.Text = Properties.Resources.Disconnect;
-            lblSend.Text = Properties.Resources.MessageToSend;
-            cmdSend.Text = Properties.Resources.Send;
-            lblMessageLog.Text = Properties.Resources.MessageLog;
-
             Form1_Resize(sender, e);
             UpdateButtons();
         }
@@ -198,7 +227,7 @@ namespace WebSocketExample
         {
             if (!int.TryParse(txtPort.Text, out _))
             {
-                MessageBox.Show(this, Properties.Resources.PortMustBeAnInteger, Properties.Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, LocalizedResourceHelper.GetLocalizedText(rm, "PortMustBeAnInteger"), LocalizedResourceHelper.GetLocalizedText(rm, "Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
             }
         }

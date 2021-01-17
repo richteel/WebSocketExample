@@ -4,8 +4,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.WebSockets;
 using System.Threading;
+using System.Resources;
+using TeelSys.Globalization;
 
-namespace WebSocketExample
+namespace TeelSys.Web
 {
     public class WsClient
     {
@@ -13,6 +15,7 @@ namespace WebSocketExample
         #region
         private readonly ClientWebSocket client = null;
         private readonly CancellationTokenSource cts;
+        private readonly ResourceManager rm;
         #endregion
 
         /*** Properties ***/
@@ -34,6 +37,10 @@ namespace WebSocketExample
             client = new ClientWebSocket();
             cts = new CancellationTokenSource();
 
+            string t = this.GetType().FullName;
+
+            rm = new ResourceManager(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly());
+
             ConnectToServerAsync();
         }
         #endregion
@@ -46,8 +53,8 @@ namespace WebSocketExample
 
         void OnConnectionStateChanged()
         {
-            ConnectionStateChanged?.Invoke(this, new ConnectionStateChangedEventArgs(IsConnected, 
-                IsConnected ? Properties.Resources.Connected : Properties.Resources.NotConnected));
+            ConnectionStateChanged?.Invoke(this, new ConnectionStateChangedEventArgs(IsConnected,
+                IsConnected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected", "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected", "Not Connected")));
         }
 
         /* --------------------- */
@@ -111,9 +118,9 @@ namespace WebSocketExample
                 await client.ConnectAsync(connectionUri, cts.Token);
                 UpdateClientState();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                OnConnectionError(Properties.Resources.ConnectionErrorMessage, e.Message, e.InnerException.ToString());
+                OnConnectionError(LocalizedResourceHelper.GetLocalizedText(rm, "ConnectionErrorMessage", "Error connecting to server"), e.Message, e.InnerException.ToString());
                 return;
             }
 
@@ -139,7 +146,7 @@ namespace WebSocketExample
                     break;
                 var messageBytes = message.Skip(message.Offset).Take(result.Count).ToArray();
                 string receivedMessage = Encoding.UTF8.GetString(messageBytes);
-                Console.WriteLine("{0}: {1}", Properties.Resources.Received, receivedMessage);
+                Console.WriteLine("{0}: {1}", LocalizedResourceHelper.GetLocalizedText(rm, "Received", "Received"), receivedMessage);
                 OnMessageReceived(receivedMessage);
             }
             while (!result.EndOfMessage);
@@ -159,7 +166,7 @@ namespace WebSocketExample
         void UpdateClientState()
         {
             OnConnectionStateChanged();
-            Console.WriteLine($"{Properties.Resources.WebsocketState} {client.State}");
+            Console.WriteLine($"{LocalizedResourceHelper.GetLocalizedText(rm, "WebsocketState", "Websocket State")} {client.State}");
         }
         #endregion
     }

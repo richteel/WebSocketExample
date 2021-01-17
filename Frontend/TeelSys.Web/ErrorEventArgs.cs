@@ -1,4 +1,4 @@
-﻿namespace WebSocketExample
+﻿namespace TeelSys.Web
 {
     public class ErrorEventArgs
     {/*** Properties ***/
