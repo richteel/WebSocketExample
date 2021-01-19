@@ -1,0 +1,75 @@
+<html lang="en" data-color-mode="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="Description" content="Websocket Example - Getting started with the Ratchet backend" />
+		<link rel="stylesheet" href="./style/modal.css" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<script src="./js/modal.js"></script>
+		<script src="./js/include.js"></script>
+		<script>
+			function layout() {
+				includeFile("_header_", "./parts/header.html");
+				includeFile("_footer_", "./parts/footer.html");
+
+				addImgClickEvents();
+			}
+		</script>
+		<title>Getting started with the Ratchet backend</title>
+	</head>
+	<body onload="layout();">
+		<a class="skip-main" href="#main">Skip to main content</a>
+		<div id="_header_"></div>
+		<h1 id="main">Getting started with the Ratchet backend</h1>
+		<p>
+    </p>
+
+    <ol>
+      <li>
+        Install Composer<br />
+        REF: <a href="https://linuxize.com/post/how-to-install-and-use-composer-on-debian-10/">How to Install and Use PHP Composer on Debian 10</a>
+        <ol>
+          <li>
+            Update installed packages first by running the following commands.
+            <ul>
+              <li>sudo apt update</li>
+              <li>sudo apt install wget php-cli php-zip unzip</li>
+            </ul>
+          </li>
+          <li>
+            Install Composer with the following commands
+            <ul>
+              <li>wget -O composer-setup.php https://getcomposer.org/installer</li>
+              <li>sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer</li>
+            </ul>
+          </li>
+          <li>
+            In the future, you may update Composer with the following command
+            <ul>
+              <li>sudo composer self-update</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+      <li>
+        Create the project directory
+      </li>
+      <li>
+        Copy backend project files
+      </li>
+      <li>
+        Install Ratchet
+      </li>
+      <li>
+        Test that the backend is running properly
+      </li>
+      <li>
+        Use systemd to run the script as a daemon on start-up<br />
+        REF: <a href="https://www.2daygeek.com/execute-run-linux-scripts-command-at-reboot-startup/">
+          How to Execute a Command or Script at Reboot or Startup</a>
+      </li>
+    </ol>
+
+		<div id="_footer_"></div>
+	</body>
+</html>

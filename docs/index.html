@@ -1,17 +1,45 @@
 <html lang="en" data-color-mode="light">
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="Description" content="Culture information for Windows 10 operating system." />
+		<link rel="stylesheet" href="./style/modal.css" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<script src="./js/modal.js"></script>
+		<script src="./js/include.js"></script>
+		<script>
+			function layout() {
+				includeFile("_header_", "./parts/header.html");
+				includeFile("_footer_", "./parts/footer.html");
+
+				addImgClickEvents();
+			}
+		</script>
 		<title>WebSocket Example</title>
 	</head>
-	<body>
-		<h1>WebSocket Example</h1>
-		<p>WebSocket example with PHP (Ratchet) backend and C# (Winforms) frontend</p>
-		
-		<p>Links</p>
+	<body onload="layout();">
+		<a class="skip-main" href="#main">Skip to main content</a>
+		<div id="_header_"></div>
+		<h1 id="main">WebSocket Example</h1>
+		<p>
+			This project was built as a proof of concept to use the C# ClientWebSocket
+			to replace polling with WebRequest for the
+			<a href="https://github.com/richteel/RasPBX_Build">FreePBX_Utility</a>
+			caller id notification.
+		</p>
+		<p>
+			The project runs on a Raspberry Pi with the RasPBX image. This should run
+			on Raspbian images as well as any Debian 10 (Buster) distribution.
+		</p>
+
+		<p>Contents</p>
 		<ul>
-			<li><a href="https://github.com/richteel/WebSocketExample">GitHub Project</a></li>
+			<li>Getting started with the <a href="backend.html">Ratchet Backend</a></li>
+			<li>Building and using the <a href="frontend.html">Windows Frontend</a></li>
 			<li>List of <a href="cultures.html">Cultures available in Windows 10</a></li>
+			<li><a href="references.html">References</a> used in the development of this project</li>
 		</ul>
-		
+
+		<div id="_footer_"></div>
 	</body>
 </html>

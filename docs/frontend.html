@@ -1,0 +1,39 @@
+<html lang="en" data-color-mode="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="Description" content="Websocket Example - Building and using the Windows Frontend" />
+		<link rel="stylesheet" href="./style/modal.css" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<script src="./js/modal.js"></script>
+		<script src="./js/include.js"></script>
+		<script>
+			function layout() {
+				includeFile("_header_", "./parts/header.html");
+				includeFile("_footer_", "./parts/footer.html");
+
+				addImgClickEvents();
+			}
+		</script>
+		<title>Building and using the Windows Frontend</title>
+	</head>
+	<body onload="layout();">
+		<a class="skip-main" href="#main">Skip to main content</a>
+		<div id="_header_"></div>
+		<h1 id="main">Building and using the Windows Frontend</h1>
+		<p>
+      <img src="images/frontend/WinForm_01.png" class="previewImage"
+        alt="WinSocket Example Windows Application" /><br />
+      <img src="images/frontend/WinForm_02.png" class="previewImage"
+        alt="WinSocket Example Windows Application - Connected" /><br />
+      <img src="images/frontend/WinForm_03.png" class="previewImage"
+        alt="WinSocket Example Windows Application - Received Chat Message" /><br />
+      <img src="images/frontend/WinForm_04.png" class="previewImage"
+        alt="WinSocket Example Windows Application - Sent Chat Message" /><br />
+      <img src="images/frontend/WinForm_05.png" class="previewImage"
+        alt="WinSocket Example Windows Application - Disconnected" /><br />
+    </p>
+
+		<div id="_footer_"></div>
+	</body>
+</html>
