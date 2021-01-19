@@ -1,10 +1,26 @@
 <html lang="en" data-color-mode="light">
 	<head>
 		<meta charset="utf-8" />
-		<title>WebSocket Example</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="Description" content="Culture information for Windows 10 operating system." />
+		<link rel="stylesheet" href="./style/modal.css" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<script src="./js/modal.js"></script>
+		<script src="./js/include.js"></script>
+		<script>
+			function layout() {
+				includeFile("_header_", "./parts/header.html");
+				includeFile("_footer_", "./parts/footer.html");
+
+				addImgClickEvents();
+			}
+		</script>
+		<title>Windows 10 Culture Information</title>
 	</head>
-	<body>
-		<h1>Culture Information</h1>
+	<body onload="layout();">
+		<a class="skip-main" href="#main">Skip to main content</a>
+		<div id="_header_"></div>
+		<h1 id="main">Culture Information</h1>
 		<p>The table below was created from the following C# code.</p>
 		<pre>using System.Globalization;
 
@@ -885,5 +901,7 @@ static void PrintCultures()
 			<tr><td>zh-CHS</td><td>zh</td><td>zho</td><td>CHS</td><td>Chinese (Simplified) Legacy</td><td>Chinese (Simplified) Legacy</td></tr>
 			<tr><td>zh-CHT</td><td>zh</td><td>zho</td><td>CHT</td><td>Chinese (Traditional) Legacy</td><td>Chinese (Traditional) Legacy</td></tr>
 		</table>
+
+		<div id="_footer_"></div>
 	</body>
 </table>

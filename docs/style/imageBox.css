@@ -1,0 +1,19 @@
+/* Source: https://stackoverflow.com/questions/19108112/show-image-over-another-image-on-hover */
+.imageBox:hover .hoverImg {
+    display: block;
+}
+.imageBox {
+  position: relative;
+  /* float: left; */
+}
+
+.imageBox .hoverImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.imageBox:hover .hoverImg {
+  display: block;
+}

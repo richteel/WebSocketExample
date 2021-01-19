@@ -1,0 +1,155 @@
+body {
+	padding-top: 0.5em;
+	padding-right: 3em;
+	padding-bottom: 0.5em;
+	padding-left: 3em;
+}
+
+li img, .previewImage {
+	height: auto;
+	max-width: 250px;
+	width: auto;
+	max-height: 250px;
+}
+
+ol {
+    counter-reset: item;
+}
+
+ol > li {
+    counter-increment: item;
+}
+
+ol ol > li {
+    display: block;
+}
+
+ol ol > li:before {
+    content: counters(item, ".") ". ";
+    margin-left: -20px;
+}
+
+ol li, ul li {
+	margin-bottom: 0.65em;
+}
+
+li ol {
+	margin-before: 0.65
+}
+
+a.skip-main {
+	left:-999px;
+	position:absolute;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+	z-index:-999;
+}
+a.skip-main:focus, a.skip-main:active {
+	color: #fff;
+	background-color:#000;
+	left: auto;
+	top: auto;
+	width: 30%;
+	height: auto;
+	overflow:auto;
+	margin: 10px 35%;
+	padding:5px;
+	border-radius: 15px;
+	border:4px solid yellow;
+	text-align:center;
+	font-size:1.2em;
+	z-index:999;
+}
+
+.caption {
+	display: block;
+	height: auto;
+	max-width: 250px;
+	text-align: center;
+	font-size: smaller;
+}
+
+.NoteBlock {
+	border: 1px solid #fff;
+	background-color: wheat;
+	display: block;
+}
+
+.NoteBlock div {
+	padding: 0px 10px;
+}
+
+.NoteTitle {
+	background-color: black;
+	color: white;
+	display: block;
+	padding: 5px 10px;
+	font-weight: bold;
+}
+
+.code {
+	display: block;
+	unicode-bidi: embed;
+	font-family: monospace;
+	white-space: pre;
+  color: black;
+  background-color: #f2eecb;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+.terminal {
+	display: block;
+	unicode-bidi: embed;
+	font-family: monospace;
+	white-space: pre;
+	color: white;
+	background-color: black;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+.greenterminal {
+	display: block;
+	unicode-bidi: embed;
+	font-family: monospace;
+	white-space: pre;
+  color: green;
+  background-color: black;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th {
+  border-left: 1px solid white;
+  padding: 0.25em;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0.25em;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
+tr:nth-child(odd) {
+  background-color: silver;
+}
+
+tr:first-child {
+  background-color: black;
+  color: white;
+}
+
+tr:nth-child(1) th:nth-child(1) {
+  border-left: 1px solid black;
+}
