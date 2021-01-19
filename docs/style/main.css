@@ -89,7 +89,7 @@ a.skip-main:focus, a.skip-main:active {
 	font-weight: bold;
 }
 
-.code {
+pre, .code {
 	display: block;
 	unicode-bidi: embed;
 	font-family: monospace;
