@@ -22,15 +22,37 @@
 		<div id="_header_"></div>
 		<h1 id="main">Getting started with the Ratchet backend</h1>
 		<p>
+			The backend consists of a few files, which listen for chat messages and
+			send chats to all other connected clients.
     </p>
+		<h2>Hardware and Software used</h2>
+		<ul>
+			<li>
+				Raspberry Pi 4
+				<ul>
+					<li>OS: <a href="http://www.raspberry-asterisk.org/">RasPBX</a> 10-10-2020 (Based on Raspbian 10 Buster)</li>
+					<li>Apache 2.4.38 (Included in RasPBX Image)</li> <!-- /usr/sbin/apache2 -v -->
+				</ul>
+			</li>
+			<li>
+				Windows PC
+				<ul>
+					<li>OS: Windows 10 (64-bit)</li>
+					<li><a href="https://www.balena.io/etcher/">balenaEtcher</a> - Software for writing the RasPBX image to the SD Card</li>
+					<li><a href="https://www.putty.org/">PuTTY</a> - SSH Terminal Software</li>
+					<li><a href="https://winscp.net/">WinSCP</a> - SFTP Software for file transfers</li>
+				</ul>
+			</li>
+		</ul>
 
+		<h2>Steps to setup backend</h2>
     <ol>
       <li>
         Install Composer<br />
         REF: <a href="https://linuxize.com/post/how-to-install-and-use-composer-on-debian-10/">How to Install and Use PHP Composer on Debian 10</a>
         <ol>
           <li>
-            Update installed packages first by running the following commands.
+            Installed required packages; wget, php-zip, &amp; unzip first, by running the following commands.
             <ul>
               <li>sudo apt update</li>
               <li>sudo apt install wget php-cli php-zip unzip</li>
@@ -69,6 +91,134 @@
           How to Execute a Command or Script at Reboot or Startup</a>
       </li>
     </ol>
+
+
+		<!-- ******* START OF CODE LISIING ****** -->
+
+		<h1>File Contents</h1>
+		<p>Contents of the three backend files for the Chat application and the one HTML test file.</p>
+
+		<ul>
+			<li>
+				<strong>src/Chat.php</strong> - The interface for the Chat application
+				<span class="code">&lt;?php
+
+namespace MyApp;
+
+use Ratchet\MessageComponentInterface;
+use Ratchet\ConnectionInterface;
+
+class Chat implements MessageComponentInterface {
+	public function __construct() {
+			$this-&gt;clients = new \SplObjectStorage;
+	}
+
+	public function onOpen(ConnectionInterface $conn) {
+		// Store the new connection in $this-&gt;clients
+		$this-&gt;clients-&gt;attach($conn);
+
+		echo "New connection! ({$conn-&gt;resourceId})\n";
+	}
+
+	public function onMessage(ConnectionInterface $from, $msg) {
+		$numRecv = count($this-&gt;clients) - 1;
+		echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
+			, $from-&gt;resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
+
+		foreach ( $this-&gt;clients as $client ) {
+			if ( $from-&gt;resourceId == $client-&gt;resourceId ) {
+				continue;
+			}
+
+			$client-&gt;send( "Client $from-&gt;resourceId said $msg" );
+		}
+	}
+
+	public function onClose(ConnectionInterface $conn) {
+		// The connection is closed, remove it, as we can no longer send it messages
+		$this-&gt;clients-&gt;detach($conn);
+
+		echo "Connection {$conn-&gt;resourceId} has disconnected\n";
+	}
+
+	public function onError(ConnectionInterface $conn, \Exception $e) {
+		echo "An error has occurred: {$e-&gt;getMessage()}\n";
+
+		$conn-&gt;close();
+	}
+}
+
+?&gt;</span>
+			</li>
+			<li>
+				<strong>app.php</strong> - The entry point for the application that sets up the server to
+				listen for incoming requests
+				<span class="code">&lt;?php
+
+use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebSocket\WsServer;
+use MyApp\Chat;
+
+require dirname( __FILE__ ) . '/vendor/autoload.php';
+
+$server = IoServer::factory(
+	new HttpServer(
+		new WsServer(
+			new Chat()
+		)
+	),
+	8080
+);
+
+$server-&gt;run();
+
+?&gt;</span>
+			</li>
+			<li>
+				<strong>composer.json</strong> - Information for Composer to install Ratchet and dependencies
+				<span class="code">{
+	"autoload": {
+		"psr-4": {
+			"MyApp\\": "src"
+		}
+	},
+	"require": {
+		"cboden/ratchet": "^0.4"
+	}
+}</span>
+			</li>
+			<li>
+				<strong>index.html</strong> - Web page to test the application to make certain that it is working
+				<span class="code">&lt;html&gt;
+	&lt;head&gt;
+		&lt;style&gt;
+			input, button { padding: 10px; }
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;input type="text" id="message" autocomplete="off" /&gt;
+		&lt;button onclick="transmitMessage()"&gt;Send&lt;/button&gt;
+		&lt;script&gt;
+			// Create a new WebSocket.
+			var socket  = new WebSocket('ws://localhost:8080');
+
+			// Define the
+			var message = document.getElementById('message');
+
+			function transmitMessage() {
+				socket.send( message.value );
+			}
+
+			socket.onmessage = function(e) {
+				alert( e.data );
+			}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</span>
+			</li>
+		</ul>
+		<!-- ****** END OF CODE LISIING ****** -->
 
 		<div id="_footer_"></div>
 	</body>
