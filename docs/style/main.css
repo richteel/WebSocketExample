@@ -122,6 +122,20 @@ pre, .code {
   border: 1px solid black;
 }
 
+.warning_message:before {
+  content: "WARNING: ";
+	font-weight: bold;
+}
+
+.warning_message {
+	background-color: yellow;
+	display: block;
+	border: 1px solid red;
+	border-radius: 15px;
+	padding: .5em;
+
+}
+
 table {
   border-collapse: collapse;
   border: 1px solid black;
