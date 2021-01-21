@@ -1,0 +1,9 @@
+[Unit]
+Description=Ratchet Chat Service
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/php /var/chat/app.php
+
+[Install]
+WantedBy=default.target

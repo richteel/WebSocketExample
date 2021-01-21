@@ -74,33 +74,116 @@
         </ol>
       </li>
       <li>
-        Create the project directory
+        Create the project directories with the following commands
+				<ul>
+					<li>mkdir /var/chat</li>
+					<li>mkdir /var/chat/src</li>
+					<li>mkdir /var/www/html/chat</li>
+				</ul>
       </li>
       <li>
-        Copy backend project files
+        Copy backend project files to the following directories<br />
+				You may want to use WinSCP if you are on a Windows machine to copy the
+				files to the Raspberry Pi.
+				<ul>
+					<li>app.php to /var/chat</li>
+					<li>composer.json to /var/chat</li>
+					<li>Chat.php to /var/chat/src</li>
+					<li>index.html to /var/www/html/chat</li>
+				</ul>
       </li>
       <li>
-        Install Ratchet
+        Install Ratchet by running the following commands
+				<ul>
+					<li>cd /var/chat</li>
+					<li>composer install</li>
+				</ul>
       </li>
+			<li>
+				Modify the /var/www/html/chat/index.html file to change the IP Address
+				to the Raspberry Pi's IP Address. If you change the port in the
+				/var/chat/app.php file, you will need to change the port in the HTML
+				file as well.<br />
+				Change
+				<span class="code">var socket  = new WebSocket('ws://localhost:8080');</span>
+				to (Example shows an IP Address of 10.140.1.35 but use your Raspberry Pi's IP Address.)
+				<span class="code">var socket  = new WebSocket('ws://10.140.1.35:8080');</span>
+			</li>
       <li>
         Test that the backend is running properly
+				<ul>
+					<li>
+						Run the following commands to start the application
+						<ul>
+							<li>cd /var/chat</li>
+							<li>php app.php</li>
+						</ul>
+					</li>
+					<li>
+						Open two browser windows and navigate to the chat application. In this
+						example, the Raspberry Pi's address is 10.140.1.35.<br />
+						<img src="images/backend/Test_01.png" alt="Chat test page open in two Browser Windows" />
+						<br />
+						Enter a message in one window and click the "Send" button. Click in the other window
+						and an alert will pop up with the message sent from the other browser window.<br />
+						<img src="images/backend/Test_02.png" alt="Chat message shown on other browser" />
+						<br />
+						You will also see the activity in the terminal window if all is working correctly.
+						<span class="terminal">root@raspbx:/var/chat# cd /var/chat
+root@raspbx:/var/chat# php app.php
+New connection! (93)
+New connection! (96)
+Connection 96 sending message "Hello" to 1 other connections</span>
+					</li>
+					<li>To close the chat application, press Ctrl+c</li>
+				</ul>
       </li>
       <li>
         Use systemd to run the script as a daemon on start-up<br />
         REF: <a href="https://www.2daygeek.com/execute-run-linux-scripts-command-at-reboot-startup/">
           How to Execute a Command or Script at Reboot or Startup</a>
+				<ul>
+					<li>
+						Copy the chat.service file to /etc/systemd/system/<br />
+						<i>
+							<strong>NOTE:</strong> If you saved the chat application to a location
+							other than /var/chat/app.php, you will need to modify the service file.
+						</i>
+					</li>
+					<li>
+						Run the following commands to update systemd configuration and enable
+						the chat service.
+						<ul>
+							<li>systemctl daemon-reload</li>
+							<li>systemctl enable chat.service</li>
+						</ul>
+					</li>
+					<li>
+						Reboot the Raspberry Pi and test that the chat service is running.
+						<ul>
+							<li>sudo reboot</li>
+						</ul>
+						You may check the status, stop, and start the chat service with the
+						following commands.
+						<ul>
+							<li>systemctl status chat</li>
+							<li>systemctl stop chat</li>
+							<li>systemctl start chat</li>
+						</ul>
+					</li>
+				</ul>
       </li>
     </ol>
 
 
 		<!-- ******* START OF CODE LISIING ****** -->
-
+		<hr />
 		<h1>File Contents</h1>
-		<p>Contents of the three backend files for the Chat application and the one HTML test file.</p>
+		<p>Contents of the five files used for the Chat application, test, and service.</p>
 
 		<ul>
 			<li>
-				<strong>src/Chat.php</strong> - The interface for the Chat application
+				<strong>/var/chat/src/Chat.php</strong> - The interface for the Chat application
 				<span class="code">&lt;?php
 
 namespace MyApp;
@@ -151,7 +234,7 @@ class Chat implements MessageComponentInterface {
 ?&gt;</span>
 			</li>
 			<li>
-				<strong>app.php</strong> - The entry point for the application that sets up the server to
+				<strong>/var/chat/app.php</strong> - The entry point for the application that sets up the server to
 				listen for incoming requests
 				<span class="code">&lt;?php
 
@@ -176,7 +259,7 @@ $server-&gt;run();
 ?&gt;</span>
 			</li>
 			<li>
-				<strong>composer.json</strong> - Information for Composer to install Ratchet and dependencies
+				<strong>/var/chat/composer.json</strong> - Information for Composer to install Ratchet and dependencies
 				<span class="code">{
 	"autoload": {
 		"psr-4": {
@@ -189,7 +272,7 @@ $server-&gt;run();
 }</span>
 			</li>
 			<li>
-				<strong>index.html</strong> - Web page to test the application to make certain that it is working
+				<strong>/var/www/html/chat/index.html</strong> - Web page to test the application to make certain that it is working
 				<span class="code">&lt;html&gt;
 	&lt;head&gt;
 		&lt;style&gt;
@@ -216,6 +299,19 @@ $server-&gt;run();
 		&lt;/script&gt;
 	&lt;/body&gt;
 &lt;/html&gt;</span>
+			</li>
+			<li>
+				<strong>/etc/systemd/system/chat.service</strong> - Service file to allow
+				chat to run as a daemon on start-up
+				<span class="code">[Unit]
+Description=Ratchet Chat Service
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/php /var/chat/app.php
+
+[Install]
+WantedBy=default.target</span>
 			</li>
 		</ul>
 		<!-- ****** END OF CODE LISIING ****** -->
