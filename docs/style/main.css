@@ -122,18 +122,30 @@ pre, .code {
   border: 1px solid black;
 }
 
-.warning_message:before {
+.warning:before {
   content: "WARNING: ";
 	font-weight: bold;
 }
 
-.warning_message {
+.warning {
 	background-color: yellow;
 	display: block;
 	border: 1px solid red;
 	border-radius: 15px;
 	padding: .5em;
+}
 
+.note:before {
+  content: "NOTE: ";
+	font-weight: bold;
+}
+
+.note {
+	background-color: silver;
+	display: block;
+	border: 1px solid black;
+	border-radius: 15px;
+	padding: .5em;
 }
 
 table {

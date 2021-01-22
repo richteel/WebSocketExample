@@ -21,11 +21,6 @@
 		<a class="skip-main" href="#main">Skip to main content</a>
 		<div id="_header_"></div>
 		<h1 id="main">Getting started with the Ratchet backend</h1>
-		<span class="warning_message">
-			If you are running FreePBX, do NOT follow these steps!!! They will be updated
-			shortly to allow FreePBX and Ratchet to coexist on the server. If you apply
-			these steps and have an issue, please see FreePBX Ticket <a href="https://issues.freepbx.org/browse/FREEPBX-21883">FREEPBX-21883</a>.
-		</span>
 		<p>
 			The backend consists of a few files, which listen for chat messages and
 			send chats to all other connected clients.
@@ -54,15 +49,7 @@
     <ol>
       <li>
         Install Composer<br />
-        REF: <a href="https://linuxize.com/post/how-to-install-and-use-composer-on-debian-10/">How to Install and Use PHP Composer on Debian 10</a>
         <ol>
-          <li>
-            Installed required packages; wget, php-zip, &amp; unzip first, by running the following commands.
-            <ul>
-              <li>sudo apt update</li>
-              <li>sudo apt install wget php-cli php-zip unzip</li>
-            </ul>
-          </li>
           <li>
             Install Composer with the following commands
             <ul>
@@ -321,6 +308,16 @@ WantedBy=default.target</span>
 			</li>
 		</ul>
 		<!-- ****** END OF CODE LISIING ****** -->
+
+		<span class="note">
+			I originally ran into issues with my FreePBX installation when I followed the steps at
+			<a href="https://linuxize.com/post/how-to-install-and-use-composer-on-debian-10/">How to Install and Use PHP Composer on Debian 10</a>.
+			The step "sudo apt install wget php-cli php-zip unzip" installed PHP 7.4 on the
+			system. I was not aware that FreePBX will not work with PHP 7.4. <br /><br />
+			If you make this mistake, you may work around FreePBX not working by reading what I
+			found and documented in the FreePBX Ticket <a href="https://issues.freepbx.org/browse/FREEPBX-21883">FREEPBX-21883</a>.
+			Unfortunately, the fix will break PHP Ratchet so your chat application will no longer function.
+		</span>
 
 		<div id="_footer_"></div>
 	</body>
