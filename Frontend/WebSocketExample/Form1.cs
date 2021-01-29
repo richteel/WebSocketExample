@@ -137,12 +137,21 @@ namespace WebSocketExample
             }
         }
 
+        private delegate void UpdateButtonsDelegate();
+
         private void UpdateButtons()
         {
-            cmdDisconnect.Enabled = _connected;
-            cmdConnect.Enabled = !cmdDisconnect.Enabled;
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new UpdateButtonsDelegate(UpdateButtons));
+            }
+            else
+            {
+                cmdDisconnect.Enabled = _connected;
+                cmdConnect.Enabled = !cmdDisconnect.Enabled;
 
-            lblConnectedStatus.Text = _connected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected", "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected", "Not Connected");
+                lblConnectedStatus.Text = _connected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected", "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected", "Not Connected");
+            }
         }
         #endregion
 

@@ -49,8 +49,15 @@ namespace TeelSys.Web
 
         public event ConnectionStateChangedEventHandler ConnectionStateChanged;
 
+        private bool lastConnectedState = false;
+
         void OnConnectionStateChanged()
         {
+            if (IsConnected == lastConnectedState)
+                return;
+
+            lastConnectedState = IsConnected;
+
             ConnectionStateChanged?.Invoke(this, new ConnectionStateChangedEventArgs(IsConnected,
                 IsConnected ? LocalizedResourceHelper.GetLocalizedText(rm, "Connected", "Connected") : LocalizedResourceHelper.GetLocalizedText(rm, "NotConnected", "Not Connected")));
         }
@@ -118,15 +125,22 @@ namespace TeelSys.Web
             }
             catch (Exception e)
             {
-                OnConnectionError(LocalizedResourceHelper.GetLocalizedText(rm, "ConnectionErrorMessage", "Error connecting to server"), e.Message, e.InnerException.ToString());
+                OnConnectionError(LocalizedResourceHelper.GetLocalizedText(rm, "ConnectionErrorMessage", "Error connecting to server"), e.Message, e.InnerException == null ? "" : e.InnerException.ToString());
                 return;
             }
 
             await Task.Factory.StartNew(async () =>
             {
-                while (client.State == WebSocketState.Open || client.State == WebSocketState.CloseSent)
+                try
                 {
-                    await ReadMessage();
+                    while (client.State == WebSocketState.Open)
+                    {
+                        await ReadMessage();
+                    }
+                }
+                catch(Exception e)
+                {
+                    OnConnectionError(LocalizedResourceHelper.GetLocalizedText(rm, "ConnectionErrorMessage", "Error connecting to server"), e.Message, e.InnerException == null ? "" : e.InnerException.ToString());
                 }
 
                 OnConnectionStateChanged();
