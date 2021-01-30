@@ -22,16 +22,194 @@
 		<div id="_header_"></div>
 		<h1 id="main">Building and using the Windows Frontend</h1>
 		<p>
-      <img src="images/frontend/WinForm_01.png" class="previewImage"
-        alt="WinSocket Example Windows Application" /><br />
-      <img src="images/frontend/WinForm_02.png" class="previewImage"
-        alt="WinSocket Example Windows Application - Connected" /><br />
-      <img src="images/frontend/WinForm_03.png" class="previewImage"
-        alt="WinSocket Example Windows Application - Received Chat Message" /><br />
-      <img src="images/frontend/WinForm_04.png" class="previewImage"
-        alt="WinSocket Example Windows Application - Sent Chat Message" /><br />
-      <img src="images/frontend/WinForm_05.png" class="previewImage"
-        alt="WinSocket Example Windows Application - Disconnected" /><br />
+			The Windows Frontend is written in C# using Visual Studio 2019. It is a
+			WinForms Application rather than a WPF Application. I typically write my
+			Desktop Applications in WinForms rather than WPF as I can quickly build
+			the UI the way I want it to look and behave. I have messed around with
+			WPF but just have not gotten the hang of it. It is something on my list of
+			things to learn.
+		</p>
+		<p>
+			In this sample application, I did learn about globalization and
+			localization. Although this application is a good example of one way to
+			accomplish localization, I will not go into details on this as it is not
+			the focus of this project. If you are a native speaker of German, Spanish,
+			or Lao, please update the localization files as I used
+			<a href="https://translate.google.com/">Google Translate</a> to create the
+			entries in the following resource files. I'm sure the localized text is
+			nonsense.
+			<ul>
+				<li>WebSocketExample\Frontend\TeelSys.Web\WsClient.de.resx</li>
+				<li>WebSocketExample\Frontend\TeelSys.Web\WsClient.es.resx</li>
+				<li>WebSocketExample\Frontend\TeelSys.Web\WsClient.lo.resx</li>
+				<li>WebSocketExample\Frontend\WebSocketExample\Form1.de.resx</li>
+				<li>WebSocketExample\Frontend\WebSocketExample\Form1.es.resx</li>
+				<li>WebSocketExample\Frontend\WebSocketExample\Form1.lo.resx</li>
+			</ul>
+		</p>
+		<h2>Hardware and Software used</h2>
+		<p>
+			<ul>
+				<li>
+					Raspberry Pi setup with the chat backend. (See the
+					<a href="./backend.html">backend page</a> for details.)
+				</li>
+				<li>
+					Windows PC
+					<ul>
+						<li>OS: Windows 10 (64-bit)</li>
+						<li>Visual Studio 2019</li>
+					</ul>
+				</li>
+			</ul>
+		</p>
+
+		<h2>Code - The Visual Studio Solution</h2>
+		<p>
+			The Visual Studio Solution contains several projects. There is much more
+			included in this project than what is required to exchange information
+			with a WebSocket server. The TeelSys.Web.WsClient class is the heart of
+			the example and is the one to focus on for implementing a Web Socket
+			client in a C# application.
+			<ul>
+				<li>
+					<strong>TeelSys.Globalization</strong> - Provides classes to assist
+					with Localization of text displayed to the end users.
+					<ul>
+						<li>
+							<u>LocalizedResourceHelper</u> - Static class to get localized
+							text from resource files.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>TeelSys.Settings</strong> - Provides classes to allow the
+					application to save and load settings. With the use of this library
+					it is not necessary to retype the Server IP Address and Port each
+					time the application is launched.
+					<ul>
+						<li>
+							<u>AssemblyDetails</u> - Structure to hold information about the
+							application such as Company, Copywrite, Description, Name, Title,
+							and Version.
+						</li>
+						<li>
+							<u>AssemblyInformation</u> - Static Class with one static method
+							to gets the application information and return it as an
+							AssemblyDetails structure.
+						</li>
+						<li>
+							<u>SettingFileTypes</u> - An enumeration to indicate the type
+							of setting file as either Application or User.
+						</li>
+						<li>
+							<u>SettingsEventActions</u> - An enumeration to indicate if an
+							event is a load or save event.
+						</li>
+						<li>
+							<u>SettingsEventArgs</u> - An event arguments class to be used
+							by the settings events being handled by the application.
+						</li>
+						<li>
+							<u>SettingsHandler</u> - A class to provide methods for loading,
+							saving, and deleting settings files.
+						</li>
+						<li>
+							<u>WindowSettings</u> - Class for saving the position and size of
+							the Windows Form.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>TeelSys.Web</strong> - Library which provides classes for
+					working with web-based resources.
+					<ul>
+						<li>
+							<u>ConnectionStateChangedEventArgs</u> - An event arguments
+							class to be used when handling events being raised when a web
+							class's connection state changes.
+						</li>
+						<li>
+							<u>ErrorEventArgs</u> - An event arguments class to be used when
+							handling events being raised when an error is raised within a web
+							class.
+						</li>
+						<li>
+							<u>MessageReceivedEventArgs</u> - An event arguments class to
+							used to be used when handling message received events being raised
+							within a web class.
+						</li>
+						<li>
+							<u>WebContent</u> - Class to be used to request content from a
+							web application such as a web page.
+						</li>
+						<li>
+							<u>WebHelper</u> - A Static Class with a method for building a
+							URL from separate strings.
+						</li>
+						<li>
+							<u>WsClient</u> - Used to send and receive messages to and from a
+							WebSocket server. (This is the important class in this example.)
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>WebSocketExample</strong> - The WinForms project which
+					provides the User Interface.
+					<ul>
+						<li>
+							<u>Form1</u> - The User Interface
+						</li>
+						<li>
+							<u>Program</u> - The entry point for the application
+						</li>
+						<li>
+							<u>UserSettings</u> - A class to hold the settings for the
+							application with the ability to load and save the settings.
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</p>
+
+		<h2>Using the Application</h2>
+		<p>
+			Once you have compiled the code, you may run the application. Below are
+			some screenshots showing the application in use.
+		</p>
+
+		<p>
+			<ul>
+				<li>
+					When you launch the application, enter the IP Address and port for
+					the chat server, then click the "Connect" button.<br />
+					<img src="images/frontend/WinForm_01.png"
+		        alt="WinSocket Example Windows Application" />
+				</li>
+				<li>
+					You will see a message in the message log stating that the application
+					connected or an error if the connection could not be established.<br />
+					<img src="images/frontend/WinForm_02.png"
+		        alt="WinSocket Example Windows Application - Connected" />
+				</li>
+				<li>
+					In order to send and receive messages, you need to have a second
+					chat client running such as a web browser connected to the chat
+					test page. When you tyoe a message and click the "Send" button,
+					The message will be displayed in the Message Log of the Windows
+					application or in a pop-up in the webpage.<br />
+					<img src="images/frontend/WinForm_03.png"
+		        alt="WinSocket Example Windows Application - Received Chat Message" />
+					<img src="images/frontend/WinForm_04.png" class="previewImage"
+		        alt="WinSocket Example Windows Application - Sent Chat Message" /><br />
+				</li>
+				<li>
+					When connected, you may click the "Disconnect" button in the Windows
+					application to disconnect from the server.<br />
+		      <img src="images/frontend/WinForm_05.png" class="previewImage"
+		        alt="WinSocket Example Windows Application - Disconnected" />
+				</li>
+			</ul>
     </p>
 
 		<div id="_footer_"></div>

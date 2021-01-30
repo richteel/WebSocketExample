@@ -157,6 +157,16 @@ Connection 96 sending message "Hello" to 1 other connections</span>
     </ol>
 		<!-- https://superuser.com/questions/513159/how-to-remove-systemd-services -->
 
+		<span class="note">
+			I originally ran into issues with my FreePBX installation when I followed the steps at
+			<a href="https://linuxize.com/post/how-to-install-and-use-composer-on-debian-10/">How to Install and Use PHP Composer on Debian 10</a>.
+			The step "sudo apt install wget php-cli php-zip unzip" installed PHP 7.4 on the
+			system. I was not aware that FreePBX will not work with PHP 7.4. <br /><br />
+			If you make this mistake, you may work around FreePBX not working by reading what I
+			found and documented in the FreePBX Ticket <a href="https://issues.freepbx.org/browse/FREEPBX-21883">FREEPBX-21883</a>.
+			Unfortunately, the fix will break PHP Ratchet so your chat application will no longer function.
+		</span>
+
 
 		<!-- ******* START OF CODE LISIING ****** -->
 		<hr />
@@ -297,16 +307,6 @@ WantedBy=default.target</span>
 			</li>
 		</ul>
 		<!-- ****** END OF CODE LISIING ****** -->
-
-		<span class="note">
-			I originally ran into issues with my FreePBX installation when I followed the steps at
-			<a href="https://linuxize.com/post/how-to-install-and-use-composer-on-debian-10/">How to Install and Use PHP Composer on Debian 10</a>.
-			The step "sudo apt install wget php-cli php-zip unzip" installed PHP 7.4 on the
-			system. I was not aware that FreePBX will not work with PHP 7.4. <br /><br />
-			If you make this mistake, you may work around FreePBX not working by reading what I
-			found and documented in the FreePBX Ticket <a href="https://issues.freepbx.org/browse/FREEPBX-21883">FREEPBX-21883</a>.
-			Unfortunately, the fix will break PHP Ratchet so your chat application will no longer function.
-		</span>
 
 		<div id="_footer_"></div>
 	</body>

@@ -15,6 +15,10 @@ namespace TeelSys.Web
         #region
         private readonly ClientWebSocket client = null;
         private readonly CancellationTokenSource cts;
+
+        // Used for Localization. Not necessary for implementing WebScocket Client
+        //  If you do not wish to use Localization, modify or remove all the code using
+        //  the ResourceManager object.
         private readonly ResourceManager rm;
         #endregion
 
