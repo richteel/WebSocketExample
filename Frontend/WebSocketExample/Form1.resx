@@ -122,17 +122,13 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblConnectedStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 16</value>
+    <value>0, 17</value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 532</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="statusStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 19, 0</value>
+    <value>0, 428</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 22</value>
+    <value>800, 22</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
@@ -157,25 +153,25 @@
     <value>133, 17</value>
   </metadata>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 26</value>
+    <value>93, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Exit</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 24</value>
+    <value>37, 20</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
   <data name="githubProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 26</value>
+    <value>152, 22</value>
   </data>
   <data name="githubProjectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;GitHub Project</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 24</value>
+    <value>44, 20</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Help</value>
@@ -183,8 +179,12 @@
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 2, 0, 2</value>
+  </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 28</value>
+    <value>800, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -211,13 +211,10 @@
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
   <data name="lblConnection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="lblConnection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>0, 24</value>
   </data>
   <data name="lblConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 31</value>
+    <value>800, 25</value>
   </data>
   <data name="lblConnection.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -244,13 +241,10 @@
     <value>Fill</value>
   </data>
   <data name="txtServer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 4</value>
-  </data>
-  <data name="txtServer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>170, 3</value>
   </data>
   <data name="txtServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 22</value>
+    <value>627, 20</value>
   </data>
   <data name="txtServer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -271,13 +265,10 @@
     <value>Left</value>
   </data>
   <data name="lblServer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="lblServer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>3, 3</value>
   </data>
   <data name="lblServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 29</value>
+    <value>167, 24</value>
   </data>
   <data name="lblServer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -304,16 +295,13 @@
     <value>Top</value>
   </data>
   <data name="panUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 59</value>
-  </data>
-  <data name="panUrl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>0, 49</value>
   </data>
   <data name="panUrl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="panUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 37</value>
+    <value>800, 30</value>
   </data>
   <data name="panUrl.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -334,13 +322,10 @@
     <value>Left</value>
   </data>
   <data name="txtPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 4</value>
-  </data>
-  <data name="txtPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>170, 3</value>
   </data>
   <data name="txtPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
+    <value>81, 20</value>
   </data>
   <data name="txtPort.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -364,13 +349,10 @@
     <value>Left</value>
   </data>
   <data name="lblPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="lblPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>3, 3</value>
   </data>
   <data name="lblPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 29</value>
+    <value>167, 24</value>
   </data>
   <data name="lblPort.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -397,16 +379,13 @@
     <value>Top</value>
   </data>
   <data name="panPort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 96</value>
-  </data>
-  <data name="panPort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>0, 79</value>
   </data>
   <data name="panPort.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="panPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 37</value>
+    <value>800, 30</value>
   </data>
   <data name="panPort.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -427,13 +406,10 @@
     <value>True</value>
   </data>
   <data name="cmdDisconnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 5</value>
-  </data>
-  <data name="cmdDisconnect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>362, 4</value>
   </data>
   <data name="cmdDisconnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 33</value>
+    <value>91, 27</value>
   </data>
   <data name="cmdDisconnect.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -457,13 +433,10 @@
     <value>True</value>
   </data>
   <data name="cmdConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 9</value>
-  </data>
-  <data name="cmdConnect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>94, 7</value>
   </data>
   <data name="cmdConnect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 33</value>
+    <value>77, 27</value>
   </data>
   <data name="cmdConnect.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -487,16 +460,13 @@
     <value>Top</value>
   </data>
   <data name="panButtons.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 133</value>
-  </data>
-  <data name="panButtons.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>0, 109</value>
   </data>
   <data name="panButtons.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="panButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 37</value>
+    <value>800, 30</value>
   </data>
   <data name="panButtons.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -520,13 +490,10 @@
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
   <data name="lblSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 170</value>
-  </data>
-  <data name="lblSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>0, 139</value>
   </data>
   <data name="lblSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 31</value>
+    <value>800, 25</value>
   </data>
   <data name="lblSend.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -553,10 +520,7 @@
     <value>Fill</value>
   </data>
   <data name="txtSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="txtSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3</value>
   </data>
   <data name="txtSend.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -565,7 +529,7 @@
     <value>Both</value>
   </data>
   <data name="txtSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>930, 54</value>
+    <value>697, 44</value>
   </data>
   <data name="txtSend.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -589,13 +553,10 @@
     <value>Right</value>
   </data>
   <data name="cmdSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>934, 4</value>
-  </data>
-  <data name="cmdSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>700, 3</value>
   </data>
   <data name="cmdSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 54</value>
+    <value>97, 44</value>
   </data>
   <data name="cmdSend.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -619,16 +580,13 @@
     <value>Top</value>
   </data>
   <data name="panSend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 201</value>
-  </data>
-  <data name="panSend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>0, 164</value>
   </data>
   <data name="panSend.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="panSend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 62</value>
+    <value>800, 50</value>
   </data>
   <data name="panSend.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -652,13 +610,10 @@
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
   <data name="lblMessageLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 263</value>
-  </data>
-  <data name="lblMessageLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>0, 214</value>
   </data>
   <data name="lblMessageLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 31</value>
+    <value>800, 25</value>
   </data>
   <data name="lblMessageLog.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -685,13 +640,10 @@
     <value>Fill</value>
   </data>
   <data name="txtLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 294</value>
-  </data>
-  <data name="txtLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>0, 239</value>
   </data>
   <data name="txtLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 238</value>
+    <value>800, 189</value>
   </data>
   <data name="txtLog.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -715,10 +667,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 554</value>
+    <value>800, 450</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5933,9 +5885,6 @@
         oVomiCbQs6OX0vqwjwAiQ51sBGMisYV36oSwjwCMwM80APms6+iFtD78H87mVOYLumvmAAAAAElFTkSu
         QmCC
 </value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>WebSocket Example</value>
